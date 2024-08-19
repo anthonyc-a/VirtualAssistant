@@ -35,14 +35,22 @@
   });
 </script>
 
-<div class="fixed bottom-4 left-4 z-50">
-  <h2 class="text-xl font-bold" on:click={expand} role="presentation">
+<div class="fixed bottom-4 bg-[#252525] bg-opacity-30 backdrop-blur-sm p-4 rounded-xl border border-[#252525] text-white left-4 z-50">
+  <h2 class="text- font-bold" on:click={expand} role="presentation">
     CPU: {averageUsage.toFixed(2)}%
+    <div
+    class="relative w-full h-1 mt-2 bg-gray-400 rounded-full overflow-hidden"
+  >
+    <div
+      class="absolute transition-all inset-0 bg-green-500 rounded-full shadow-md shadow-[#934cf631]"
+      style={`width: ${averageUsage}%; background-color: ${averageUsage > 75 ? "red" : "lightgreen"}`}
+    ></div>
+  </div>
   </h2>
 </div>
 {#if expanded}
   <div
-    class="grid bg-gray-500 h-80 fixed bottom-0 overflow-scroll w-full right-0 grid-cols-2 gap-4 md:grid-cols-6 md:gap-8 mx-auto"
+    class="grid bg-[#252525] rounded-2xl p-6 h-80 fixed bottom-0 overflow-scroll w-full right-0 grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 mx-auto"
   >
     {#if cpuInfo.length > 0}
       {#each cpuInfo as cpu, i}
@@ -63,8 +71,8 @@
               class="relative w-full h-2 bg-gray-400 rounded-full overflow-hidden"
             >
               <div
-                class="absolute inset-0 bg-blue-500 rounded-full"
-                style={`width: ${cpu.usage}%; background-color: ${cpu.usage > 75 ? "red" : "green"}`}
+                class="absolute transition-all inset-0 bg-blue-500 rounded-full"
+                style={`width: ${cpu.usage}%; background-color: ${cpu.usage > 75 ? "red" : "chartreuse"}`}
               ></div>
             </div>
           </div>

@@ -12,6 +12,9 @@
     FileMusicIcon,
   } from "lucide-svelte";
   import SystemMonitor from "../components/SystemMonitor.svelte";
+  import Headlines from "../components/Headlines.svelte";
+  import Pomodoro from "../components/Pomodoro.svelte";
+  import Weather from "../components/Weather.svelte";
 
   interface FileInfo {
     name: string;
@@ -95,38 +98,62 @@
   }
 </script>
 
-<div
-  class="container mt-12 text-center border mx-auto p-6 rounded-xl space-y-3"
->
-<SystemMonitor/>
-  <div class="fixed bottom-4 right-4 bg-black text-white p-4 rounded-xl">
-    {time}
-  </div>
 
-  <h1 class="text-5xl">Good evening, {savedName}</h1>
 
-  <p class="text-gray-300">Who am I speaking with?</p>
+<div class="container mt-0 text-center mx-auto p-6 rounded-xl space-y-2.5">
+  <h1 class="text-4xl font-light pb-0">Greetings, {savedName}</h1>
+  {#if savedName}
+    <p class="text-gray-300 pb-4">How can I help you today?</p>
+  {/if}
 
-  <!-- {#if !savedName} -->
-  <input bind:value={name} placeholder="Enter a name" />
-  <button on:click={saveName}>Save Name</button>
-  <!-- {/if} -->
+  <textarea
+    placeholder="Enter your message"
+    class="w-full max-w-3xl bg-[#252525] bg-opacity-30 backdrop-blur-sm text-left h-32 p-6 border-[#252525] text-white rounded-2xl border"
+  ></textarea>
 
-  <form class="row" on:submit|preventDefault={greet}>
+  {#if !savedName}
+    <p class="text-gray-300">Who am I speaking with?</p>
+
+    <input bind:value={name} placeholder="Enter a name" />
+    <button on:click={saveName}>Save Name</button>
+  {/if}
+
+  <!-- <form class="row" on:submit|preventDefault={greet}>
     <input id="greet-input" placeholder="Enter a name..." bind:value={name} />
     <button type="submit">Greet</button>
-  </form>
+  </form> -->
 
   <p>{greetMsg}</p>
 
-  <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
-    {#each files as file}
-      <li class="flex mx-auto items-center justify-between">
-        <svelte:component this={getIconComponent(file)} size={24} />
-        {file.name}
-      </li>
-    {/each}
-  </ul>
+  <SystemMonitor />
+  <!-- <Weather /> -->
+   <div class="grid grid-cols-2">
+    <Headlines />
+    <Pomodoro />
+    <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
+      {#each files as file}
+        <li class="flex mx-auto items-center justify-between">
+          <svelte:component this={getIconComponent(file)} size={24} />
+          {file.name}
+        </li>
+      {/each}
+    </ul>
+   </div>
+ 
+
+  <div
+    class="fixed bottom-4 right-4 border border-[#252525] bg-[#252525] bg-opacity-30 backdrop-blur-sm text-white p-4 rounded-xl"
+  >
+    {time}
+  </div>
+
+  <img
+    src="/logo.svg"
+    alt="Logo"
+    class="fixed top-4 left-6 w-5"
+  />
+
+
 </div>
 
 <style>
@@ -145,7 +172,6 @@
     font-weight: 400;
 
     color: #0f0f0f;
-    background-color: #f6f6f6;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -221,8 +247,8 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      color: #f6f6f6;
-      background-color: #2f2f2f;
+      color: #fff;
+      background-color: #141414;
     }
 
     a:hover {

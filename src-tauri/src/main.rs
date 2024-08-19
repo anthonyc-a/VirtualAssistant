@@ -1,7 +1,20 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod pomodoro;
+use pomodoro::{get_timer_state, pause_timer, reset_timer, start_timer, Timer, TimerState};
+
+mod weather;
+
+use weather::{WeatherData, get_weather_data};
+
+#[tauri::command]
+fn get_weather(lat: f64, lon: f64) -> Result<WeatherData, String> {
+    get_weather_data(lat, lon).map_err(|e| e.to_string())
+}
+
 use chrono::Local;
+use scraper::{Html, Selector};
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
@@ -11,6 +24,33 @@ use std::time::Duration;
 use sysinfo::{Components, Disks, Networks, System};
 use tauri::Manager;
 
+#[derive(Debug, Serialize)]
+struct H2Content {
+    content: String,
+}
+
+#[tauri::command]
+fn scrape_h2_content(url: String) -> Result<Vec<H2Content>, String> {
+    let resp = reqwest::blocking::get(&url).map_err(|e| e.to_string())?;
+    let body = resp.text().map_err(|e| e.to_string())?;
+    let document = Html::parse_document(&body);
+
+    let h2_selector = Selector::parse("h2").unwrap();
+
+    let h2_contents: Vec<H2Content> = document
+        .select(&h2_selector)
+        .map(|element| H2Content {
+            content: element
+                .text()
+                .collect::<Vec<_>>()
+                .join(" ")
+                .trim()
+                .to_string(),
+        })
+        .collect();
+
+    Ok(h2_contents)
+}
 
 #[derive(Serialize)]
 struct CpuInfo {
@@ -24,11 +64,14 @@ fn get_cpu_info() -> Vec<CpuInfo> {
     let mut sys = System::new_all();
     sys.refresh_all();
 
-    sys.cpus().iter().map(|cpu| CpuInfo {
-        name: cpu.name().to_string(),
-        usage: cpu.cpu_usage(),
-        frequency: cpu.frequency(),
-    }).collect()
+    sys.cpus()
+        .iter()
+        .map(|cpu| CpuInfo {
+            name: cpu.name().to_string(),
+            usage: cpu.cpu_usage(),
+            frequency: cpu.frequency(),
+        })
+        .collect()
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -136,6 +179,7 @@ fn main() {
 
             Ok(())
         })
+        .manage(TimerState(Mutex::new(Timer::new())))
         .invoke_handler(tauri::generate_handler![
             save_name,
             get_name,
@@ -143,7 +187,13 @@ fn main() {
             bye,
             get_formatted_local_time,
             get_documents_files,
-            get_cpu_info
+            get_cpu_info,
+            scrape_h2_content,
+            start_timer,
+            pause_timer,
+            reset_timer,
+            get_timer_state,
+            get_weather,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
