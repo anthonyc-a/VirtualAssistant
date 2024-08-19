@@ -100,10 +100,10 @@
 
 
 
-<div class="container mt-0 text-center mx-auto p-6 rounded-xl space-y-2.5">
-  <h1 class="text-4xl font-light pb-0">Greetings, {savedName}</h1>
+<div class="container mt-0  mx-auto p-6 rounded-xl space-y-2.5">
+  <h1 class="text-4xl font-light pb-0 w-fit">Greetings, {savedName}</h1>
   {#if savedName}
-    <p class="text-gray-300 pb-4">How can I help you today?</p>
+    <p class="text-gray-300 pb-6">How can I help you today?</p>
   {/if}
 
   <textarea
@@ -150,7 +150,7 @@
   <img
     src="/logo.svg"
     alt="Logo"
-    class="fixed top-4 left-6 w-5"
+    class="fixed top-9 left-6 w-5"
   />
 
 
