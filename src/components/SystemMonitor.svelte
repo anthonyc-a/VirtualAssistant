@@ -35,7 +35,7 @@
   });
 </script>
 
-<div class="fixed bottom-4 bg-[#252525] bg-opacity-30 backdrop-blur-sm p-4 rounded-xl border border-[#252525] text-white left-4 z-50">
+<div class="fixed bottom-4 z-[9999] bg-[#252525] bg-opacity-30 backdrop-blur-sm p-4 rounded-xl border border-[#252525] text-white left-4 z-50">
   <h2 class="text- font-bold" on:click={expand} role="presentation">
     CPU: {averageUsage.toFixed(2)}%
     <div
@@ -50,7 +50,7 @@
 </div>
 {#if expanded}
   <div
-    class="grid bg-[#252525] rounded-2xl p-6 h-80 fixed bottom-0 overflow-scroll w-full right-0 grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 mx-auto"
+    class="grid bg-[#252525] bg-opacity-20 backdrop-blur rounded-lg p-6 h-screen z-50 fixed bottom-0 overflow-scroll w-full right-0 grid-cols-2 gap-4 md:grid-cols-4 md:gap-8 mx-auto"
   >
     {#if cpuInfo.length > 0}
       {#each cpuInfo as cpu, i}

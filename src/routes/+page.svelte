@@ -98,18 +98,47 @@
   }
 </script>
 
+<div class="container w-[calc(100%-40px)] max-w-4xl mt-6 mx-auto py-6">
+  <div class="space-y-4 mb-10">
+    <h1 class="text-4xl md:text-5xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
+    <p class="text-gray-300 text-center tracking-wide">Who am I speaking with?</p>
 
+  </div>
+  
 
-<div class="container mt-0  mx-auto p-6 rounded-xl space-y-2.5">
-  <h1 class="text-4xl font-light pb-0 w-fit">Greetings, {savedName}</h1>
   {#if savedName}
-    <p class="text-gray-300 pb-6">How can I help you today?</p>
+  <div class="grid grid-cols-5 gap-12">
+    <p
+    class="text-gray-200 col-span-3 bg-[#252525] bg-opacity-30   max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-2xl text-sm leading-relaxed tracking-wide"
+  >
+    I apologize, but I'm not able to directly create or embed iframes or
+    other web content. However, I can provide you with some information about
+    what you're trying to do.
+    <br />
+    <br />
+    Would you like me to elaborate on any of these options or generate more alternatives?
+  </p>
+  <div
+  class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
+>
+  <h3 class="text-lg ">
+    Recently Discussed
+  </h3>
+  <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex items-center">
+    Something about a calorie counter
+  </div>
+  <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
+    A way to bulk edit images
+  </div>
+</div>
+  </div>
+ 
   {/if}
 
-  <textarea
+  <input
     placeholder="Enter your message"
-    class="w-full max-w-3xl bg-[#252525] bg-opacity-30 backdrop-blur-sm text-left h-32 p-6 border-[#252525] text-white rounded-2xl border"
-  ></textarea>
+    class="w-full fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-sm  border bg-opacity-95  border-[#252525] text-white rounded-tl-2xl rounded-tr-2xl "
+  />
 
   {#if !savedName}
     <p class="text-gray-300">Who am I speaking with?</p>
@@ -127,7 +156,7 @@
 
   <SystemMonitor />
   <!-- <Weather /> -->
-   <div class="grid grid-cols-2">
+  <div class="grid grid-cols-2">
     <Headlines />
     <Pomodoro />
     <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
@@ -138,22 +167,15 @@
         </li>
       {/each}
     </ul>
-   </div>
- 
+  </div>
 
   <div
-    class="fixed bottom-4 right-4 border border-[#252525] bg-[#252525] bg-opacity-30 backdrop-blur-sm text-white p-4 rounded-xl"
+    class="fixed bottom-4 text-sm right-4 border border-[#252525] bg-[#252525] bg-opacity-30 backdrop-blur-sm text-white p-4 rounded-xl"
   >
     {time}
   </div>
 
-  <img
-    src="/logo.svg"
-    alt="Logo"
-    class="fixed top-9 left-6 w-5"
-  />
-
-
+  <img src="/logo.svg" alt="Logo" class="fixed top-12 left-6 w-4" />
 </div>
 
 <style>
@@ -205,45 +227,8 @@
   a:hover {
     color: #535bf2;
   }
+ 
 
-  h1 {
-    text-align: center;
-  }
-
-  input,
-  button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    color: #0f0f0f;
-    background-color: #ffffff;
-    transition: border-color 0.25s;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  button {
-    cursor: pointer;
-  }
-
-  button:hover {
-    border-color: #396cd8;
-  }
-  button:active {
-    border-color: #396cd8;
-    background-color: #e8e8e8;
-  }
-
-  input,
-  button {
-    outline: none;
-  }
-
-  #greet-input {
-    margin-right: 5px;
-  }
 
   @media (prefers-color-scheme: dark) {
     :root {
@@ -253,15 +238,6 @@
 
     a:hover {
       color: #24c8db;
-    }
-
-    input,
-    button {
-      color: #ffffff;
-      background-color: #0f0f0f98;
-    }
-    button:active {
-      background-color: #0f0f0f69;
     }
   }
 </style>
