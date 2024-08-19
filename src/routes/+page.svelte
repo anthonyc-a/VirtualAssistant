@@ -98,9 +98,9 @@
   }
 </script>
 
-<div class="container w-[calc(100%-40px)] max-w-4xl mt-6 mx-auto py-6">
-  <div class="space-y-4 mb-10">
-    <h1 class="text-4xl md:text-5xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
+<div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-3">
+  <div class="space-y-3 mb-10">
+    <h1 class="text-4xl md:text-4xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
     <p class="text-gray-300 text-center tracking-wide">Who am I speaking with?</p>
 
   </div>
@@ -137,7 +137,7 @@
 
   <input
     placeholder="Enter your message"
-    class="w-full fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-sm  border bg-opacity-95  border-[#252525] text-white rounded-tl-2xl rounded-tr-2xl "
+    class="w-3/4 md:w-full tracking-wide fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-sm  border bg-opacity-95  border-[#252525] shadow text-white rounded-tl-2xl rounded-tr-2xl "
   />
 
   {#if !savedName}
@@ -170,7 +170,7 @@
   </div>
 
   <div
-    class="fixed bottom-4 text-sm right-4 border border-[#252525] bg-[#252525] bg-opacity-30 backdrop-blur-sm text-white p-4 rounded-xl"
+    class="fixed bottom-4 text-sm right-3 border border-[#252525] bg-[#252525] bg-opacity-30 backdrop-blur-sm text-white p-4 py-2 rounded-xl"
   >
     {time}
   </div>

@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="fixed flex justify-center items-center rounded-lg !font-light text-white border border-[#252525] top-24 left-4 w-9 h-9"
+  class="fixed flex justify-center items-center rounded-full !font-light text-white border border-[#252525] bg-[#252525] bg-opacity-30 top-[90px] left-3.5 w-9 h-9"
 >
   +
 </div>
@@ -24,7 +24,7 @@
 </div>
 
 <div
-  class=" top-0 px-12 w-full text-xs font-medium py-1 bg-[#fff] text-[#252525] mb-0"
+  class=" top-0 px-12 w-full text-xs text-center font-medium py-1 bg-[#fff] text-[#252525] mb-0"
 >
   Hello, and welcome to the app!
 </div>

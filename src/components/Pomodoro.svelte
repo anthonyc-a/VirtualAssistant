@@ -55,7 +55,7 @@
 </script>
 
 <div
-  class="fixed hidden bottom-24 right-4 cursor-pointer w-20 h-20 hover:scale-105 z-[9999] transition-all"
+  class="fixed  bottom-16 right-3 cursor-pointer w-16 h-16 hover:scale-105 z-[9999] transition-all"
   on:click={playTimer}
   role="presentation"
   style={`${!timer.is_active && "opacity: 0.5;"}`}

@@ -1,8 +1,8 @@
 <header
-	class="pb-4 mt-12 md:mt-8 px-4 md:px-0 max-w-3xl  mx-auto flex flex-col md:flex-row items-center justify-between mb-4 border-b border-[#252525]"
+	class="pb-4 mt-12 px-4  max-w-3xl  mx-auto flex flex-col  items-center justify-between mb-4 border-b border-[#252525]"
 >
-	<div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-right">
-		<div class=" w-16 h-16 rounded-full overflow-hidden mb-5 md:mb-0">
+	<div class="flex flex-col  items-center  text-center ">
+		<div class=" w-16 h-16 rounded-full overflow-hidden mb-3">
 			<img
 				src="/me.jpeg"
 				alt="Me"
@@ -10,7 +10,7 @@
 			/>
 		</div>
 		<div class="flex flex-col justify-center ml-4">
-			<div class="flex justify-center md:justify-start items-center gap-2.5">
+			<div class="flex justify-center items-center gap-2.5">
 				<a href="/">
 					<h1>
 						Anthony Animba
@@ -58,11 +58,11 @@
 					</svg></a
 				>
 			</div>
-			<h5 class="text-gray-400 text-sm">Designer, Developer, Creative Director</h5>
+			<h5 class="text-gray-300 text-sm">Designer, Developer, Creative Director</h5>
 		</div>
 	</div>
 	<span
-		class="tag leading-[1.8] bg-[#252525] text-[13px] p-2.5 py-1 rounded-lg cursor-pointer mt-2 md:mt-0"
+		class="tag leading-[1.8] bg-[#252525] text-[13px] p-2.5 py-1 rounded-lg cursor-pointer mt-2 "
 		on:click={() => (window.location.href = 'mailto:anthonyc.animba@gmail.com')}
 		role="presentation">anthonyc.animba@gmail.com</span
 	>
