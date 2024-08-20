@@ -51,17 +51,16 @@
       position: fixed;
       pointer-events: none;
       z-index: 99999;
-      mix-blend-mode: difference;
     }
   
     .cursor-inner {
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       background-color: white;
       border-radius: 50%;
       position: absolute;
-      top: -2px;
-      left: -2px;
+      top: -3px;
+      left: -3px;
       transition: all 0.3s ease-out;
     }
   
