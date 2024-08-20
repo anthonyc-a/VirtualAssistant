@@ -101,7 +101,7 @@
 
 <div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-3">
   <div class="space-y-2 mb-10">
-    <h1 class="text-4xl md:text-3xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
+    <h1 class="text-4xl md:text-3xl tracking- font-medium mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
     <p class="text-gray-300 text-center tracking-wide">Who am I speaking with?</p>
 
   </div>

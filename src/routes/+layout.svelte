@@ -44,7 +44,11 @@
 <div
   class="fixed flex bg-opacity-90 justify-between items-center gap-4 top-0 px-8 z-[9999] w-full text-xs text-center font-medium py-1 bg-[#fff] text-[#252525] mb-0"
 >
+<div class="flex items-center text-xs gap-1.5">
   <Apple class="w-3.5" />
+  1280 kcal
+  
+</div>
   {time}
   <SystemMonitor />
 </div>

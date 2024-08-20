@@ -16,6 +16,7 @@ a {
 
 }
 
+
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */
 ::-webkit-scrollbar {
   width: 2px; /* width of the entire scrollbar */
@@ -35,6 +36,10 @@ a {
 * {
   scrollbar-width: thin;
   scrollbar-color: #252525 #141414;
+  font-family: "BrittiSansVariable", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 
    {
   }
@@ -42,7 +47,6 @@ a {
   body {
     color: var(--color-text);
     background-color: var(--color-primary);
-  font-family: "BrittiSansVariable", sans-serif !important;
 
   }
 }
