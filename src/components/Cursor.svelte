@@ -4,7 +4,7 @@
     let x = 0;
     let y = 0;
     let hoverContent = '';
-    let isPointer = false;
+    let cursorState = 'default'; // Can be 'default', 'pointer', or 'text'
   
     function handleMouseMove(event: MouseEvent) {
       x = event.clientX;
@@ -14,7 +14,14 @@
     function handleMouseOver(event: MouseEvent) {
       const target = event.target as HTMLElement;
       hoverContent = target.getAttribute('data-cursor-content') || '';
-      isPointer = window.getComputedStyle(target).cursor === 'pointer';
+      
+      if (target.tagName.toLowerCase() === 'input' || target.tagName.toLowerCase() === 'textarea') {
+        cursorState = 'text';
+      } else if (window.getComputedStyle(target).cursor === 'pointer') {
+        cursorState = 'pointer';
+      } else {
+        cursorState = 'default';
+      }
     }
   
     onMount(() => {
@@ -29,22 +36,22 @@
   </script>
   
   <div class="cursor-container" style="left: {x}px; top: {y}px">
-    <div class="cursor-inner" class:pointer={isPointer}></div>
-    <div class="cursor-outer" class:pointer={isPointer}></div>
+    <div class="cursor-inner" class:pointer={cursorState === 'pointer'} class:text={cursorState === 'text'}></div>
+    <div class="cursor-outer" class:pointer={cursorState === 'pointer'} class:text={cursorState === 'text'}></div>
+    {#if cursorState === 'text'}
+      <div class="cursor-text-line"></div>
+    {/if}
     {#if hoverContent}
       <div class="cursor-content">{hoverContent}</div>
     {/if}
   </div>
   
   <style>
-    :global(body) {
-      cursor: none !important;
-    }
-  
     .cursor-container {
       position: fixed;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 99999;
+      mix-blend-mode: difference;
     }
   
     .cursor-inner {
@@ -55,7 +62,7 @@
       position: absolute;
       top: -4px;
       left: -4px;
-      transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s;
+      transition: all 0.3s ease-out;
     }
   
     .cursor-inner.pointer {
@@ -63,6 +70,14 @@
       height: 16px;
       top: -8px;
       left: -8px;
+    }
+  
+    .cursor-inner.text {
+      width: 2px;
+      height: 24px;
+      top: -12px;
+      left: -1px;
+      border-radius: 0;
     }
   
     .cursor-outer {
@@ -73,7 +88,7 @@
       position: absolute;
       top: -16px;
       left: -16px;
-      transition: all 0.1s ease-out;
+      transition: all 0.3s ease-out;
     }
   
     .cursor-outer.pointer {
@@ -82,6 +97,22 @@
       top: -20px;
       left: -20px;
       background-color: rgba(255, 255, 255, 0.1);
+    }
+  
+    .cursor-outer.text {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  
+    .cursor-text-line {
+      width: 2px;
+      height: 24px;
+      background-color: white;
+      position: absolute;
+      top: -12px;
+      left: -1px;
+      animation: blink 0.7s infinite;
     }
   
     .cursor-content {
@@ -94,5 +125,11 @@
       border-radius: 4px;
       font-size: 12px;
       white-space: nowrap;
+    }
+  
+    @keyframes blink {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
     }
   </style>
