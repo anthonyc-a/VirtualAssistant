@@ -91,7 +91,7 @@
         type="text"
         bind:value={prompt}
         placeholder="Enter your image prompt"
-        class="w-full p-2 text-black border rounded mb-2"
+        class="w-full p-2 border border-[#252525] text-white rounded-xl bg-[#252525] bg-opacity-30 backdrop-blur-sm mb-4"
       />
       <button
         type="submit"
@@ -107,10 +107,9 @@
     {/if}
   
     <div class="mt-8">
-      <h3 class="text-xl font-bold mb-4">Generated Images</h3>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         {#each $imageUrlsStore as url}
-          <div class="aspect-w-1 aspect-h-1 cursor-pointer" on:click={() => openImagePreview(url.url[0].url)}>
+          <div class="aspect-w-1 border rounded-md overflow-hidden border-[#252525] aspect-h-1 cursor-pointer" on:click={() => openImagePreview(url.url[0].url)}>
             <img
               src={url.url[0].url}
               alt="Generated"

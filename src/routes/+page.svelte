@@ -100,8 +100,8 @@
 </script>
 
 <div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-3">
-  <div class="space-y-2.5 mb-10">
-    <h1 class="text-4xl md:text-4xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
+  <div class="space-y-2 mb-10">
+    <h1 class="text-4xl md:text-3xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
     <p class="text-gray-300 text-center tracking-wide">Who am I speaking with?</p>
 
   </div>
@@ -112,12 +112,7 @@
     <p
     class="text-gray-200 col-span-3 bg-[#252525] bg-opacity-30   max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-2xl text-sm leading-relaxed tracking-wide"
   >
-    I apologize, but I'm not able to directly create or embed iframes or
-    other web content. However, I can provide you with some information about
-    what you're trying to do.
-    <br />
-    <br />
-    Would you like me to elaborate on any of these options or generate more alternatives?
+   What say you?
   </p>
   <div
   class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
@@ -155,9 +150,8 @@
 
   <p>{greetMsg}</p>
 
-  <SystemMonitor />
   <!-- <Weather /> -->
-  <div class="grid grid-cols-2">
+  <div class="grid md:grid-cols-2 gap-6">
     <ImageGenerator/>
     <Headlines />
     <Pomodoro />

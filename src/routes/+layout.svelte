@@ -5,6 +5,8 @@
   import { invoke } from "@tauri-apps/api/tauri";
   import { listen } from "@tauri-apps/api/event";
   import Cursor from "../components/Cursor.svelte";
+  import SystemMonitor from "../components/SystemMonitor.svelte";
+  import { Apple } from "lucide-svelte";
 
   let time: any = "";
 
@@ -20,7 +22,7 @@
 </script>
 
 <div
-  class="fixed flex text-[#252525]  overflow-hidden justify-center items-center rounded-full !font-light text-white border border-[#252525] bg-[#252525] bg-opacity-30 top-[90px] left-3.5 w-9 h-9"
+  class="fixed flex text-[#252525] overflow-hidden justify-center items-center rounded-full !font-light text-white border border-[#252525] bg-[#252525] bg-opacity-30 top-[90px] left-3.5 w-9 h-9"
 >
   <div class="home scale-[1.65] w-8 h-8"></div>
 </div>
@@ -40,12 +42,14 @@
 </div>
 
 <div
-  class="fixed top-0 px-12 z-[9999] w-full text-xs text-center font-medium py-1 bg-[#fff] text-[#252525] mb-0"
+  class="fixed flex bg-opacity-90 justify-between items-center gap-4 top-0 px-8 z-[9999] w-full text-xs text-center font-medium py-1 bg-[#fff] text-[#252525] mb-0"
 >
+  <Apple class="w-3.5" />
   {time}
+  <SystemMonitor />
 </div>
 
-<Cursor/>
+<Cursor />
 
 <!-- <div class="fixed bottom-4 left-4 w-8 h-8 rounded-md bg-[#ccfc6f]"></div> -->
 

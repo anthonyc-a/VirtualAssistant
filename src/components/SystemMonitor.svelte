@@ -35,18 +35,20 @@
   });
 </script>
 
-<div class="fixed top-20 z-[9999] bg-[#252525] bg-opacity-30 backdrop-blur-sm p-4 rounded-xl border border-[#252525] text-white right-4 z-50">
-  <h2 class="text-sm font-bold" on:click={expand} role="presentation">
-    CPU: {averageUsage.toFixed(2)}%
+<div class=" z-[9999] text-[#252525]">
+  <div class="flex items-center gap-2">
+    <h2 class="text-xs whitespace-nowrap font-medium" on:click={expand} role="presentation">
+      CPU: {averageUsage.toFixed(1)}%
+    </h2>
     <div
-    class="relative w-full h-1 mt-2 bg-gray-400 rounded-full overflow-hidden"
-  >
-    <div
-      class="absolute transition-all inset-0 bg-green-500 rounded-full shadow-md shadow-[#934cf631]"
-      style={`width: ${averageUsage}%; background-color: ${averageUsage > 75 ? "red" : "lightgreen"}`}
-    ></div>
+      class="relative w-full h-1 min-w-8  bg-gray-400 rounded-full overflow-hidden"
+    >
+      <div
+        class="absolute whitespace-nowrap transition-all inset-0 bg-green-500 rounded-full shadow-md shadow-[#934cf631]"
+        style={`width: ${averageUsage}%; background-color: ${averageUsage > 75 ? "red" : "lightgreen"}`}
+      ></div>
+    </div>
   </div>
-  </h2>
 </div>
 {#if expanded}
   <div

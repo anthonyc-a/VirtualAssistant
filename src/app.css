@@ -2,27 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-html, button, a {
-    cursor: none !important;
+@font-face {
+  font-family: "BrittiSansVariable";
+  src: url("/fonts/webfonts/britti-sans-variable.woff2")
+    format("woff2-variations");
+  font-weight: 100 800;
+}
+
+html,
+button,
+a {
+  cursor: none !important;
+
 }
 
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */
 ::-webkit-scrollbar {
-    width: 2px;  /* width of the entire scrollbar */
+  width: 2px; /* width of the entire scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #141414;  /* color of the tracking area */
+  background-color: #141414; /* color of the tracking area */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #252525;  /* color of the scroll thumb */
-    border-radius: 6px;  /* roundness of the scroll thumb */
-    border: 3px solid #141414;  /* creates padding around scroll thumb */
+  background-color: #ffffff; /* color of the scroll thumb */
+  border-radius: 6px; /* roundness of the scroll thumb */
+  border: 3px solid #141414; /* creates padding around scroll thumb */
 }
 
 /* Firefox */
 * {
-    scrollbar-width: thin;
-    scrollbar-color: #252525 #141414;
+  scrollbar-width: thin;
+  scrollbar-color: #252525 #141414;
+
+   {
+  }
+
+  body {
+    color: var(--color-text);
+    background-color: var(--color-primary);
+  font-family: "BrittiSansVariable", sans-serif !important;
+
+  }
 }

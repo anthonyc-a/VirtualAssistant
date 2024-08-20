@@ -55,13 +55,13 @@
     }
   
     .cursor-inner {
-      width: 8px;
-      height: 8px;
+      width: 4px;
+      height: 4px;
       background-color: white;
       border-radius: 50%;
       position: absolute;
-      top: -4px;
-      left: -4px;
+      top: -2px;
+      left: -2px;
       transition: all 0.3s ease-out;
     }
   

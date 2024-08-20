@@ -50,9 +50,6 @@
   </script>
   
   <div class="container max-w-3xl mx-auto px-4 py-8">
-    <h3 class="text-lg mb-2">
-      Headlines
-    </h3>
     <div class="mb-6">
       <input 
         bind:value={url} 
@@ -61,7 +58,7 @@
       />
       <button 
         on:click={fetchH2Contents}
-        class="w-full bg-[#fff] text-sm hover:bg-blue-600 text-[#252525] font-bold py-2 px-4 rounded-full mt-2 transition duration-300"
+        class="w-full bg-[#fff] text-sm hover:bg-blue-600 text-[#252525] font-medium py-2 px-4 rounded-full mt-2 transition duration-300"
       >
         Scrape headlines
       </button>

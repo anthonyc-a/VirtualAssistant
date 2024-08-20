@@ -1,5 +1,5 @@
 <header
-  class="pb-4 mt-12 px-4 max-w-3xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-[#252525]"
+  class="pb-5 mt-12 px-4 max-w-3xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-[#252525]"
 >
   <div class="flex flex-col items-center text-center">
     <div class=" w-16 h-16 rounded-full overflow-hidden mb-3">
