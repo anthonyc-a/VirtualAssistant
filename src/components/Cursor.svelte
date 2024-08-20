@@ -82,7 +82,7 @@
     .cursor-outer {
       width: 32px;
       height: 32px;
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      /* border: 2px solid rgba(255, 255, 255, 0.5); */
       border-radius: 50%;
       position: absolute;
       top: -16px;

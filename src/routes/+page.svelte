@@ -126,6 +126,9 @@
   <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
     A way to bulk edit images
   </div>
+  <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
+    A way to bulk edit images
+  </div>
 </div>
   </div>
  
@@ -133,7 +136,7 @@
 
   <input
     placeholder="Enter your message"
-    class="w-3/4 md:w-full tracking-wide fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-sm  border bg-opacity-95  border-[#252525] shadow text-white rounded-tl-2xl rounded-tr-2xl "
+    class="w-3/4 md:w-full tracking-wide fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-  border bg-opacity-95  border-[#252525] shadow text-white rounded-tl-2xl rounded-tr-2xl "
   />
 
   {#if !savedName}

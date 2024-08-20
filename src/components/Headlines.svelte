@@ -73,7 +73,7 @@
         <div class="grid grid-cols-1 gap-4">
           {#each visibleContents as content}
             <div class="border text-left border-[#252525] text-white rounded-xl bg-[#252525] bg-opacity-30 backdrop-blur-sm  p-4 hover:shadow-lg transition duration-300">
-              <p class="text-white text-sm">{content.content}</p>
+              <p class="text-white text-">{content.content}</p>
             </div>
           {/each}
         </div>
