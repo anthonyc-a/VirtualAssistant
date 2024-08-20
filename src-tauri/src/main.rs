@@ -1,6 +1,9 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod image_generator;
+use image_generator::AppState;
+
 mod pomodoro;
 use pomodoro::{get_timer_state, pause_timer, reset_timer, start_timer, Timer, TimerState};
 
@@ -168,6 +171,8 @@ fn main() {
             let app_handle = app.handle();
             let time = Arc::new(Mutex::new(String::new()));
             let time_clone = Arc::clone(&time);
+            let app_state = AppState::new();
+            app.manage(app_state);
 
             // Spawn a new thread to update time every second
             thread::spawn(move || loop {
@@ -194,6 +199,8 @@ fn main() {
             reset_timer,
             get_timer_state,
             get_weather,
+            image_generator::generate_image,
+            image_generator::get_image_urls 
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

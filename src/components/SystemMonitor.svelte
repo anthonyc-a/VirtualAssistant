@@ -35,8 +35,8 @@
   });
 </script>
 
-<div class="fixed bottom-4 z-[9999] bg-[#252525] bg-opacity-30 backdrop-blur-sm p-4 rounded-xl border border-[#252525] text-white left-4 z-50">
-  <h2 class="text- font-bold" on:click={expand} role="presentation">
+<div class="fixed top-20 z-[9999] bg-[#252525] bg-opacity-30 backdrop-blur-sm p-4 rounded-xl border border-[#252525] text-white right-4 z-50">
+  <h2 class="text-sm font-bold" on:click={expand} role="presentation">
     CPU: {averageUsage.toFixed(2)}%
     <div
     class="relative w-full h-1 mt-2 bg-gray-400 rounded-full overflow-hidden"

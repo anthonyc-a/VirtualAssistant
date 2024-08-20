@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    cursor: context-menu !important;
+    cursor: none !important;
 }
 
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */

@@ -15,6 +15,7 @@
   import Headlines from "../components/Headlines.svelte";
   import Pomodoro from "../components/Pomodoro.svelte";
   import Weather from "../components/Weather.svelte";
+  import ImageGenerator from "../components/ImageGenerator.svelte";
 
   interface FileInfo {
     name: string;
@@ -99,7 +100,7 @@
 </script>
 
 <div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-3">
-  <div class="space-y-3 mb-10">
+  <div class="space-y-2.5 mb-10">
     <h1 class="text-4xl md:text-4xl tracking-tight font-light mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
     <p class="text-gray-300 text-center tracking-wide">Who am I speaking with?</p>
 
@@ -157,6 +158,7 @@
   <SystemMonitor />
   <!-- <Weather /> -->
   <div class="grid grid-cols-2">
+    <ImageGenerator/>
     <Headlines />
     <Pomodoro />
     <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
@@ -167,12 +169,6 @@
         </li>
       {/each}
     </ul>
-  </div>
-
-  <div
-    class="fixed bottom-4 text-sm right-3 border border-[#252525] bg-[#252525] bg-opacity-30 backdrop-blur-sm text-white p-4 py-2 rounded-xl"
-  >
-    {time}
   </div>
 
   <img src="/logo.svg" alt="Logo" class="fixed top-12 left-6 w-4" />
