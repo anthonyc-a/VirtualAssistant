@@ -55,7 +55,7 @@
       Virtual Assistant v1
     {/if}
     {#if time === ""}
-      Portfolio Website v 8.1.0<span class="sm:inline-block -ml-0.5"
+      Portfolio Website v 8.1.0<span class="hidden sm:inline-block -ml-0.5"
         >- Currently available for freelance projects and collaborations.</span
       >
     {/if}
