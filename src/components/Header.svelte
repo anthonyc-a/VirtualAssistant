@@ -58,7 +58,7 @@
     </div>
   </div>
   <span
-    class="tag leading-[1.8] tracking-wide bg-[#252525] text-[14px] p-2.5 py-1 rounded-lg cursor-pointer mt-2"
+    class="tag leading-[1.7] tracking-wide bg-[#252525] text-[14px] p-2.5 py-1 rounded-lg cursor-pointer mt-2"
     on:click={() => (window.location.href = "mailto:anthonyc.animba@gmail.com")}
     role="presentation">anthonyc.animba@gmail.com</span
   >
