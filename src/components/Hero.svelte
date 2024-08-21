@@ -1,5 +1,5 @@
 <div class="max-w-2xl flex gap-12 p-6 border border-[#252525] rounded-2xl h-56 mx-auto">
-  <div class="min-w-[200px] h-full flex justify-center items-center bg-white rounded-xl">
+  <div class="min-w-[200px] h-full flex justify-center items-center bg-white rounded-2xl">
     <img src="https://www.refract-agency.com/favicon.png" alt="Logo" class="w-36 h-36">
   </div>
 

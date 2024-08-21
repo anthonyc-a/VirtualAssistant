@@ -160,7 +160,7 @@
 
 
   <div
-  class="w-3/4 md:w-full flex py-0  items-center  fixed bottom-4  left-1/2 -translate-x-1/2 z-[9999] overflow-hidden max-w-xl bg-[#252525] backdrop-blur text-left h-12 p-6 text- border bg-opacity-80 border-[#666] shadow text-white rounded-2xl"
+  class="w-3/4 md:w-full flex py-0  items-center  fixed bottom-4  left-1/2 -translate-x-1/2 z-[9999] overflow-hidden max-w-xl bg-[#252525] backdrop-blur text-left h-12 p-6 text- border bg-opacity-80 border-[#555] shadow text-white rounded-2xl"
   >
   <input
   placeholder="Enter your message"
