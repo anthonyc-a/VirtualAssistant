@@ -55,8 +55,8 @@
       Virtual Assistant v1
     {/if}
     {#if time === ""}
-      Portfolio Website v 8.1.0<span class="hidden sm:inline-block -ml-0.5"
-        >- Currently available for freelance projects and collaborations.</span
+      Portfolio Website v 8.1.0 -<span class="hidden sm:inline-block -ml-0.5"
+        > Currently available for freelance projects and collaborations.</span
       >
     {/if}
   </div>
@@ -138,7 +138,7 @@
   .titlebar-text {
     color: #2c2c2c;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 550;
     margin-left: 10px;
     z-index: 1;
   }
