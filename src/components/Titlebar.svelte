@@ -46,58 +46,62 @@
 
 <div class="titlebar rounded-tr-md rounded-md font-medium">
   <div class="titlebar-drag-region" data-tauri-drag-region></div>
-  <div class="titlebar-text font-medium flex items-center gap-2" data-tauri-drag-region>
-    <div class="w-1 h-1 rounded-full bg-green-400">
-
-    </div>
+  <div
+    class="titlebar-text font-medium flex items-center gap-2"
+    data-tauri-drag-region
+  >
+    <div class="w-1 h-1 rounded-full bg-green-400"></div>
     {#if time !== ""}
       Virtual Assistant v1
     {/if}
     {#if time === ""}
-      Portfolio Website v 8.1.0 - Currently available for freelance projects and collaborations.
+      Portfolio Website v 8.1.0<span class="sm:inline-block"
+        >- Currently available for freelance projects and collaborations.</span
+      >
     {/if}
   </div>
   {#if time !== ""}
+    <div data-tauri-drag-region>
+      <div class="flex text-[#252525] items-center text-xs gap-1.5">
+        <div class="">
+          {time}
+        </div>
 
-  <div data-tauri-drag-region>
-    <div class="flex text-[#252525] items-center text-xs gap-1.5">
-      <div class="">
-        {time}
+        <div class="mx-6 flex items-center gap-2">
+          <Apple class="w-3.5" />
+          1280 kcal
+        </div>
+
+        <SystemMonitor />
       </div>
-
-      <div class="mx-6 flex items-center gap-2">
-        <Apple class="w-3.5" />
-        1280 kcal
-      </div>
-
-      <SystemMonitor />
     </div>
-  </div>
   {/if}
 
   <div class="titlebar-controls">
     {#if time !== ""}
-
-    <button class="titlebar-button" on:click={handleMinimize}>
-      <svg width="10" height="10" viewBox="0 0 10 10">
-        <path d="M0 5h10v1h-10v-1z" />
-      </svg>
-    </button>
-    <button class="titlebar-button" on:click={handleMaximize}>
-      {#if isMaximized}
+      <button class="titlebar-button" on:click={handleMinimize}>
         <svg width="10" height="10" viewBox="0 0 10 10">
-          <path
-            d="M2 1v2h-2v6h6v-2h2v-6h-6zm-1 7v-4h4v4h-4zm2 -5v-1h4v4h-1v-3h-3z"
-          />
+          <path d="M0 5h10v1h-10v-1z" />
         </svg>
-      {:else}
-        <svg width="10" height="10" viewBox="0 0 10 10">
-          <path d="M0 0v10h10v-10h-10zm1 1h8v8h-8v-8z" />
-        </svg>
-      {/if}
-    </button>
+      </button>
+      <button class="titlebar-button" on:click={handleMaximize}>
+        {#if isMaximized}
+          <svg width="10" height="10" viewBox="0 0 10 10">
+            <path
+              d="M2 1v2h-2v6h6v-2h2v-6h-6zm-1 7v-4h4v4h-4zm2 -5v-1h4v4h-1v-3h-3z"
+            />
+          </svg>
+        {:else}
+          <svg width="10" height="10" viewBox="0 0 10 10">
+            <path d="M0 0v10h10v-10h-10zm1 1h8v8h-8v-8z" />
+          </svg>
+        {/if}
+      </button>
     {/if}
-    <button class="titlebar-button rounded-md h-1 close-button" on:click={handleClose}>
+    <button
+      class="titlebar-button rounded-md h-1 close-button"
+      on:click={handleClose}
+    >
       <svg width="10" height="10" viewBox="0 0 10 10">
         <path
           d="M0 0l10 10m-10 0l10 -10"
