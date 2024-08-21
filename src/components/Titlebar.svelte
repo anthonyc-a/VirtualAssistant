@@ -138,7 +138,7 @@
   .titlebar-text {
     color: #2c2c2c;
     font-size: 13px;
-    font-weight: 550;
+    font-weight: 500;
     margin-left: 10px;
     z-index: 1;
   }
