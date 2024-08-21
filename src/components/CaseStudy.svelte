@@ -4,7 +4,7 @@
 -->
 
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-[minmax(300px,400px)_1fr_minmax(200px,300px)] lg:gap-8">
+<div class="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(300px,400px)_1fr_minmax(200px,300px)] lg:gap-8">
   <div class="relative overflow-hidden rounded-lg shadow-lg">
     <img src="/RostarDesign.png"  alt="UI Mockup" class="h-auto w-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>

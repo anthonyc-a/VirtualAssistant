@@ -66,7 +66,7 @@
 {#if showSidebar}
   <div
     class="fixed inset-0 bg-black backdrop-blur transition-all bg-opacity-30 z-40"
-    on:click={() => toggleSidebar(false)}
+    on:click={() => {toggleSidebar(false), hovered = false }}
 
   ></div>
   <div
@@ -78,7 +78,6 @@
     <div
       class="modules w-full grid gap-2 px-2"
       on:mouseenter={() => (hovered = true)}
-      on:click={() => (hovered = false )}
     >
       <div
         class="w-full h-12 rounded-xl bg-[#CFFE70] border border-[#252525]"
