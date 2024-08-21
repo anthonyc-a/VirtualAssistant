@@ -8,7 +8,7 @@
     <div class="flex flex-col justify-center ml-4">
       <div class="flex justify-center items-center gap-2.5">
         <a href="/" class="text-lg">
-          <h1>Anthony Animba</h1>
+          <h1 class="font-medium">Anthony Animba</h1>
         </a>
         <a
           href="https://www.instagram.com/aarkyvstudios/"
