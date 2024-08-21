@@ -7,6 +7,7 @@
   import Cursor from "../components/Cursor.svelte";
   import SystemMonitor from "../components/SystemMonitor.svelte";
   import { Apple } from "lucide-svelte";
+  import Titlebar from "../components/Titlebar.svelte";
 
   let time: any = "";
 
@@ -20,6 +21,8 @@
     });
   });
 </script>
+
+<Titlebar />
 
 <div
   class="fixed flex text-[#252525] overflow-hidden justify-center items-center rounded-full !font-light text-white border border-[#252525] bg-[#252525] bg-opacity-30 top-[90px] left-3.5 w-9 h-9"
@@ -41,17 +44,19 @@
   >
 </div>
 
-<div
+<!-- <div
   class="fixed flex rounded-md bg-opacity-90 justify-between items-center gap-4 top-0 px-8 z-[9999] w-full text-xs text-center font-medium py-0.5 bg-[#fff] text-[#252525] mb-0"
 >
-<div class="flex items-center text-xs gap-1.5">
-  <Apple class="w-3.5" />
-  1280 kcal
-  
-</div>
-  {time}
+  <div class="flex items-center text-xs gap-1.5">
+    <Apple class="w-3.5" />
+    1280 kcal
+
+    <div class="ml-4">
+      {time}
+    </div>
+  </div>
   <SystemMonitor />
-</div>
+</div> -->
 
 <Cursor />
 

@@ -16,6 +16,10 @@ a {
 
 }
 
+main {
+    padding-top: 24px; /* Height of the titlebar */
+  }
+
 
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */
 ::-webkit-scrollbar {
@@ -27,7 +31,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ffffff; /* color of the scroll thumb */
+  background-color: #FFFFFF; /* color of the scroll thumb */
   border-radius: 6px; /* roundness of the scroll thumb */
   border: 3px solid #141414; /* creates padding around scroll thumb */
 }
@@ -35,7 +39,7 @@ a {
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #252525 #141414;
+  scrollbar-color: #FFFFFF #141414;
   font-family: "BrittiSansVariable", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,6 +51,13 @@ a {
   body {
     color: var(--color-text);
     background-color: var(--color-primary);
-
   }
 }
+
+#app {
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }

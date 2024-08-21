@@ -37,7 +37,7 @@
 
 <div class=" z-[9999] text-[#252525]">
   <div class="flex items-center gap-2">
-    <h2 class="text-xs whitespace-nowrap font-medium" on:click={expand} role="presentation">
+    <h2 class="text-xs whitespace-nowrap" on:click={expand} role="presentation">
       CPU: {averageUsage.toFixed(1)}%
     </h2>
     <div

@@ -16,6 +16,7 @@
   import Pomodoro from "../components/Pomodoro.svelte";
   import Weather from "../components/Weather.svelte";
   import ImageGenerator from "../components/ImageGenerator.svelte";
+  import Claude from "../components/Claude.svelte";
 
   interface FileInfo {
     name: string;
@@ -62,6 +63,9 @@
   let time: any = "";
   let savedName = "";
 
+  let message: string = "";
+
+
   async function saveName() {
     try {
       await invoke("save_name", { name });
@@ -99,10 +103,10 @@
   }
 </script>
 
-<div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-3">
+<div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-4">
   <div class="space-y-2 mb-10">
-    <h1 class="text-4xl md:text-3xl tracking- font-medium mx-auto pb-0 w-fit">Good Morning, {savedName}</h1>
-    <p class="text-gray-300 text-center tracking-wide">Who am I speaking with?</p>
+    <h1 class="text-4xl md:text-4xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit">Good Evening, {savedName}</h1>
+    <p class="text-gray-300 text-center tracking-wide">Phuket is 32 degrees and cloudy.</p>
 
   </div>
   
@@ -110,23 +114,23 @@
   {#if savedName}
   <div class="grid grid-cols-5 gap-12">
     <p
-    class="text-gray-200 col-span-3 bg-[#252525] bg-opacity-30   max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-2xl text-sm leading-relaxed tracking-wide"
+    class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30   max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
   >
-   What say you?
+   <Claude message={message}/>
   </p>
   <div
   class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
 >
-  <h3 class="text-lg ">
+  <h3 class="text-lg font-medium ">
     Recently Discussed
   </h3>
-  <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex items-center">
+  <div class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex items-center">
     Something about a calorie counter
   </div>
-  <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
+  <div class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
     A way to bulk edit images
   </div>
-  <div class="w-full mt-3 p-4 rounded-xl h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
+  <div class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
     A way to bulk edit images
   </div>
 </div>
@@ -136,7 +140,8 @@
 
   <input
     placeholder="Enter your message"
-    class="w-3/4 md:w-full tracking-wide fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-  border bg-opacity-95  border-[#252525] shadow text-white rounded-tl-2xl rounded-tr-2xl "
+    class="w-3/4 md:w-full tracking-wide fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-  border bg-opacity-95  border-[#666] shadow text-white rounded-tl-2xl rounded-tr-2xl "
+    bind:value={message}
   />
 
   {#if !savedName}

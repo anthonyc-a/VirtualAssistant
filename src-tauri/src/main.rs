@@ -2,7 +2,8 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod image_generator;
-use image_generator::AppState;
+
+mod claude;
 
 mod pomodoro;
 use pomodoro::{get_timer_state, pause_timer, reset_timer, start_timer, Timer, TimerState};
@@ -10,11 +11,6 @@ use pomodoro::{get_timer_state, pause_timer, reset_timer, start_timer, Timer, Ti
 mod weather;
 
 use weather::{WeatherData, get_weather_data};
-
-#[tauri::command]
-fn get_weather(lat: f64, lon: f64) -> Result<WeatherData, String> {
-    get_weather_data(lat, lon).map_err(|e| e.to_string())
-}
 
 use chrono::Local;
 use scraper::{Html, Selector};
@@ -26,10 +22,45 @@ use std::thread;
 use std::time::Duration;
 use sysinfo::{Components, Disks, Networks, System};
 use tauri::Manager;
+use tauri::State;
+use serde_json::{json, Value};
+use reqwest::Client;
 
 #[derive(Debug, Serialize)]
 struct H2Content {
     content: String,
+}
+
+#[derive(Serialize)]
+struct CpuInfo {
+    name: String,
+    usage: f32,
+    frequency: u64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct FileInfo {
+    name: String,
+    is_dir: bool,
+    extension: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct StoredName {
+    name: String,
+}
+
+
+
+
+#[tauri::command]
+fn get_weather(lat: f64, lon: f64) -> Result<WeatherData, String> {
+    get_weather_data(lat, lon).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+async fn ask_claude(prompt: String) -> Result<String, String> {
+    claude::ask_claude(&prompt).await.map_err(|e| e.to_string())
 }
 
 #[tauri::command]
@@ -55,13 +86,6 @@ fn scrape_h2_content(url: String) -> Result<Vec<H2Content>, String> {
     Ok(h2_contents)
 }
 
-#[derive(Serialize)]
-struct CpuInfo {
-    name: String,
-    usage: f32,
-    frequency: u64,
-}
-
 #[tauri::command]
 fn get_cpu_info() -> Vec<CpuInfo> {
     let mut sys = System::new_all();
@@ -77,17 +101,6 @@ fn get_cpu_info() -> Vec<CpuInfo> {
         .collect()
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-struct FileInfo {
-    name: String,
-    is_dir: bool,
-    extension: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct StoredName {
-    name: String,
-}
 
 #[tauri::command]
 fn get_system_info(name: String) -> Result<(), String> {
@@ -165,14 +178,51 @@ fn get_formatted_local_time() -> String {
     now.format("%Y-%m-%d %H:%M:%S").to_string()
 }
 
-fn main() {
+struct AppState {
+    client: Client,
+}
+
+#[tauri::command]
+async fn send_message_to_anthropic(message: String, state: State<'_, AppState>) -> Result<String, String> {
+    let url = "https://api.anthropic.com/v1/messages";
+    let api_key = "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"; // Replace with your actual API key
+    let anthropic_version = "2023-06-01"; // This is the current version as of now, but check Anthropic's documentation for the latest version
+
+
+    let body = json!({
+        "model": "claude-3-opus-20240229",
+        "max_tokens": 1024,
+        "messages": [
+            { "role": "user", "content": message }
+        ]
+    });
+
+    let response = state.client
+        .post(url)
+        .header("x-api-key", api_key)
+        .header("anthropic-version", anthropic_version)
+        .header("content-type", "application/json")
+        .json(&body)
+        .send()
+        .await
+        .map_err(|e| e.to_string())?;
+
+    let response_body: Value = response.json().await.map_err(|e| e.to_string())?;
+    Ok(serde_json::to_string_pretty(&response_body).unwrap())
+}
+
+#[tokio::main]
+async fn main() {
     tauri::Builder::default()
         .setup(|app| {
+            #[cfg(debug_assertions)]
+            {
+                let window = app.get_window("main").unwrap();
+                window.open_devtools();
+            }
             let app_handle = app.handle();
             let time = Arc::new(Mutex::new(String::new()));
             let time_clone = Arc::clone(&time);
-            let app_state = AppState::new();
-            app.manage(app_state);
 
             // Spawn a new thread to update time every second
             thread::spawn(move || loop {
@@ -184,6 +234,7 @@ fn main() {
 
             Ok(())
         })
+        .manage(AppState { client: Client::new() })
         .manage(TimerState(Mutex::new(Timer::new())))
         .invoke_handler(tauri::generate_handler![
             save_name,
@@ -200,7 +251,9 @@ fn main() {
             get_timer_state,
             get_weather,
             image_generator::generate_image,
-            image_generator::get_image_urls 
+            image_generator::get_image_urls,
+            ask_claude,
+            send_message_to_anthropic
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

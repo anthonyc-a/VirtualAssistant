@@ -11,6 +11,17 @@
   },
   "tauri": {
     "allowlist": {
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
+      },
       "all": false,
       "shell": {
         "all": false,
@@ -21,7 +32,11 @@
       {
         "title": "VirtualAssistant v1",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "fullscreen": false,
+        "resizable": true,
+        "decorations": false,
+        "transparent": true
       }
     ],
     "security": {

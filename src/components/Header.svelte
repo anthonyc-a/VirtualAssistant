@@ -52,7 +52,7 @@
           </svg></a
         >
       </div>
-      <h5 class="text-gray-300 text-sm">
+      <h5 class="text-gray-300 font-light tracking-wide text-sm">
         Designer, Developer, Creative Director
       </h5>
     </div>
