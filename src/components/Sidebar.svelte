@@ -58,7 +58,7 @@
       on:mouseenter={() => toggleSidebar(false)}
     ></div>
     <div 
-      class="fixed top-16 pt-8 rounded-tl-2xl rounded-bl-2xl right-0 origin-top-right h-[calc(100vh-128px)] w-64 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] z-50 shadow-lg"
+      class="fixed top-16 pt-2 rounded-tl-2xl rounded-bl-2xl right-0 origin-top-right h-[calc(100vh-128px)] w-64 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] z-50 shadow-lg"
       style="transform: translateX({$sidebarPosition}px);"
     on:mouseenter={() => toggleSidebar(true)}
     >
