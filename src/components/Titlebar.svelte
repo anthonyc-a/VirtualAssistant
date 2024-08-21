@@ -47,16 +47,18 @@
 <div class="titlebar rounded-tr-md rounded-md font-medium">
   <div class="titlebar-drag-region" data-tauri-drag-region></div>
   <div class="titlebar-text font-medium flex items-center gap-2" data-tauri-drag-region>
-    <div class="w-1.5 h-1.5 rounded-full bg-green-400">
+    <div class="w-1 h-1 rounded-full bg-green-400">
 
     </div>
     {#if time !== ""}
       Virtual Assistant v1
     {/if}
     {#if time === ""}
-      Portfolio v 8.1.0
+      Portfolio Webite v 8.1.0 - Currently available for freelance projects and collaborations.
     {/if}
   </div>
+  {#if time !== ""}
+
   <div data-tauri-drag-region>
     <div class="flex text-[#252525] items-center text-xs gap-1.5">
       <div class="">
@@ -71,6 +73,8 @@
       <SystemMonitor />
     </div>
   </div>
+  {/if}
+
   <div class="titlebar-controls">
     {#if time !== ""}
 
@@ -93,12 +97,12 @@
       {/if}
     </button>
     {/if}
-    <button class="titlebar-button close-button" on:click={handleClose}>
+    <button class="titlebar-button rounded-md h-1 close-button" on:click={handleClose}>
       <svg width="10" height="10" viewBox="0 0 10 10">
         <path
           d="M0 0l10 10m-10 0l10 -10"
           stroke="currentColor"
-          stroke-width="1.5"
+          stroke-width="1"
         />
       </svg>
     </button>
@@ -107,7 +111,7 @@
 
 <style>
   .titlebar {
-    height: 24px;
+    height: 25px;
     background: #fff;
     user-select: none;
     display: flex;
@@ -129,7 +133,8 @@
   }
   .titlebar-text {
     color: #2c2c2c;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 500;
     margin-left: 10px;
     z-index: 1;
   }

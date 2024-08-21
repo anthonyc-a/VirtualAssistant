@@ -44,7 +44,7 @@
       height="1em"
       fill="currentColor"
       viewBox="0 0 256 256"
-      class="w-5 h-5"
+      class="w-5 h-5 rotate-180"
     >
       <path
         d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H80V200H40ZM216,200H96V56H216V200Z"
@@ -54,7 +54,7 @@
   
   {#if showSidebar}
     <div 
-      class="fixed inset-0 bg-black backdrop-blur-sm transition-all bg-opacity-50 z-40"
+      class="fixed  inset-0 bg-black backdrop-blur transition-all bg-opacity-30 z-40"
       on:mouseenter={() => toggleSidebar(false)}
     ></div>
     <div 
@@ -62,6 +62,6 @@
       style="transform: translateX({$sidebarPosition}px);"
     on:mouseenter={() => toggleSidebar(true)}
     >
-      <h2 class="text-xl font-bold p-4">Sidebar Content</h2>
+      <h2 class="text-xl tracking-wide font-medium p-4">Projects</h2>
     </div>
   {/if}

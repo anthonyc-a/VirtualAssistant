@@ -9,6 +9,7 @@
   import { Apple } from "lucide-svelte";
   import Titlebar from "../components/Titlebar.svelte";
   import Sidebar from "../components/Sidebar.svelte";
+  import Theme from "../components/Theme.svelte";
 
   let time: any = "";
 
@@ -25,9 +26,11 @@
 
 <Titlebar />
 
+<Theme/>
+
 <div class="fixed flex flex-col items-center gap-3 top-[96px] left-3.5 z-[99999]">
   <div
-  class=" flex overflow-hidden  justify-center items-center rounded-full !font-light text-white border border-[#252525] bg-[#252525] bg-opacity-30 w-9 h-9"
+  class=" flex overflow-hidden  justify-center items-center rounded-full !font-light text-white border-2 border-[#555] bg-[#252525] bg-opacity-30 w-9 h-9"
 >
   <div class="home scale-[1.65] w-8 h-8"></div>
 </div>

@@ -24,6 +24,7 @@ main {
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */
 ::-webkit-scrollbar {
   width: 2px; /* width of the entire scrollbar */
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-track {
