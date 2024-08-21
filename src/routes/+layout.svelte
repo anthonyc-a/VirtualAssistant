@@ -25,7 +25,7 @@
 
 <Titlebar />
 
-<div class="fixed flex flex-col items-center gap-3 top-[90px] left-3.5 z-[99999]">
+<div class="fixed flex flex-col items-center gap-3 top-[96px] left-3.5 z-[99999]">
   <div
   class=" flex overflow-hidden  justify-center items-center rounded-full !font-light text-white border border-[#252525] bg-[#252525] bg-opacity-30 w-9 h-9"
 >
