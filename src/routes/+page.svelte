@@ -112,7 +112,7 @@
     {/if}
     {#if savedName === ""}
       <h1
-        class="text-3xl text-center md:text-3xl max-w-2xl tracking-[0.015em] !leading-[1.25]  font-[450] mx-auto pb-0 w-fit"
+        class="text-3xl text-center md:text-3xl max-w-2xl tracking-[0.015em] !leading-[1.25]  font-[500] mx-auto pb-0 w-fit"
       >
         Solving problems and creating digital experiences with clear and
         functional design.
