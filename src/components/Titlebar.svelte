@@ -54,7 +54,7 @@
       Virtual Assistant v1
     {/if}
     {#if time === ""}
-      Portfolio Webite v 8.1.0 - Currently available for freelance projects and collaborations.
+      Portfolio Website v 8.1.0 - Currently available for freelance projects and collaborations.
     {/if}
   </div>
   {#if time !== ""}
