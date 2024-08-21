@@ -1,7 +1,11 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+#![cfg_attr(
+    all(not(debug_assertions), target_os = "windows"),
+    windows_subsystem = "windows"
+)]
 
 mod image_generator;
+use image_generator::ImageGeneratorState;
 
 mod claude;
 
@@ -10,11 +14,13 @@ use pomodoro::{get_timer_state, pause_timer, reset_timer, start_timer, Timer, Ti
 
 mod weather;
 
-use weather::{WeatherData, get_weather_data};
+use weather::{get_weather_data, WeatherData};
 
 use chrono::Local;
+use reqwest::Client;
 use scraper::{Html, Selector};
 use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
 use std::fs;
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
@@ -23,8 +29,6 @@ use std::time::Duration;
 use sysinfo::{Components, Disks, Networks, System};
 use tauri::Manager;
 use tauri::State;
-use serde_json::{json, Value};
-use reqwest::Client;
 
 #[derive(Debug, Serialize)]
 struct H2Content {
@@ -49,9 +53,6 @@ struct FileInfo {
 struct StoredName {
     name: String,
 }
-
-
-
 
 #[tauri::command]
 fn get_weather(lat: f64, lon: f64) -> Result<WeatherData, String> {
@@ -100,7 +101,6 @@ fn get_cpu_info() -> Vec<CpuInfo> {
         })
         .collect()
 }
-
 
 #[tauri::command]
 fn get_system_info(name: String) -> Result<(), String> {
@@ -183,11 +183,13 @@ struct AppState {
 }
 
 #[tauri::command]
-async fn send_message_to_anthropic(message: String, state: State<'_, AppState>) -> Result<String, String> {
+async fn send_message_to_anthropic(
+    message: String,
+    state: State<'_, AppState>,
+) -> Result<String, String> {
     let url = "https://api.anthropic.com/v1/messages";
     let api_key = "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"; // Replace with your actual API key
     let anthropic_version = "2023-06-01"; // This is the current version as of now, but check Anthropic's documentation for the latest version
-
 
     let body = json!({
         "model": "claude-3-opus-20240229",
@@ -197,7 +199,8 @@ async fn send_message_to_anthropic(message: String, state: State<'_, AppState>) 
         ]
     });
 
-    let response = state.client
+    let response = state
+        .client
         .post(url)
         .header("x-api-key", api_key)
         .header("anthropic-version", anthropic_version)
@@ -234,8 +237,11 @@ async fn main() {
 
             Ok(())
         })
-        .manage(AppState { client: Client::new() })
+        .manage(AppState {
+            client: Client::new(),
+        })
         .manage(TimerState(Mutex::new(Timer::new())))
+        .manage(ImageGeneratorState::new()) // Add this line
         .invoke_handler(tauri::generate_handler![
             save_name,
             get_name,

@@ -11,10 +11,8 @@
     FileVideoIcon,
     FileMusicIcon,
   } from "lucide-svelte";
-  import SystemMonitor from "../components/SystemMonitor.svelte";
   import Headlines from "../components/Headlines.svelte";
   import Pomodoro from "../components/Pomodoro.svelte";
-  import Weather from "../components/Weather.svelte";
   import ImageGenerator from "../components/ImageGenerator.svelte";
   import Claude from "../components/Claude.svelte";
 

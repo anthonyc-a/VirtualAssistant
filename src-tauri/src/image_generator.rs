@@ -3,11 +3,11 @@ use serde_json::{json, Value};
 use tauri::Manager;
 use std::sync::Mutex;
 
-pub struct AppState {
+pub struct ImageGeneratorState {
     image_urls: Mutex<Vec<String>>,
 }
 
-impl AppState {
+impl ImageGeneratorState {
     pub fn new() -> Self {
         Self {
             image_urls: Mutex::new(Vec::new()),
@@ -16,7 +16,7 @@ impl AppState {
 }
 
 #[tauri::command]
-pub async fn generate_image(prompt: String, app_handle: tauri::AppHandle, state: tauri::State<'_, AppState>) -> Result<Value, String> {
+pub async fn generate_image(prompt: String, app_handle: tauri::AppHandle, state: tauri::State<'_, ImageGeneratorState>) -> Result<Value, String> {
     let client = Client::new();
     let fal_key = "d2e200a2-6d11-46ee-bc2a-a7dd34b4924a:dedb9dbc6c5aae03f14245162ef5d30f";
 
@@ -59,6 +59,6 @@ pub async fn generate_image(prompt: String, app_handle: tauri::AppHandle, state:
 }
 
 #[tauri::command]
-pub fn get_image_urls(state: tauri::State<'_, AppState>) -> Vec<String> {
+pub fn get_image_urls(state: tauri::State<'_, ImageGeneratorState>) -> Vec<String> {
     state.image_urls.lock().unwrap().clone()
 }
