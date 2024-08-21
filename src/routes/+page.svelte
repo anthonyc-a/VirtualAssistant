@@ -101,18 +101,20 @@
   }
 </script>
 
-<div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-4">
-  <div class="space-y-2 mb-10">
+<div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-2">
+  <div class="space-y-2 mb-6">
     {#if savedName !== ""}
       <h1
-        class="text-4xl md:text-4xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
+        class="text-3xl md:text-3xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
       >
         Good Evening, {savedName}
       </h1>
+
+      <p class="w-fit mx-auto text-lg text-gray-300">What should we work on?</p>
     {/if}
     {#if savedName === ""}
       <h1
-        class="text-3xl text-center md:text-3xl max-w-2xl tracking-[0.015em] !leading-[1.25]  font-[500] mx-auto pb-0 w-fit"
+        class="text-3xl text-center md:text-3xl max-w-2xl tracking-[0.015em] !leading-[1.2]  font-[500] mx-auto pb-0 w-fit"
       >
         Solving problems and creating digital experiences with clear and
         functional design.
@@ -121,15 +123,18 @@
         class="pt-3 text-center leading-[1.65] tracking-wide font-light text-gray-300 max-w-2xl mx-auto"
       >
         A Designer and Full-Stack Developer with seven+ years experience working
-        with small to medium-sized businesses, startups and individuals; helping
+        with small to medium-sized businesses, startups and individuals helping
         to ensure brand growth with thoughtful design and incisive technical
         execution.
       </p>
     {/if}
   </div>
 
+  <Hero />
+
+
   {#if savedName}
-    <div class="grid grid-cols-5 gap-12">
+    <div class="grid grid-cols-5 gap-12 mt-12">
       <p
         class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30 max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
       >
@@ -160,10 +165,10 @@
 
 
   <div
-  class="w-3/4 md:w-full flex py-0  items-center  fixed bottom-4  left-1/2 -translate-x-1/2 z-[9999] overflow-hidden max-w-xl bg-[#252525] backdrop-blur text-left h-12 p-6 text- border bg-opacity-80 border-[#555] shadow text-white rounded-2xl"
+  class="w-3/4 md:w-full flex py-0  items-center  fixed bottom-4  left-1/2 -translate-x-1/2 z-[9999] overflow-hidden max-w-xl bg-[#252525] backdrop-blur text-left h-12 p-6 text- border bg-opacity-65 border-[#555] shadow text-white rounded-2xl"
   >
   <input
-  placeholder="Enter your message"
+  placeholder="Enter your message here"
   class="w-full tracking-wide h-full  bg-transparent !outline-none placeholder:text-[#999] text-white "
   bind:value={message}
 />
@@ -204,11 +209,12 @@
     </div>
   {/if}
 
-  <Hero />
 
   <Video/>
 
-  <img src="/logo.svg" alt="Logo" class="fixed top-12 left-6 w-4" />
+ 
+
+  <img src="/logo.svg" alt="Logo" class="fixed top-12 left-6 w-4 z-[99999]" />
 </div>
 
 <style>
@@ -265,6 +271,7 @@
     :root {
       color: #fff;
       background-color: #141414;
+
     }
 
     a:hover {

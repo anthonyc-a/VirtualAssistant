@@ -1,5 +1,5 @@
-<div class="max-w-2xl flex items-center gap-12 p-6 border hover:border-[#555] transition-all border-[#252525] rounded-2xl h-56 mx-auto">
-  <div class="min-w-[200px] h-full flex justify-center items-center bg-white rounded-2xl">
+<div class="max-w-2xl flex items-center gap-10 p-6 border hover:border-[#555] transition-all border-[#252525] rounded-2xl h-56 mx-auto">
+  <div class="min-w-[180px] h-full flex justify-center items-center bg-white rounded-2xl">
     <img src="https://www.refract-agency.com/favicon.png" alt="Logo" class="w-36 h-36">
   </div>
 
@@ -19,7 +19,7 @@
             >Visit Website</button
         >
         <button
-            class="bg-transparent px-4 p-2 text-sm  rounded-full border border-[--color-accent] "
+            class="bg-transparent px-4 p-2 text-sm  rounded-full border border-[#555] hover:border-white"
             on:click={() => (window.location.href = 'mailto:hello@aarkyv.com')}>Contact Us</button
         >
     </div>

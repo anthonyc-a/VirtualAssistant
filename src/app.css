@@ -18,6 +18,7 @@ a {
 
 main {
     padding-top: 24px; /* Height of the titlebar */
+
   }
 
 
@@ -51,7 +52,6 @@ main {
 
   body {
     color: var(--color-text);
-    background-color: var(--color-primary);
   }
 }
 

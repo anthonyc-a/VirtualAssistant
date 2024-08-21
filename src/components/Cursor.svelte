@@ -50,7 +50,7 @@
     .cursor-container {
       position: fixed;
       pointer-events: none;
-      z-index: 99999;
+      z-index: 999999;
     }
   
     .cursor-inner {
@@ -105,12 +105,12 @@
     }
   
     .cursor-text-line {
-      width: 2px;
+      width: 1px;
       height: 24px;
       background-color: white;
       position: absolute;
       top: -12px;
-      left: -1px;
+      left: 0px;
       animation: blink 0.7s infinite;
     }
   
