@@ -15,6 +15,8 @@
   import Pomodoro from "../components/Pomodoro.svelte";
   import ImageGenerator from "../components/ImageGenerator.svelte";
   import Claude from "../components/Claude.svelte";
+  import Hero from "../components/Hero.svelte";
+  import Video from "../components/Video.svelte";
 
   interface FileInfo {
     name: string;
@@ -63,7 +65,6 @@
 
   let message: string = "";
 
-
   async function saveName() {
     try {
       await invoke("save_name", { name });
@@ -80,7 +81,6 @@
       savedName = await invoke("get_name");
     } catch (error) {
       console.error("Failed to load name:", error);
-      alert("Failed to load name.");
     }
   }
 
@@ -103,51 +103,82 @@
 
 <div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-4">
   <div class="space-y-2 mb-10">
-    <h1 class="text-4xl md:text-4xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit">Good Evening, {savedName}</h1>
-    <p class="text-gray-300 text-center tracking-wide">Phuket is 32 degrees and cloudy.</p>
-
+    {#if savedName !== ""}
+      <h1
+        class="text-4xl md:text-4xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
+      >
+        Good Evening, {savedName}
+      </h1>
+    {/if}
+    {#if savedName === ""}
+      <h1
+        class="text-3xl text-center md:text-3xl max-w-2xl tracking-  font-[525] mx-auto pb-0 w-fit"
+      >
+        Solving problems and creating digital experiences with clear and
+        functional design.
+      </h1>
+      <p
+        class="pt-3 text-center leading-[1.65] tracking-wide font-light text-gray-300 max-w-2xl mx-auto"
+      >
+        A Designer and Full-Stack Developer with seven+ years experience working
+        with small to medium-sized businesses, startups and individuals; helping
+        to ensure brand growth with thoughtful design and incisive technical
+        execution.
+      </p>
+    {/if}
   </div>
-  
 
   {#if savedName}
-  <div class="grid grid-cols-5 gap-12">
-    <p
-    class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30   max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
-  >
-   <Claude message={message}/>
-  </p>
-  <div
-  class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
->
-  <h3 class="text-lg font-medium ">
-    Recently Discussed
-  </h3>
-  <div class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex items-center">
-    Something about a calorie counter
-  </div>
-  <div class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
-    A way to bulk edit images
-  </div>
-  <div class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525]  flex  items-center">
-    A way to bulk edit images
-  </div>
-</div>
-  </div>
- 
+    <div class="grid grid-cols-5 gap-12">
+      <p
+        class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30 max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
+      >
+        <Claude {message} />
+      </p>
+      <div
+        class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
+      >
+        <h3 class="text-lg font-medium">Recently Discussed</h3>
+        <div
+          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        >
+          Something about a calorie counter
+        </div>
+        <div
+          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        >
+          A way to bulk edit images
+        </div>
+        <div
+          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        >
+          A way to bulk edit images
+        </div>
+      </div>
+    </div>
   {/if}
 
-  <input
-    placeholder="Enter your message"
-    class="w-3/4 md:w-full tracking-wide fixed bottom-0 placeholder:text-[#999] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-[#252525]  backdrop-blur text-left h-16 p-6 text-  border bg-opacity-95  border-[#666] shadow text-white rounded-tl-2xl rounded-tr-2xl "
-    bind:value={message}
-  />
 
-  {#if !savedName}
+  <div
+  class="w-3/4 md:w-full flex py-0  items-center  fixed bottom-4  left-1/2 -translate-x-1/2 z-[9999] overflow-hidden max-w-xl bg-[#252525] backdrop-blur text-left h-12 p-6 text- border bg-opacity-80 border-[#666] shadow text-white rounded-2xl"
+  >
+  <input
+  placeholder="Enter your message"
+  class="w-full tracking-wide h-full  bg-transparent !outline-none placeholder:text-[#999] text-white "
+  bind:value={message}
+/>
+<button class="absolute pt-1 text-lg text-[#252525] font-medium top-1/2 -translate-y-1/2 right-2 w-8 h-8 rounded-lg bg-white rounded-mf">
+  ↗
+</button>
+  </div>
+ 
+
+  <!-- {#if !savedName}
     <p class="text-gray-300">Who am I speaking with?</p>
 
     <input bind:value={name} placeholder="Enter a name" />
     <button on:click={saveName}>Save Name</button>
-  {/if}
+  {/if} -->
 
   <!-- <form class="row" on:submit|preventDefault={greet}>
     <input id="greet-input" placeholder="Enter a name..." bind:value={name} />
@@ -157,19 +188,25 @@
   <p>{greetMsg}</p>
 
   <!-- <Weather /> -->
-  <div class="grid md:grid-cols-2 gap-6">
-    <ImageGenerator/>
-    <Headlines />
-    <Pomodoro />
-    <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
-      {#each files as file}
-        <li class="flex mx-auto items-center justify-between">
-          <svelte:component this={getIconComponent(file)} size={24} />
-          {file.name}
-        </li>
-      {/each}
-    </ul>
-  </div>
+  {#if savedName}
+    <div class="grid md:grid-cols-2 gap-6">
+      <ImageGenerator />
+      <Headlines />
+      <Pomodoro />
+      <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
+        {#each files as file}
+          <li class="flex mx-auto items-center justify-between">
+            <svelte:component this={getIconComponent(file)} size={24} />
+            {file.name}
+          </li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
+
+  <Hero />
+
+  <Video/>
 
   <img src="/logo.svg" alt="Logo" class="fixed top-12 left-6 w-4" />
 </div>
@@ -223,8 +260,6 @@
   a:hover {
     color: #535bf2;
   }
- 
-
 
   @media (prefers-color-scheme: dark) {
     :root {

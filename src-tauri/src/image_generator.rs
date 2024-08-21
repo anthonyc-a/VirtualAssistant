@@ -21,7 +21,7 @@ pub async fn generate_image(prompt: String, app_handle: tauri::AppHandle, state:
     let fal_key = "d2e200a2-6d11-46ee-bc2a-a7dd34b4924a:dedb9dbc6c5aae03f14245162ef5d30f";
 
     let response = client
-        .post("https://fal.run/fal-ai/flux/schnell")
+        .post("https://fal.run/fal-ai/flux-realism")
         .header("Authorization", format!("Key {}", fal_key))
         .header("Content-Type", "application/json")
         .json(&json!({

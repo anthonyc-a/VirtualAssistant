@@ -221,7 +221,7 @@ async fn main() {
             #[cfg(debug_assertions)]
             {
                 let window = app.get_window("main").unwrap();
-                window.open_devtools();
+                // window.open_devtools();
             }
             let app_handle = app.handle();
             let time = Arc::new(Mutex::new(String::new()));

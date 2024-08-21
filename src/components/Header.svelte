@@ -1,5 +1,5 @@
 <header
-  class="pb-5 mt-12 px-4 max-w-3xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-[#252525]"
+  class="pb-5 mt-12 px-4 max-w-2xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-[#252525]"
 >
   <div class="flex flex-col items-center text-center">
     <div class=" w-16 h-16 rounded-full overflow-hidden mb-3">
@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex-col justify-center ml-4">
       <div class="flex justify-center items-center gap-2.5">
-        <a href="/">
+        <a href="/" class="text-lg">
           <h1>Anthony Animba</h1>
         </a>
         <a
@@ -52,13 +52,13 @@
           </svg></a
         >
       </div>
-      <h5 class="text-gray-300 font-light tracking-wide text-sm">
+      <h5 class="text-gray-300 tracking-wide">
         Designer, Developer, Creative Director
       </h5>
     </div>
   </div>
   <span
-    class="tag leading-[1.8] bg-[#252525] text-[13px] p-2.5 py-1 rounded-lg cursor-pointer mt-2"
+    class="tag leading-[1.8] tracking-wide bg-[#252525] text-[13px] p-2.5 py-1 rounded-lg cursor-pointer mt-2"
     on:click={() => (window.location.href = "mailto:anthonyc.animba@gmail.com")}
     role="presentation">anthonyc.animba@gmail.com</span
   >

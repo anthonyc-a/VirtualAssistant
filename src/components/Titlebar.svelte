@@ -44,27 +44,36 @@
   });
 </script>
 
-<div class="titlebar rounded-md font-medium">
+<div class="titlebar rounded-tr-md rounded-md font-medium">
   <div class="titlebar-drag-region" data-tauri-drag-region></div>
-  <div class="titlebar-text font-medium" data-tauri-drag-region>Virtual Assistant v1</div>
+  <div class="titlebar-text font-medium flex items-center gap-2" data-tauri-drag-region>
+    <div class="w-1.5 h-1.5 rounded-full bg-green-400">
+
+    </div>
+    {#if time !== ""}
+      Virtual Assistant v1
+    {/if}
+    {#if time === ""}
+      Portfolio v 8.1.0
+    {/if}
+  </div>
   <div data-tauri-drag-region>
     <div class="flex text-[#252525] items-center text-xs gap-1.5">
-     
       <div class="">
         {time}
       </div>
-      
+
       <div class="mx-6 flex items-center gap-2">
         <Apple class="w-3.5" />
         1280 kcal
       </div>
-     
 
-    <SystemMonitor />
-
+      <SystemMonitor />
     </div>
   </div>
   <div class="titlebar-controls">
+    {#if time !== ""}
+
     <button class="titlebar-button" on:click={handleMinimize}>
       <svg width="10" height="10" viewBox="0 0 10 10">
         <path d="M0 5h10v1h-10v-1z" />
@@ -83,6 +92,7 @@
         </svg>
       {/if}
     </button>
+    {/if}
     <button class="titlebar-button close-button" on:click={handleClose}>
       <svg width="10" height="10" viewBox="0 0 10 10">
         <path
