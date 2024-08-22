@@ -116,15 +116,14 @@
       <h1
         class="text-3xl text-center md:text-3xl max-w-2xl tracking-[0.015em] !leading-[1.2]  font-[500] mx-auto pb-0 w-fit"
       >
-        Solving problems and creating digital experiences with clear and
+        Creating digital experiences with clear and
         functional design.
       </h1>
       <p
         class="pt-3 text-center leading-[1.65] tracking-wide font-light text-gray-300 max-w-2xl mx-auto"
       >
-        A Designer and Full-Stack Developer with seven+ years experience working
-        with small to medium-sized businesses, startups and individuals helping
-        to ensure brand growth with thoughtful design and incisive technical
+        A Designer and Full-Stack Developer with over 7 years experience working
+        with small to medium-sized businesses, startups and individuals; ensuring brand growth with thoughtful design and incisive technical
         execution.
       </p>
     {/if}
