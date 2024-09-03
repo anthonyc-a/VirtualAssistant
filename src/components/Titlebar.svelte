@@ -58,7 +58,7 @@
     {/if}
     {#if time === ""}
       <div class="flex items-center gap-2">
-        <div class="w-1 h-1 rounded-full bg-green-400"></div>
+        <div class="w-1 h-1 rounded-full bg-green-500"></div>
         Portfolio Website v8.1.0
       </div>
     {/if}

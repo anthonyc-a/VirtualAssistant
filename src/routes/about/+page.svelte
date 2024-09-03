@@ -18,23 +18,26 @@
   ];
 </script>
 
-<h3 class="px-6 md:px-0">Designer & Full-Stack Developer</h3>
+<div class="max-w-2xl mx-auto mt-2">
+  <h3 class="px-6 md:px-0 text-center text-3xl font-medium">Designer & Full-Stack Developer</h3>
 
-<p class="mt-4 text-[16px] px-6 md:px-0">
-  I work best in goal-oriented, teamworking environments where I can present
-  thoughts and ideas to entire teams; usually focussing on an iterative approach
-  to design and development where form and function live side-by-side.
-</p>
+  <p class="mt-4 text-center text-muted-foreground px-6 md:px-0">
+    I work best in goal-oriented, teamworking environments where I can present
+    thoughts and ideas to entire teams; usually focussing on an iterative
+    approach to design and development where form and function live
+    side-by-side.
+  </p>
 
-<div
-  class="flex flex-col gap-4 mt-8 px-6 md:p-8 md:border border-[--color-tertiary] rounded-xl"
->
-  {#each items as item}
-    <div class="p-6 px-8 border border-[--color-tertiary] rounded-xl">
-      <h4>{item.title}</h4>
-      <p class="mt-3 text-[16px]">
-        {item.description}
-      </p>
-    </div>
-  {/each}
+  <div
+    class="flex flex-col gap-4 mt-8 px-6 md:p-8 md:border border-accent rounded-2xl"
+  >
+    {#each items as item}
+      <div class="p-6 px-8 border border-accent rounded-2xl">
+        <h4 class="text-2xl font-medium">{item.title}</h4>
+        <p class="mt-3 text-[16px]">
+          {item.description}
+        </p>
+      </div>
+    {/each}
+  </div>
 </div>

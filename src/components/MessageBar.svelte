@@ -113,13 +113,13 @@
   
   <form
     on:submit|preventDefault={handleSubmit}
-    class="w-11/12 md:w-full fixed bottom-5 left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent backdrop-blur text-left border border-muted-foreground bg-opacity-90  shadow-lg text-foreground rounded-full overflow-hidden"
+    class="w-11/12 md:w-full fixed bottom-5 left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent backdrop-blur text-left border border-muted-foreground !bg-opacity-50  shadow-lg text-foreground rounded-full overflow-hidden"
     style="height: {isFocused ? 'auto' : '3.5rem'}; max-height: {isFocused ? '80vh' : '3.5rem'}; border-radius: {isFocused ? '20px' : '80px'}; border-color: {fileError || errors.length > 0 ? 'rgb(248 113 113)' : 'transparent' && projectTitle && 'var(--foreground)'}; transition: max-height 0.4s ease;"
   >
     <div class="p-6 py-3 border-b border-[#555] flex items-center">
-      <Briefcase class="text-muted-foreground mr-3" size={18} />
+      <Mail class="text-muted-foreground mr-3" size={18} />
       <input
-        placeholder="Briefly describe your project here..."
+        placeholder="Describe your project..."
         class="w-full bg-transparent !outline-none placeholder:text-muted-foreground text-foreground"
         bind:value={projectTitle}
         on:focus={handleFocus}

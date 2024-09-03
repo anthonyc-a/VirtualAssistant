@@ -115,7 +115,7 @@
   {/if}
   {#if savedName === ""}
     <h1
-      class="text-3xl text-center md:text-3xl max-w-2xl xl:max-w-3xl xl:text-[32px] tracking-[0.015em] !leading-[1.2] font-[500] mx-auto pt-2 pb-0 w-fit"
+      class="text-3xl text-center md:text-3xl max-w-2xl xl:max-w-3xl tracking-[0.015em] !leading-[1.2] font-[500] mx-auto pt-2 pb-0 w-fit"
     >
       Creating digital experiences with clear and <br class="hidden xl:inline"> functional design.
     </h1>
@@ -183,8 +183,8 @@
 <Video />
 
 {#if savedName === ""}
-  <div class="mt-10 px-6 md:px-0">
-    <h3 class="text-2xl">What I'm currently working on</h3>
+  <div class="mt-10 px-6 md:px-0 max-w-2xl mx-auto">
+    <h3 class="text-2xl font-medium">What I'm currently working on</h3>
     <p class="mt-4 text-[16px]">
       These are projects and companies that I've worked on/with. Some are
       well-established businesses backed by VCs, while others are MVP/initial
@@ -224,10 +224,9 @@
       </a>
     {/each}
   </div>
-  <div class="mt-16 px-6 md:px-0">
-    <h3>Previously worked on</h3>
-
-    <div class="w-full h-[1px] my-8 md:my-6 bg-[--color-secondary]"></div>
+  <div class="mt-16 px-6 md:px-0  max-w-2xl mx-auto">
+    <h3 class="text-2xl font-medium">Previously worked on</h3>
+    <div class="w-full h-[1px] bg-[--color-secondary]"></div>
     {#each workItems.slice(2, 6) as item}
       <a
         href={item.link}

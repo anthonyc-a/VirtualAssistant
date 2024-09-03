@@ -72,7 +72,7 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ffffff; /* color of the scroll thumb */
+  background-color: var(--muted-foreground); /* color of the scroll thumb */
   border-radius: 6px; /* roundness of the scroll thumb */
   border: 3px solid #141414; /* creates padding around scroll thumb */
 }
@@ -80,7 +80,7 @@ main {
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #ffffff #141414;
+  scrollbar-color: var(--muted-foreground) #141414;
   font-family: "BrittiSansVariable", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

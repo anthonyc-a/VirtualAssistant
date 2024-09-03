@@ -6,11 +6,11 @@
   <div class="mt-4 md:my-0">
     <div class="flex items-center flex-wrap font-medium mb-4 md:mb-2 gap-3">
         <h3 class="inline-block text-[25px] ">Refract Agency</h3>
-        <span class="tag-l bg-foreground text-background px-3 text-[13px] tracking-wide rounded-lg p-1">Marketing Agency</span>
-        <span class="tag-l bg-foreground text-background px-3 text-[13px] tracking-wide rounded-lg p-1">Founder</span>
+        <span class="tag-l bg-foreground text-background px-3 text-[13px] rounded-lg p-1">Marketing Agency</span>
+        <span class="tag-l bg-foreground text-background px-3 text-[13px] rounded-lg p-1">Founder</span>
     </div>
     <div>
-        <p class="text-[15px] leading-[1.65] font-[300] tracking-wide text-muted-foreground mt-1">
+        <p class="text-[15px] leading-[1.65] font-[300] tracking-wide text-muted-foreground">
             My design, development and visualisation studio for creative businesses and ambitious
             startups.
         </p>

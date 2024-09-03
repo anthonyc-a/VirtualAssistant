@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Home, User, Briefcase, Book, Globe } from "lucide-svelte";
+  import { Home, User, Briefcase, Book, Globe, Folder } from "lucide-svelte";
 
   let isExpanded = false;
 
@@ -20,9 +20,10 @@
   const navItems = [
     { href: "/", icon: Home, isFirst: true },
     { href: "/about", icon: User },
-    { href: "#", icon: Briefcase },
-    { href: "#", icon: Book },
-    { href: "#", icon: Globe },
+    { href: "/work", icon: Briefcase },
+    { href: "/blog", icon: Book },
+    { href: "/gallery", icon: Folder },
+    { href: "https://portfolio-2024-ten-umber.vercel.app/", icon: Globe },
   ];
 </script>
 

@@ -33,10 +33,14 @@
 <Navigation />
 <Header />
 
+<div class="fixed text-sm bottom-4 text-muted-foreground right-5">
+  © 2024
+</div>
+
 <img
   src="/logo.svg"
   alt="Logo"
-  class="fixed top-12 left-6 w-4 z-[99999] invert dark:invert-0"
+  class="fixed top-12 left-6 w-3.5 z-[99999] invert dark:invert-0"
 />
 
 <div class="container w-[calc(100%-40px)] max-w-3xl mt-0 mx-auto py-2">
