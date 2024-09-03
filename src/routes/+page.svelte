@@ -17,6 +17,8 @@
   import Claude from "../components/Claude.svelte";
   import Hero from "../components/Hero.svelte";
   import Video from "../components/Video.svelte";
+  import { workItems } from "../data/workItems";
+  import MessageBar from "../components/MessageBar.svelte";
 
   interface FileInfo {
     name: string;
@@ -101,120 +103,164 @@
   }
 </script>
 
-<div class="container w-[calc(100%-40px)] max-w-4xl mt-0 mx-auto py-6 pt-2">
-  <div class="space-y-2 mb-6">
-    {#if savedName !== ""}
-      <h1
-        class="text-3xl md:text-3xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
-      >
-        Good Evening, {savedName}
-      </h1>
+<div class="space-y-2 mb-6">
+  {#if savedName !== ""}
+    <h1
+      class="text-3xl md:text-3xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
+    >
+      Good Evening, {savedName}
+    </h1>
 
-      <p class="w-fit mx-auto text-lg text-gray-300">What should we work on?</p>
-    {/if}
-    {#if savedName === ""}
-      <h1
-        class="text-3xl text-center md:text-3xl max-w-2xl tracking-[0.015em] !leading-[1.2]  font-[500] mx-auto pb-0 w-fit"
-      >
-        Creating digital experiences with clear and
-        functional design.
-      </h1>
-      <p
-        class="pt-3 text-center leading-[1.65] tracking-wide font-light text-gray-300 max-w-2xl mx-auto"
-      >
-        A Designer and Full-Stack Developer with over 7 years experience working
-        with small to medium-sized businesses, startups and individuals; ensuring brand growth with thoughtful design and incisive technical
-        execution.
-      </p>
-    {/if}
-  </div>
+    <p class="w-fit mx-auto text-lg text-gray-300">What should we work on?</p>
+  {/if}
+  {#if savedName === ""}
+    <h1
+      class="text-3xl text-center md:text-3xl max-w-2xl xl:max-w-3xl xl:text-[32px] tracking-[0.015em] !leading-[1.2] font-[500] mx-auto pt-2 pb-0 w-fit"
+    >
+      Creating digital experiences with clear and <br class="hidden xl:inline"> functional design.
+    </h1>
+    <p
+      class="pt-3 text-center leading-[1.65] tracking-wide font-light text-muted-foreground max-w-2xl mx-auto"
+    >
+      A Designer and Full-Stack Developer with over 7 years experience working
+      with small to medium-sized businesses, startups and individual ensuring
+      brand growth with thoughtful design and incisive technical execution.
+    </p>
+  {/if}
+</div>
 
-  <Hero />
+<Hero />
 
-
-  {#if savedName}
-    <div class="grid grid-cols-5 gap-12 mt-12">
-      <p
-        class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30 max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
-      >
-        <Claude {message} />
-      </p>
+{#if savedName}
+  <div class="grid grid-cols-5 gap-12 mt-12">
+    <p
+      class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30 max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
+    >
+      <Claude {message} />
+    </p>
+    <div
+      class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
+    >
+      <h3 class="text-lg font-medium">Recently Discussed</h3>
       <div
-        class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
+        class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
       >
-        <h3 class="text-lg font-medium">Recently Discussed</h3>
-        <div
-          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
-        >
-          Something about a calorie counter
-        </div>
-        <div
-          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
-        >
-          A way to bulk edit images
-        </div>
-        <div
-          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
-        >
-          A way to bulk edit images
-        </div>
+        Something about a calorie counter
+      </div>
+      <div
+        class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+      >
+        A way to bulk edit images
+      </div>
+      <div
+        class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+      >
+        A way to bulk edit images
       </div>
     </div>
-  {/if}
-
-
-  <div
-  class="w-3/4 md:w-full flex py-0  items-center  fixed bottom-4  left-1/2 -translate-x-1/2 z-[9999] overflow-hidden max-w-xl bg-[#252525] backdrop-blur text-left h-12 p-6 text- border bg-opacity-65 border-[#555] shadow text-white rounded-2xl"
-  >
-  <input
-  placeholder="Enter your message here"
-  class="w-full tracking-wide h-full  bg-transparent !outline-none placeholder:text-[#999] text-white "
-  bind:value={message}
-/>
-<button class="absolute pt-1 text-lg text-[#252525] font-medium top-1/2 -translate-y-1/2 right-2 w-8 h-8 rounded-lg bg-white rounded-mf">
-  ↗
-</button>
   </div>
- 
+{/if}
 
-  <!-- {#if !savedName}
-    <p class="text-gray-300">Who am I speaking with?</p>
+<p>{greetMsg}</p>
 
-    <input bind:value={name} placeholder="Enter a name" />
-    <button on:click={saveName}>Save Name</button>
-  {/if} -->
+<!-- <Weather /> -->
+{#if savedName}
+  <div class="grid md:grid-cols-2 gap-6">
+    <ImageGenerator />
+    <Headlines />
+    <Pomodoro />
+    <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
+      {#each files as file}
+        <li class="flex mx-auto items-center justify-between">
+          <svelte:component this={getIconComponent(file)} size={24} />
+          {file.name}
+        </li>
+      {/each}
+    </ul>
+  </div>
+{/if}
 
-  <!-- <form class="row" on:submit|preventDefault={greet}>
-    <input id="greet-input" placeholder="Enter a name..." bind:value={name} />
-    <button type="submit">Greet</button>
-  </form> -->
+<Video />
 
-  <p>{greetMsg}</p>
+{#if savedName === ""}
+  <div class="mt-10 px-6 md:px-0">
+    <h3 class="text-2xl">What I'm currently working on</h3>
+    <p class="mt-4 text-[16px]">
+      These are projects and companies that I've worked on/with. Some are
+      well-established businesses backed by VCs, while others are MVP/initial
+      stage projects I've been able to create and contribute to from scratch.
+    </p>
+    <div class="w-full h-[1px] my-8 mb-4 bg-[--color-secondary]"></div>
+    {#each workItems.slice(0, 2) as item}
+      <a
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col md:flex-row md:items-center border border-[--color-tertiary] md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
+      >
+        <div
+          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border border-[--color-tertiary]"
+        >
+          <img
+            src={item.image}
+            alt="Project Logo"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <h4 class="w-full md:w-fit">{item.title}</h4>
+            {#each item.tags as tag}
+              <span
+                class="tag border border-[--color-tertiary] whitespace-nowrap leading-[1.2]"
+                >{tag}</span
+              >
+            {/each}
+          </div>
+          <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
+            {item.description}
+          </p>
+        </div>
+      </a>
+    {/each}
+  </div>
+  <div class="mt-16 px-6 md:px-0">
+    <h3>Previously worked on</h3>
 
-  <!-- <Weather /> -->
-  {#if savedName}
-    <div class="grid md:grid-cols-2 gap-6">
-      <ImageGenerator />
-      <Headlines />
-      <Pomodoro />
-      <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
-        {#each files as file}
-          <li class="flex mx-auto items-center justify-between">
-            <svelte:component this={getIconComponent(file)} size={24} />
-            {file.name}
-          </li>
-        {/each}
-      </ul>
-    </div>
-  {/if}
-
-
-  <Video/>
-
- 
-
-  <img src="/logo.svg" alt="Logo" class="fixed top-12 left-6 w-4 z-[99999]" />
-</div>
+    <div class="w-full h-[1px] my-8 md:my-6 bg-[--color-secondary]"></div>
+    {#each workItems.slice(2, 6) as item}
+      <a
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col md:flex-row md:items-center border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
+      >
+        <div
+          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border"
+        >
+          <img
+            src={item.image}
+            alt="Project Logo"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <h4 class="w-full md:w-fit">{item.title}</h4>
+            {#each item.tags as tag}
+              <span class="tag borderwhitespace-nowrap leading-[1.2]"
+                >{tag}</span
+              >
+            {/each}
+          </div>
+          <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
+            {item.description}
+          </p>
+        </div>
+      </a>
+    {/each}
+  </div>
+{/if}
 
 <style>
   .logo {
@@ -264,17 +310,5 @@
 
   a:hover {
     color: #535bf2;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      color: #fff;
-      background-color: #141414;
-
-    }
-
-    a:hover {
-      color: #24c8db;
-    }
   }
 </style>

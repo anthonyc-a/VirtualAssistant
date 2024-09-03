@@ -57,7 +57,7 @@
 
 {#if hovered}
   <div
-    class="fixed modal bg-[#252525] bg-opacity-30 p-12 backdrop-blur border-[#252525] z-[999999] top-1/2 right-80  -translate-y-1/2 max-w-sm lg:max-w-5xl w-fit h-[70vh] overflow-scroll border rounded-2xl"
+    class="fixed modal bg-[#252525] bg-opacity-30 p-12 backdrop-blur border-[#252525] z-[9995] top-1/2 right-80  -translate-y-1/2 max-w-sm lg:max-w-5xl w-fit h-[70vh] overflow-scroll border rounded-2xl"
   >
     <CaseStudy />
   </div>

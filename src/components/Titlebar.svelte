@@ -44,7 +44,7 @@
   });
 </script>
 
-<div class="titlebar rounded-tr-md rounded-md font-medium">
+<div class="titlebar bg-foreground text-background rounded-[4px] font-medium">
   <div class="titlebar-drag-region" data-tauri-drag-region></div>
   <div
     class="titlebar-text font-medium flex justify-between w-full items-center gap-2"
@@ -57,9 +57,9 @@
       </div>
     {/if}
     {#if time === ""}
-    <div class="flex items-center gap-2">
-      <div class="w-1 h-1 rounded-full bg-green-400"></div>
-        Portfolio Website v 8.1.0
+      <div class="flex items-center gap-2">
+        <div class="w-1 h-1 rounded-full bg-green-400"></div>
+        Portfolio Website v8.1.0
       </div>
     {/if}
     {#if time === ""}
@@ -125,7 +125,6 @@
 <style>
   .titlebar {
     height: 25px;
-    background: #fff;
     user-select: none;
     display: flex;
     justify-content: space-between;
@@ -145,7 +144,6 @@
     -webkit-app-region: drag;
   }
   .titlebar-text {
-    color: #2c2c2c;
     font-size: 13px;
     font-weight: 500;
     margin-left: 10px;
