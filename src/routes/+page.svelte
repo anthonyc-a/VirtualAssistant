@@ -115,15 +115,15 @@
   {/if}
   {#if savedName === ""}
     <h1
-      class="text-3xl text-center md:text-3xl max-w-2xl xl:max-w-3xl tracking-[0.015em] !leading-[1.2] font-[500] mx-auto pt-2 pb-0 w-fit"
+      class="text-3xl text-center md:text-[32px] max-w-2xl xl:max-w-3xl tracking-[0.0125em] !leading-[1.25] font-[500] mx-auto pt-2 pb-0 w-fit"
     >
-      Creating digital experiences with clear and <br class="hidden xl:inline"> functional design.
+      Creating Digital Experiences with Clear & <br class="hidden xl:inline"> Functional Design.
     </h1>
     <p
-      class="pt-3 text-center leading-[1.65] tracking-wide font-light text-muted-foreground max-w-2xl mx-auto"
+      class="pt-2.5 text-center leading-[1.65] tracking-wide font-light dark:text-muted-foreground max-w-2xl mx-auto"
     >
       A Designer and Full-Stack Developer with over 7 years experience working
-      with small to medium-sized businesses, startups and individual ensuring
+      with small to medium-sized businesses, startups and individuals ensuring
       brand growth with thoughtful design and incisive technical execution.
     </p>
   {/if}
@@ -183,9 +183,9 @@
 <Video />
 
 {#if savedName === ""}
-  <div class="mt-10 px-6 md:px-0 max-w-2xl mx-auto">
-    <h3 class="text-2xl font-medium">What I'm currently working on</h3>
-    <p class="mt-4 text-[16px]">
+  <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
+    <h3 class="text-2xl md:text-3xl font-medium">What I'm Currently Working On</h3>
+    <p class="mt-4 text-muted-foreground leading-[1.5] text-[16px]">
       These are projects and companies that I've worked on/with. Some are
       well-established businesses backed by VCs, while others are MVP/initial
       stage projects I've been able to create and contribute to from scratch.
@@ -196,10 +196,10 @@
         href={item.link}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex flex-col md:flex-row md:items-center border border-[--color-tertiary] md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
+        class="flex flex-col md:flex-row md:items-center !text-foreground border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
       >
         <div
-          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border border-[--color-tertiary]"
+          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border "
         >
           <img
             src={item.image}
@@ -209,10 +209,10 @@
         </div>
         <div>
           <div class="flex flex-wrap items-center gap-3">
-            <h4 class="w-full md:w-fit">{item.title}</h4>
+            <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
             {#each item.tags as tag}
               <span
-                class="tag border border-[--color-tertiary] whitespace-nowrap leading-[1.2]"
+                class="tag border border- p-1 px-2 rounded-lg whitespace-nowrap leading-[1.2]"
                 >{tag}</span
               >
             {/each}
@@ -232,7 +232,7 @@
         href={item.link}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex flex-col md:flex-row md:items-center border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
+        class="flex flex-col md:flex-row text-foreground md:items-center border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
       >
         <div
           class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border"
@@ -245,7 +245,7 @@
         </div>
         <div>
           <div class="flex flex-wrap items-center gap-3">
-            <h4 class="w-full md:w-fit">{item.title}</h4>
+            <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
             {#each item.tags as tag}
               <span class="tag borderwhitespace-nowrap leading-[1.2]"
                 >{tag}</span

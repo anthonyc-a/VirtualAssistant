@@ -6,7 +6,7 @@
   let prefersDark:any;
 
   onMount(() => {
-    prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    prefersDark = window.matchMedia('(prefers-color-scheme: light)');
     
     // Initial setup
     setThemeFromSystem();

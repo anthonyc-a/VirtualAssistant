@@ -28,16 +28,16 @@
 </script>
 
 <div
-  class="fixed flex flex-col items-center gap-3 top-[96px] left-3.5 z-[99999]"
+  class="fixed flex flex-col items-center gap-2.5 top-[92px] left-3.5 z-[99999]"
 >
   {#each navItems as item, index}
     <a
       href={item.href}
-      class="nav-item flex overflow-hidden justify-center items-center rounded-full !font-light text-foreground bg-opacity-30 w-9 h-9 transition-all duration-300 ease-in-out"
+      class="nav-item flex overflow-hidden justify-center items-center rounded-full !font-light text-muted-foreground hover:text-foreground bg-opacity-30 w-9 h-9 transition-all duration-300 ease-in-out"
       class:expanded={true}
     >
       <!-- isExpanded || item.isFirst -->
-      <svelte:component this={item.icon} size={18} strokeWidth={1} />
+      <svelte:component this={item.icon} size={18} strokeWidth={1.5} />
     </a>
   {/each}
 </div>

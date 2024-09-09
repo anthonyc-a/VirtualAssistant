@@ -44,7 +44,7 @@
   });
 </script>
 
-<div class="titlebar bg-foreground text-background rounded-[4px] font-medium">
+<div class="relative titlebar bg-foreground text-background font-medium rounded-sm z-[999999]">
   <div class="titlebar-drag-region" data-tauri-drag-region></div>
   <div
     class="titlebar-text font-medium flex justify-between w-full items-center gap-2"
@@ -58,16 +58,16 @@
     {/if}
     {#if time === ""}
       <div class="flex items-center gap-2">
-        <div class="w-1 h-1 rounded-full bg-green-500"></div>
-        Portfolio Website v8.1.0
+        <div class="w-[5px] h-[5px] rounded-full bg-green-500"></div>
+        Portfolio Website
       </div>
     {/if}
     {#if time === ""}
       <span class="hidden sm:inline-block pr-24"
-        >Currently available for freelance projects and collaborations.</span
+        >Currently available for freelance and collaborations.</span
       >
     {/if}
-    .
+    <div class="opacity-0">.</div>
   </div>
   {#if time !== ""}
     <div data-tauri-drag-region>
@@ -108,7 +108,7 @@
       </button>
     {/if}
     <button
-      class="titlebar-button rounded-md h-1 close-button"
+      class="titlebar- rounded-md scale-75 h-6 flex items-center justify-center w-6 mr-1 close-button"
       on:click={handleClose}
     >
       <svg width="10" height="10" viewBox="0 0 10 10">
@@ -144,7 +144,7 @@
     -webkit-app-region: drag;
   }
   .titlebar-text {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     margin-left: 10px;
     z-index: 1;
@@ -168,7 +168,8 @@
   .titlebar-button:hover {
     background: #3e3e3e;
   }
-  .close-button:hover {
+  .close-button {
     background: #e81123;
+    color: white;
   }
 </style>

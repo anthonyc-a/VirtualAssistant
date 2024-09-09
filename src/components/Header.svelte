@@ -1,8 +1,8 @@
 <header
-  class="pb-5 mt-12 px-4 max-w-2xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-muted"
+  class="pb-5 mt-12 px-4 max-w-2xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-secondary "
 >
   <div class="flex flex-col items-center text-center">
-    <div class=" w-16 h-16 rounded-full overflow-hidden mb-3 border border-muted">
+    <div class=" w-16 h-16 rounded-full overflow-hidden mb-3 border border-muted-accent dark:border-transparent">
       <img src="/me.jpeg" alt="Me" class="w-full h-full object-cover" />
     </div>
     <div class="flex flex-col justify-center ml-4">

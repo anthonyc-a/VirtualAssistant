@@ -10,7 +10,7 @@
   let hovered = false;
 
   const sidebarPosition = tweened(-300, {
-    duration: 300,
+    duration: 500,
     easing: cubicOut,
   });
 
@@ -57,7 +57,8 @@
 
 {#if hovered}
   <div
-    class="fixed modal bg-[#252525] bg-opacity-30 p-12 backdrop-blur border-[#252525] z-[9995] top-1/2 right-80  -translate-y-1/2 max-w-sm lg:max-w-5xl w-fit h-[70vh] overflow-scroll border rounded-2xl"
+    class="fixed modal bg-[#252525] bg-opacity-30 p-12 backdrop-blur border-[#252525] z-[9995] top-1/2 right-80 -translate-y-1/2 max-w-sm lg:max-w-5xl w-fit h-[70vh] overflow-scroll border rounded-2xl"
+    on:mouseenter={() => toggleSidebar(true)}
   >
     <CaseStudy />
   </div>
@@ -66,8 +67,9 @@
 {#if showSidebar}
   <div
     class="fixed inset-0 bg-black backdrop-blur transition-all bg-opacity-30 z-40"
-    on:click={() => {toggleSidebar(false), hovered = false }}
-
+    on:mouseenter={() => {
+      toggleSidebar(false), (hovered = false);
+    }}
   ></div>
   <div
     class="fixed top-16 pt-2 rounded-tl-2xl rounded-bl-2xl right-0 origin-top-right h-[calc(100vh-128px)] w-64 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] z-50 shadow-lg"
@@ -77,7 +79,7 @@
     <h2 class="text-lg tracking-wide font-medium p-4">Clients</h2>
     <div
       class="modules w-full grid gap-2 px-2"
-      on:mouseenter={() => (hovered = true)}
+      on:click={() => (hovered = !hovered)}
     >
       <div
         class="w-full h-12 rounded-xl bg-[#CFFE70] border border-[#252525]"
@@ -113,6 +115,6 @@
   }
 
   .modules div {
-    transition: 0.2s ease-in-out;
+    transition: 0.35s ease-in-out;
   }
 </style>

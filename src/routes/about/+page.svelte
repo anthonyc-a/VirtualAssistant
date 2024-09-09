@@ -18,10 +18,12 @@
   ];
 </script>
 
-<div class="max-w-2xl mx-auto mt-2">
-  <h3 class="px-6 md:px-0 text-center text-3xl font-medium">Designer & Full-Stack Developer</h3>
+<div class="max-w-2xl mx-auto mt-3">
+  <h3 class="px-6 md:px-0 text-center text-3xl font-medium">
+    Designer & Full-Stack Developer
+  </h3>
 
-  <p class="mt-4 text-center text-muted-foreground px-6 md:px-0">
+  <p class="mt-4 text-center text-muted-foreground leading-[1.65] px-6 md:px-0">
     I work best in goal-oriented, teamworking environments where I can present
     thoughts and ideas to entire teams; usually focussing on an iterative
     approach to design and development where form and function live
@@ -34,7 +36,7 @@
     {#each items as item}
       <div class="p-6 px-8 border border-accent rounded-2xl">
         <h4 class="text-2xl font-medium">{item.title}</h4>
-        <p class="mt-3 text-[16px]">
+        <p class="mt-3 text-[16px] text-muted-foreground">
           {item.description}
         </p>
       </div>
