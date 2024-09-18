@@ -1,8 +1,8 @@
 <div
-  class="max-w-2xl w-[calc(100%-72px)] flex flex-col md:flex-row items-center gap-7 md:gap-10 p-6 transition-all border border-border hover:bg-accent/30 dark:border-accent rounded-3xl min-h-[224px] mx-auto"
+  class="max-w-2xl hover:!border-border w-[calc(100%-64px)] flex flex-col md:flex-row items-center gap-7 md:gap-10 p-6 transition-all border border-border hover:bg-accent/30 dark:border-accent rounded-3xl min-h-[224px] mx-auto"
 >
   <div
-    class="min-w-[180px] w-full h-full flex justify-center items-center bg-white border border-border dark:border-accent rounded-3xl"
+    class="min-w-[180px] w-full h-full flex justify-center items-center bg-white border border-accent dark:border-accent rounded-3xl"
   >
     <img
       src="https://www.refract-agency.com/favicon.png"
@@ -12,7 +12,7 @@
   </div>
 
   <div class="md:mt-4 md:my-0">
-    <div class="flex flex-col md:flex-row md:items-center flex-wrap font-medium mb-2 md:mb-2 gap-3 md:gap-3">
+    <div class="flex flex-col md:flex-row md:items-center flex-wrap font-medium mb-2 md:mb-2 gap-2.5 md:gap-3">
       <h3 class="inline-block text-[26px] leading-[1.4]">Refract Agency</h3>
       <div class="md:flex hidden gap-3 flex-wrap">
         <span
@@ -28,7 +28,7 @@
     </div>
     <div>
       <p
-        class="text-[15px] leading-[1.55] font-[300] tracking-[0.2px] dark:text-muted-foreground"
+        class="text-[15px] leading-[1.55] font-[310] tracking-[0.2px] dark:text-muted-foreground"
       >
         My design, development and visualisation studio for creative businesses
         

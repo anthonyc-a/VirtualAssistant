@@ -108,7 +108,7 @@
 
 <!-- <HeroSwiper items={heroItems} autoplayInterval={5000} /> -->
 
-<div class="max-w-2xl mx-auto pb-48">
+<div class="max-w-2xl mx-auto">
   <div class="space-y-2 mb-6">
     {#if savedName !== ""}
       <h1
@@ -121,7 +121,7 @@
     {/if}
     {#if savedName === ""}
       <Heading
-        heading="Creating Digital Experiences with<br> Functional Design"
+        heading="Creating Digital Experiences with<br> Functional Design."
         subheading="I'm a Designer and Full-Stack Developer with over 7 years experience working with small to medium-sized businesses, startups and individuals."
         showBreak={true}
       />
@@ -183,14 +183,14 @@
 
   {#if savedName === ""}
     <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
-      <h3 class="text-2xl md:text-3xl font-medium">
+      <h3 class="text-2xl  text-center md:text-3xl font-medium">
         What I'm Working On
       </h3>
-      <p class="mt-3 text-muted-foreground leading-[1.5] text-[16px]">
+      <p class="mt-3  text-center text-muted-foreground leading-[1.5] text-[16px]">
         These are projects and companies that I've worked on/with. Some are
         well-established businesses.
       </p>
-      <div class="w-full h-[1px] my-8 mb-4 bg-[--color-secondary]"></div>
+      <div class="w-full h-[1px] my-6 mb-4 bg-[--color-secondary]"></div>
       {#each workItems.slice(0, 2) as item}
         <a
           href={item.link}
@@ -209,7 +209,7 @@
           </div>
           <div>
             <div class="flex flex-wrap items-center gap-3">
-              <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
+              <h4 class="w-full text-[22px] leading-8 md:w-fit">{item.title}</h4>
               {#each item.tags as tag}
                 <span
                 class="tag bg-accent px-3 p-1 !rounded-full whitespace-nowrap leading-[1.2]"
@@ -217,7 +217,7 @@
                 >
               {/each}
             </div>
-            <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
+            <p class="mt-4 md:mt-2 text-sm traking-[0.1px] text-muted-foreground text- md:text-[16px]">
               {item.description}
             </p>
           </div>
@@ -232,30 +232,31 @@
           href={item.link}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-col md:flex-row text-foreground md:items-center border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
+          class="flex flex-col md:flex-row !text-foreground md:items-center transition-all border border-border md:border-none gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
         >
-          <div
-            class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border"
-          >
-            <img
-              src={item.image}
-              alt="Project Logo"
-              class="w-full h-full object-cover"
-            />
+        <div
+        class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden r"
+        >
+          <img
+            src={item.image}
+            alt="Project Logo"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <h4 class="w-full text-[22px] leading-8 md:w-fit">{item.title}</h4>
+            {#each item.tags as tag}
+              <span
+              class="tag bg-accent px-3 p-1 !rounded-full whitespace-nowrap leading-[1.2]"
+                >{tag}</span
+              >
+            {/each}
           </div>
-          <div>
-            <div class="flex flex-wrap items-center gap-3">
-              <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
-              {#each item.tags as tag}
-                <span class="tag borderwhitespace-nowrap leading-[1.2]"
-                  >{tag}</span
-                >
-              {/each}
-            </div>
-            <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
-              {item.description}
-            </p>
-          </div>
+          <p class="mt-4 md:mt-2 tracking-[0.1px] text-sm text-muted-foreground md:text-[16px]">
+            {item.description}
+          </p>
+        </div>
         </a>
       {/each}
     </div>

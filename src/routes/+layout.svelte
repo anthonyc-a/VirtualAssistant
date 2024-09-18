@@ -11,30 +11,44 @@
   import Navigation from "../components/Navigation.svelte";
   import Hover from "../components/hover.svelte";
   import Footer from "../components/Footer.svelte";
-  import { browser } from '$app/environment';
-  import { fade } from 'svelte/transition';
-  import { navigating } from '$app/stores';
+  import { browser } from "$app/environment";
+  import { fade } from "svelte/transition";
+  import { navigating } from "$app/stores";
+  import { Mail } from "lucide-svelte";
 
-  let themeColor = '';
+  let themeColor = "";
+  let messaging = false;
+
+  // Add this line to create a reactive statement
+  $: isNavigating = $navigating !== null;
 
   function updateThemeColor() {
     if (browser) {
-      const isDark = document.documentElement.classList.contains('dark');
-      const backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
-      themeColor = backgroundColor || (isDark ? '#1a202c' : '#ffffff'); // Fallback colors
+      const isDark = document.documentElement.classList.contains("dark");
+      const backgroundColor = getComputedStyle(document.documentElement)
+        .getPropertyValue("--background")
+        .trim();
+      themeColor = backgroundColor || (isDark ? "#1a202c" : "#ffffff"); // Fallback colors
     }
   }
 
   onMount(() => {
     updateThemeColor();
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeColor);
-    
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", updateThemeColor);
+
     // Create a MutationObserver to watch for changes to the 'class' attribute of <html>
     const observer = new MutationObserver(updateThemeColor);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
     return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateThemeColor);
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", updateThemeColor);
       observer.disconnect();
     };
   });
@@ -53,18 +67,38 @@
 </script>
 
 <svelte:head>
-  <meta name="theme-color" content={themeColor}>
+  <meta name="theme-color" content={themeColor} />
 </svelte:head>
 
-<a href="/" class="fixed top-[20px] left-11 md:left-6 z-[99999] invert-[0.95] dark:invert-0">
-  <img src="/logo.svg" alt="Logo" class="w-[17px]" />
-</a>
-<MessageBar />
-<Sidebar />
+<div
+  class="w-full z-50 px-11 p-1.5 pt-5 flex justify-between items-center bg-transparent sticky top-0 left-0"
+>
+  <a href="/" class="relative invert-[0.85] dark:invert-0">
+    <img src="/logo.svg" alt="Logo" class="w-[17px]" />
+  </a>
+  <div class="flex items-center gap-3.5">
+    <Theme />
+    <div
+      role="presentation"
+      class="relative backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      on:click={() => (messaging = !messaging)}
+    >
+      <Mail class="w-[16px] h-[16px]" />
+    </div>
+  </div>
+</div>
+
+<MessageBar {messaging} />
+
 <Navigation />
 <Header />
 
-<div in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} class="md:container bg-background w-full pt-3 px-0 md:px-0 md:w-[calc(100%-40px)] max-w-3xl mx-auto">
-  <slot />
-  <Footer/>
-</div>
+{#key isNavigating}
+  <div
+    class="md:container bg-background w-full pt-3 px-0 md:px-0 md:w-[calc(100%-40px)] max-w-3xl mx-auto"
+    in:fade={{ duration: 200 }}
+  >
+    <slot />
+    <Footer />
+  </div>
+{/key}

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Home, User, Briefcase, Book, Globe, Folder } from "lucide-svelte";
-  import Theme from "./Theme.svelte";
   import { page } from "$app/stores";
+  import { haptic } from "../utils/haptic";
 
   let isExpanded = false;
   let currentPath = window.location.pathname;
@@ -41,6 +41,7 @@
 
 <div
   class="fixed flex p-1.5 px-3 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 bottom-4 left-1/2 -translate-x-1/2 z-[99999]"
+  use:haptic={100}
 >
   {#each navItems as item, index}
     <a
@@ -52,7 +53,7 @@
       class:border-none={item.href === $page.url.pathname}
       class:bg-opacity-100={item.href === $page.url.pathname}
     >
-      <svelte:component this={item.icon} size={16} strokeWidth={2} />
+      <svelte:component this={item.icon} size={17} strokeWidth={2} />
     </a>
   {/each}
 </div>

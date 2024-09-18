@@ -4,7 +4,7 @@
 
 <div class="max-w-2xl mx-auto px-2">
   <Heading
-    heading=" Interface Designer & Full-Stack Developer"
+    heading="Blog & Thoughts Soon"
     subheading="Usually focussing on an iterative approach to design and development where products can naturally grow  and be tailored by clients."
     showBreak={false}
   />

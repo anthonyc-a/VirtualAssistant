@@ -1,6 +1,6 @@
 export const workItems = [
   {
-    title: "UX/UI & Full Stack at SI World",
+    title: "Full-Stack at SI World",
     tags: ["Consultancy", "SaaS"],
     description: "Senior UX/UI & Full Stack Development.",
     image: "/si-world.png",
@@ -8,7 +8,7 @@ export const workItems = [
   },
 
   {
-    title: "Dev at De Salvo Yachts",
+    title: "Lead at De Salvo Yachts",
     tags: ["Consultancy", "In Progress"],
     description: "Creating the online presence for a yacht designer.",
     image: "/dsy.png",
@@ -29,14 +29,14 @@ export const workItems = [
     link: "https://aarkyv.com/studio",
   },
   {
-    title: "UX/UI & Front End at Double",
+    title: "UX/UI & Front-End at Double",
     tags: ["Consultancy", "Contract"],
     description: "Growth marketing agency for ambitious businesses.",
     image: "/double.png",
     link: "https://www.linkedin.com/company/double-agency/",
   },
   {
-    title: "Back End at Fabric Token",
+    title: "Back-End at Fabric Token",
     tags: ["Data Management", "AWS"],
     description: "Web3 reward platform and ecosystem.",
     image: "/fabricToken.svg",
@@ -44,7 +44,7 @@ export const workItems = [
   },
 
   {
-    title: "Full Stack Developer @ Samarai",
+    title: "Full-Stack at Samarai",
     tags: ["Product Development"],
     description: "Note-taking app using a semantic graph database.",
     image: "/samarai.png",
@@ -52,20 +52,26 @@ export const workItems = [
   },
 
   {
-    title: "Designer + Developer @ Verve",
-    tags: ["Studio Client", "Web3"],
+    title: "Designer & Developer at Verve",
+    tags: ["Streaming", "Web3"],
     description: "Web3 Streaming platform built on Velas Blockchain.",
     image: "/verve.png",
     link: "https://vervetv.app",
   },
   {
-    title: "Developer @ Dean Dsoza Blog",
+    title: "Developer at Rostar Live",
+    tags: ["Agency", "Consultancy"],
+    description: "Mental health blog for a writer and storyteller.",
+    image: "/rostar.png",
+    link: "https://deandsouzamindset.com",
+  },
+  {
+    title: "Developer at Dean Dsoza Blog",
     tags: ["Blog Site", "Consultancy"],
     description: "Mental health blog for a writer and storyteller.",
     image: "http://thedeandsouzamindset.ctcin.bio/upload/969041612109977.JPG",
     link: "https://deandsouzamindset.com",
   },
-
   {
     title: "Front End Developer @ Snapi",
     tags: ["Series A Startup"],

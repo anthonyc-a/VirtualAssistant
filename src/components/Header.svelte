@@ -1,18 +1,18 @@
 <header
-  class="pb-5 mt-10 px-4 max-w-2xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-4 border-b border-border"
+  class="pb-5 mt-0 px-4 max-w-2xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-3 border-b border-accent"
 >
   <div class="flex flex-col items-center text-center">
     <a
       href="https://wa.me/447715929392"
       target="_blank"
-      class=" w-16 h-16 rounded-full overflow-hidden mb-3 shadow-sm border border-border dark:border-transparent hover:borer-2 transition-all hover:border-success"
+      class=" w-16 h-16 rounded-full overflow-hidden mb-3 shadow-sm border border-accent dark:border-transparent hover:borer-2 transition-all hover:border-success"
     >
       <img src="/me.jpeg" alt="Me" class="w-full h-full object-cover" />
     </a>
     <div class="flex flex-col justify-center ml-4">
       <div class="flex justify-center items-center gap-2.5">
         <a href="/" class="text-lg">
-          <h1 class="font-medium">Anthony Animba</h1>
+          <h1 class="font-[510]">Anthony Animba</h1>
         </a>
         <a
           href="https://www.instagram.com/aarkyvstudios/"
@@ -62,7 +62,7 @@
     </div>
   </div>
   <span
-    class="tag leading-[1.7] font-medium bg-foreground text-background text-[14px] p-2.5 py-1 rounded-lg cursor-pointer mt-2"
+    class="tag leading-[1.7] font-[450] tracking-[0.1px] bg-foreground text-background text-[14px] p-2.5 py-1 rounded-lg cursor-pointer mt-2"
     on:click={() => (window.location.href = "mailto:anthonyc.animba@gmail.com")}
     role="presentation">anthonyc.animba@gmail.com</span
   >
