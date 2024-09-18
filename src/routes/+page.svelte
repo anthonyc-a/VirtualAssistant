@@ -121,7 +121,7 @@
     {/if}
     {#if savedName === ""}
       <Heading
-        heading="Creating Digital Experiences with<br> Functional Design."
+        heading="Creating Digital Experiences with<br> Functional Design"
         subheading="I'm a Designer and Full-Stack Developer with over 7 years experience working with small to medium-sized businesses, startups and individuals."
         showBreak={true}
       />
