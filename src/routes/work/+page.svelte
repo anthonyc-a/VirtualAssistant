@@ -49,14 +49,16 @@
               >
             {/each}
           </div>
-          <p class="mt-4 md:mt-2 text-muted-foreground text-sm">{item.description}</p>
+          <p class="mt-4 md:mt-2 text-muted-foreground text-sm">
+            {item.description}
+          </p>
         </div>
       </a>
     {/each}
 
     {#if !showMore && workItems.length > maxItems}
       <button
-        class="mx-auto block text-[--color-primary] mt-8"
+        class="mx-auto block px-3 p-1 bg-accent rounded-full mt-8"
         on:click={toggleShowMore}
       >
         Show More
@@ -65,7 +67,7 @@
 
     {#if showMore}
       <button
-        class="mx-auto block text-[--color-primary] mt-8"
+        class="mx-auto block px-3 p-1 bg-accent rounded-full mt-8"
         on:click={toggleShowMore}
       >
         Show Less

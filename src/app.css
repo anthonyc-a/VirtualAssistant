@@ -10,7 +10,7 @@
 }
 
 :root {
-  --background: 0 0% 95.5%;
+  --background: 0 0% 97.5%;
   --foreground: 0 0% 12.5%;
 
   --muted: 0 0% 93.1%;
@@ -86,9 +86,13 @@
   --ai: 32 100% 50%;
   --ai-foreground: 32 100% 90%;
 }
+body,html {
+  background-color: var(--background);
+}
 
 main {
-  padding-top: 24px; /* Height of the titlebar */
+  background-color: var(--background);
+
 }
 
 /* Webkit browsers (Chrome, Safari, newer versions of Edge) */
