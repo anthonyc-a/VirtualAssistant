@@ -1,6 +1,6 @@
 export const workItems = [
   {
-    title: "Full-Stack at Stocknet Inst..",
+    title: "Full-Stack at Stocknet Inst.",
     tags: ["Consultancy", "SaaS"],
     description: "Senior UX/UI & Full Stack Development.",
     image: "/si-world.png",

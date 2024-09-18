@@ -6,14 +6,27 @@
 
   let isExpanded = false;
   let currentPath = window.location.pathname;
+  let isVisible = true;
+  let lastScrollY = 0;
 
   onMount(() => {
     const handlePathChange = () => {
       currentPath = window.location.pathname;
     };
 
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      isVisible = currentScrollY < lastScrollY || currentScrollY < 50;
+      lastScrollY = currentScrollY;
+    };
+
     window.addEventListener("popstate", handlePathChange);
-    return () => window.removeEventListener("popstate", handlePathChange);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("popstate", handlePathChange);
+      window.removeEventListener("scroll", handleScroll);
+    };
   });
 
   onMount(() => {
@@ -39,13 +52,15 @@
 </script>
 
 <div
-  class="fixed flex p-1.5 px-3 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 bottom-4 left-1/2 -translate-x-1/2 z-[99999]"
+  class="fixed flex p-1.5 px-3 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 z-[99999] transition-all duration-300"
+  class:bottom-4={isVisible}
+  class:-bottom-20={!isVisible}
   use:haptic={100}
 >
   {#each navItems as item, index}
     <a
       href={item.href}
-      class="nav-item flex overflow-hidden justify-center border border-border bg-background bg-oapcity-90  backdrop-blur items-center rounded-full !font-light w-11 h-11"
+      class="nav-item flex overflow-hidden justify-center border border-border bg-background bg-opacity-90 backdrop-blur items-center rounded-full !font-light w-11 h-11"
       class:expanded={true}
       class:bg-foreground={item.href === $page.url.pathname}
       class:text-background={item.href === $page.url.pathname}

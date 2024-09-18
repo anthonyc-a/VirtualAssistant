@@ -4,7 +4,7 @@
 
   const items = [
     {
-    title: "Branding and Identity",
+    title: "Branding & Identity",
     description:
       "Extensive experience working in the realm of digital marketing and branding enables me to establish a strong foundation using typography, color and photography to ensure users perceive your brand in a true and consistent manner.",
     icon: Palette,
