@@ -28,7 +28,7 @@
       const backgroundColor = getComputedStyle(document.documentElement)
         .getPropertyValue("--background")
         .trim();
-      themeColor = backgroundColor || (isDark ? "#1a202c" : "#ffffff"); // Fallback colors
+      themeColor = backgroundColor || (isDark ? "#1a202c" : "#999"); // Fallback colors
     }
   }
 

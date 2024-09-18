@@ -14,7 +14,7 @@
   <Heading
     heading="Collaborating With Clients From Across The Globe"
     subheading="These are the projects and companies that I've worked on/with. Some are well-established
-        businesses backed by VCs.. "
+        businesses backed by VCs. "
     showBreak={true}
   />
 

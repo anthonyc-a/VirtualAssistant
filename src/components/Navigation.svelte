@@ -21,7 +21,6 @@
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
 
-      // Check if the cursor is in the left quarter of the top half
       isExpanded = clientX < innerWidth / 4 && clientY < innerHeight / 2;
     };
 
@@ -57,23 +56,3 @@
     </a>
   {/each}
 </div>
-
-<style>
-  .nav-item {
-    transform: translateY(0);
-    opacity: 0;
-    scale: 0;
-  }
-
-  .nav-item.expanded {
-    transform: translateY(0);
-    opacity: 1;
-    scale: 1;
-  }
-
-  /* Always show the first item */
-  .nav-item:first-child {
-    opacity: 1;
-    scale: 1;
-  }
-</style>
