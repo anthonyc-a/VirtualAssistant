@@ -3,6 +3,7 @@
   import { tweened } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
   import CaseStudy from "./CaseStudy.svelte";
+  import Theme from "./Theme.svelte";
 
   let showSidebar = false;
   let hoverAreaWidth;
@@ -34,25 +35,28 @@
 </script>
 
 <div
-  class="fixed top-0 right-0 w-1/5 h-1/5 h-full z-50"
+  class="hidden md:block fixed top-0 right-0 w-1/5 h-1/5 h-full z-50"
   on:mouseenter={() => toggleSidebar(true)}
 >
   <!-- Hoverable area -->
 </div>
 
-<div class="fixed top-12 right-5 z-40 text-[#999]">
+<div
+  class="fixed flex flex-col items-center gap-6 top-6 right-11 md:right-5 z-40 text-[#999]"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
     fill="currentColor"
     viewBox="0 0 256 256"
-    class="w-5 h-5 rotate-180"
+    class="w-5 h-5 rotate-180 hidden sm:block"
   >
     <path
       d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H80V200H40ZM216,200H96V56H216V200Z"
     ></path>
   </svg>
+  <Theme />
 </div>
 
 {#if hovered}

@@ -44,7 +44,7 @@
   });
 </script>
 
-<div class="relative titlebar bg-foreground text-background font-medium rounded-sm z-[999999]">
+<div class="relative titlebar bg-foreground text-background font-medium rounded-md z-[999999]">
   <div class="titlebar-drag-region" data-tauri-drag-region></div>
   <div
     class="titlebar-text font-medium flex justify-between w-full items-center gap-2"
@@ -61,11 +61,6 @@
         <div class="w-[5px] h-[5px] rounded-full bg-green-500"></div>
         Portfolio Website
       </div>
-    {/if}
-    {#if time === ""}
-      <span class="hidden sm:inline-block pr-24"
-        >Currently available for freelance and collaborations.</span
-      >
     {/if}
     <div class="opacity-0">.</div>
   </div>

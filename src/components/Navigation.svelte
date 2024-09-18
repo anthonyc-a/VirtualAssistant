@@ -1,8 +1,20 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Home, User, Briefcase, Book, Globe, Folder } from "lucide-svelte";
+  import Theme from "./Theme.svelte";
+  import { page } from "$app/stores";
 
   let isExpanded = false;
+  let currentPath = window.location.pathname;
+
+  onMount(() => {
+    const handlePathChange = () => {
+      currentPath = window.location.pathname;
+    };
+
+    window.addEventListener("popstate", handlePathChange);
+    return () => window.removeEventListener("popstate", handlePathChange);
+  });
 
   onMount(() => {
     const handleMouseMove = (e: any) => {
@@ -21,23 +33,26 @@
     { href: "/", icon: Home, isFirst: true },
     { href: "/about", icon: User },
     { href: "/work", icon: Briefcase },
-    { href: "/blog", icon: Book },
     { href: "/gallery", icon: Folder },
+    { href: "/blog", icon: Book },
     { href: "https://portfolio-2024-ten-umber.vercel.app/", icon: Globe },
   ];
 </script>
 
 <div
-  class="fixed flex flex-col items-center gap-2.5 top-[92px] left-3.5 z-[99999]"
+  class="fixed flex p-1.5 px-3 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 bottom-4 left-1/2 -translate-x-1/2 z-[99999]"
 >
   {#each navItems as item, index}
     <a
       href={item.href}
-      class="nav-item flex overflow-hidden justify-center items-center rounded-full !font-light text-muted-foreground hover:text-foreground bg-opacity-30 w-9 h-9 transition-all duration-300 ease-in-out"
+      class="nav-item flex overflow-hidden justify-center border border-border bg-background bg-oapcity-90  backdrop-blur items-center rounded-full !font-light w-11 h-11"
       class:expanded={true}
+      class:bg-foreground={item.href === $page.url.pathname}
+      class:text-background={item.href === $page.url.pathname}
+      class:border-none={item.href === $page.url.pathname}
+      class:bg-opacity-100={item.href === $page.url.pathname}
     >
-      <!-- isExpanded || item.isFirst -->
-      <svelte:component this={item.icon} size={18} strokeWidth={1.5} />
+      <svelte:component this={item.icon} size={16} strokeWidth={2} />
     </a>
   {/each}
 </div>

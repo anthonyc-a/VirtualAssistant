@@ -19,6 +19,9 @@
   import Video from "../components/Video.svelte";
   import { workItems } from "../data/workItems";
   import MessageBar from "../components/MessageBar.svelte";
+  import HeroSwiper from "../components/Misc/Hero/HeroSwiper.svelte";
+  import { heroItems } from "../data/Hero";
+  import Heading from "../components/Heading.svelte";
 
   interface FileInfo {
     name: string;
@@ -103,163 +106,161 @@
   }
 </script>
 
-<div class="space-y-2 mb-6">
-  {#if savedName !== ""}
-    <h1
-      class="text-3xl md:text-3xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
-    >
-      Good Evening, {savedName}
-    </h1>
+<!-- <HeroSwiper items={heroItems} autoplayInterval={5000} /> -->
 
-    <p class="w-fit mx-auto text-lg text-gray-300">What should we work on?</p>
-  {/if}
-  {#if savedName === ""}
-    <h1
-      class="text-3xl text-center md:text-[32px] max-w-2xl xl:max-w-3xl tracking-[0.0125em] !leading-[1.25] font-[500] mx-auto pt-2 pb-0 w-fit"
-    >
-      Creating Digital Experiences with Clear & <br class="hidden xl:inline"> Functional Design.
-    </h1>
-    <p
-      class="pt-2.5 text-center leading-[1.65] tracking-wide font-light dark:text-muted-foreground max-w-2xl mx-auto"
-    >
-      A Designer and Full-Stack Developer with over 7 years experience working
-      with small to medium-sized businesses, startups and individuals ensuring
-      brand growth with thoughtful design and incisive technical execution.
-    </p>
-  {/if}
-</div>
+<div class="max-w-2xl mx-auto pb-48">
+  <div class="space-y-2 mb-6">
+    {#if savedName !== ""}
+      <h1
+        class="text-3xl md:text-3xl xl:text-4xl tracking-wide font-medium mx-auto pb-0 w-fit"
+      >
+        Good Evening, {savedName}
+      </h1>
 
-<Hero />
+      <p class="w-fit mx-auto text-lg text-gray-300">What should we work on?</p>
+    {/if}
+    {#if savedName === ""}
+      <Heading
+        heading="Creating Digital Experiences with<br> Functional Design"
+        subheading="I'm a Designer and Full-Stack Developer with over 7 years experience working with small to medium-sized businesses, startups and individuals."
+        showBreak={true}
+      />
+    {/if}
+  </div>
 
-{#if savedName}
-  <div class="grid grid-cols-5 gap-12 mt-12">
-    <p
-      class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30 max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
-    >
-      <Claude {message} />
-    </p>
-    <div
-      class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
-    >
-      <h3 class="text-lg font-medium">Recently Discussed</h3>
-      <div
-        class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+  <Hero />
+
+  {#if savedName}
+    <div class="grid grid-cols-5 gap-12 mt-12">
+      <p
+        class="text-gray-200 h-fit col-span-3 bg-[#252525] bg-opacity-30 max-w-xl backdrop-blur-sm border border-[#252525] p-6 rounded-xl text-sm leading-relaxed tracking-wide"
       >
-        Something about a calorie counter
-      </div>
+        <Claude {message} />
+      </p>
       <div
-        class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        class="text-gray-200 col-span-2 max-w-xl rounded-2xl text-sm leading-relaxed tracking-wide"
       >
-        A way to bulk edit images
-      </div>
-      <div
-        class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
-      >
-        A way to bulk edit images
+        <h3 class="text-lg font-medium">Recently Discussed</h3>
+        <div
+          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        >
+          Something about a calorie counter
+        </div>
+        <div
+          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        >
+          A way to bulk edit images
+        </div>
+        <div
+          class="w-full mt-3 p-4 rounded-xl hover:border-white h-12 bg-[#252525] bg-opacity-30 backdrop-blur-sm border border-[#252525] flex items-center"
+        >
+          A way to bulk edit images
+        </div>
       </div>
     </div>
-  </div>
-{/if}
+  {/if}
 
-<p>{greetMsg}</p>
+  <p>{greetMsg}</p>
 
-<!-- <Weather /> -->
-{#if savedName}
-  <div class="grid md:grid-cols-2 gap-6">
-    <ImageGenerator />
-    <Headlines />
-    <Pomodoro />
-    <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
-      {#each files as file}
-        <li class="flex mx-auto items-center justify-between">
-          <svelte:component this={getIconComponent(file)} size={24} />
-          {file.name}
-        </li>
+  <!-- <Weather /> -->
+  {#if savedName}
+    <div class="grid md:grid-cols-2 gap-6">
+      <ImageGenerator />
+      <Headlines />
+      <Pomodoro />
+      <ul class="w-full max-w-md border p-6 rounded-md mx-auto">
+        {#each files as file}
+          <li class="flex mx-auto items-center justify-between">
+            <svelte:component this={getIconComponent(file)} size={24} />
+            {file.name}
+          </li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
+
+  <Video />
+
+  {#if savedName === ""}
+    <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
+      <h3 class="text-2xl md:text-3xl font-medium">
+        What I'm Working On
+      </h3>
+      <p class="mt-3 text-muted-foreground leading-[1.5] text-[16px]">
+        These are projects and companies that I've worked on/with. Some are
+        well-established businesses.
+      </p>
+      <div class="w-full h-[1px] my-8 mb-4 bg-[--color-secondary]"></div>
+      {#each workItems.slice(0, 2) as item}
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col md:flex-row !text-foreground md:items-center transition-all border border-border md:border-none gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
+          >
+          <div
+          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden r"
+          >
+            <img
+              src={item.image}
+              alt="Project Logo"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
+              {#each item.tags as tag}
+                <span
+                class="tag bg-accent px-3 p-1 !rounded-full whitespace-nowrap leading-[1.2]"
+                  >{tag}</span
+                >
+              {/each}
+            </div>
+            <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
+              {item.description}
+            </p>
+          </div>
+        </a>
       {/each}
-    </ul>
-  </div>
-{/if}
-
-<Video />
-
-{#if savedName === ""}
-  <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
-    <h3 class="text-2xl md:text-3xl font-medium">What I'm Currently Working On</h3>
-    <p class="mt-4 text-muted-foreground leading-[1.5] text-[16px]">
-      These are projects and companies that I've worked on/with. Some are
-      well-established businesses backed by VCs, while others are MVP/initial
-      stage projects I've been able to create and contribute to from scratch.
-    </p>
-    <div class="w-full h-[1px] my-8 mb-4 bg-[--color-secondary]"></div>
-    {#each workItems.slice(0, 2) as item}
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex flex-col md:flex-row md:items-center !text-foreground border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
-      >
-        <div
-          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border "
+    </div>
+    <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
+      <h3 class="text-2xl font-medium">Previously worked on</h3>
+      <div class="w-full h-[1px] bg-[--color-secondary]"></div>
+      {#each workItems.slice(2, 6) as item}
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col md:flex-row text-foreground md:items-center border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
         >
-          <img
-            src={item.image}
-            alt="Project Logo"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div>
-          <div class="flex flex-wrap items-center gap-3">
-            <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
-            {#each item.tags as tag}
-              <span
-                class="tag border border- p-1 px-2 rounded-lg whitespace-nowrap leading-[1.2]"
-                >{tag}</span
-              >
-            {/each}
+          <div
+            class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border"
+          >
+            <img
+              src={item.image}
+              alt="Project Logo"
+              class="w-full h-full object-cover"
+            />
           </div>
-          <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
-            {item.description}
-          </p>
-        </div>
-      </a>
-    {/each}
-  </div>
-  <div class="mt-16 px-6 md:px-0  max-w-2xl mx-auto">
-    <h3 class="text-2xl font-medium">Previously worked on</h3>
-    <div class="w-full h-[1px] bg-[--color-secondary]"></div>
-    {#each workItems.slice(2, 6) as item}
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex flex-col md:flex-row text-foreground md:items-center border md:border-none gap-4 mb-6 md:mb-0 hover:bg-[--color-tertiary] transition-all p-4 px-3 rounded-xl"
-      >
-        <div
-          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-lg md:rounded-2xl overflow-hidden border"
-        >
-          <img
-            src={item.image}
-            alt="Project Logo"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div>
-          <div class="flex flex-wrap items-center gap-3">
-            <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
-            {#each item.tags as tag}
-              <span class="tag borderwhitespace-nowrap leading-[1.2]"
-                >{tag}</span
-              >
-            {/each}
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <h4 class="w-full text-xl md:w-fit">{item.title}</h4>
+              {#each item.tags as tag}
+                <span class="tag borderwhitespace-nowrap leading-[1.2]"
+                  >{tag}</span
+                >
+              {/each}
+            </div>
+            <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
+              {item.description}
+            </p>
           </div>
-          <p class="mt-4 md:mt-2 text-sm md:text-[16px]">
-            {item.description}
-          </p>
-        </div>
-      </a>
-    {/each}
-  </div>
-{/if}
+        </a>
+      {/each}
+    </div>
+  {/if}
+</div>
 
 <style>
   .logo {

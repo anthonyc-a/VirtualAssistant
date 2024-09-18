@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   import { Sun, Moon } from "lucide-svelte";
 
   let isDark = false;
-  let prefersDark:any;
+  let prefersDark: any;
 
   onMount(() => {
-    prefersDark = window.matchMedia('(prefers-color-scheme: light)');
-    
+    prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
     // Initial setup
     setThemeFromSystem();
 
     // Listen for changes in system preference
-    prefersDark.addEventListener('change', setThemeFromSystem);
+    prefersDark.addEventListener("change", setThemeFromSystem);
 
     return () => {
       // Clean up the event listener when the component is destroyed
-      prefersDark.removeEventListener('change', setThemeFromSystem);
+      prefersDark.removeEventListener("change", setThemeFromSystem);
     };
   });
 
@@ -32,26 +32,21 @@
 
   function updateTheme() {
     if (isDark) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }
 </script>
 
-<div 
-  class="fixed bg-transparent flex justify-center items-center bottom-4 left-4 w-9 h-9 rounded-lg border cursor-pointer transition-colors duration-200 ease-in-out"
-  class:bg-background={!isDark}
-  class:bg-secondary={isDark}
-  class:border-border={!isDark}
-  class:border-secondary={isDark}
-  class:hover:bg-secondary={!isDark}
-  class:hover:bg-muted={isDark}
+<div
+  class="relative bg-transparent flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
   on:click={toggleTheme}
+  role="presentation"
 >
   {#if isDark}
-    <Sun class="w-4 h-4 text-foreground" />
+    <Moon class="w-[18px] h-[18px] text-muted-foreground" />
   {:else}
-    <Moon class="w-4 h-4 text-foreground" />
+    <Sun class="w-[18px] h-[18px] text-muted-foreground" />
   {/if}
 </div>

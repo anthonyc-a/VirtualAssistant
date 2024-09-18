@@ -124,35 +124,35 @@
 
 <form
   on:submit|preventDefault={handleSubmit}
-  class="w-11/12 md:w-full fixed bottom-5 left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent backdrop-blur text-left border border-muted-foreground !bg-opacity-50 shadow-lg text-foreground rounded-full overflow-hidden"
-  style="height: {isFocused ? 'auto' : '3.5rem'}; max-height: {isFocused
-    ? '80vh'
+  class="w-[95%] md:w-full hidden overflow-scroll md:overflow-hidden fixed bottom-[81px] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
+  style="height: {isFocused ? 'auto' : '3.4rem'}; max-height: {isFocused
+    ? '35vh'
     : '3.5rem'}; border-radius: {isFocused
     ? '20px'
-    : '20px'}; border-color: {fileError || errors.length > 0
+    : '56px'}; border-color: {fileError || errors.length > 0
     ? 'rgb(248 113 113)'
     : 'transparent' &&
       projectTitle &&
       'var(--foreground)'}; transition: max-height 0.4s ease;"
 >
-  <div class="p-6 py-2.5 border-b border-muted flex items-center">
+  <div class="p-5 py-2.5 border-b border-muted flex items-center">
     <Folder class="text-muted-foreground mr-3" size={18} />
     <input
       placeholder="Describe your project here..."
-      class="w-full bg-transparent  !outline-none placeholder:tracking-[0.0125em] placeholder:text-muted-foreground  text-foreground"
+      class="w-full bg-transparent  !outline-none text-[16px] placeholder:tracking-[0.1px] placeholder:text-muted-foreground  text-foreground"
       bind:value={projectTitle}
       on:focus={handleFocus}
       on:blur={handleBlur}
     />
     <button
       type="submit"
-      class="ml-2 -me-3 text-background hover:text-subaccent transition-colors bg-foreground rounded-xl p-2 {isProjectTitleValid
+      class="ml-2 -me-3 text-background hover:text-subaccent transition-colors bg-foreground rounded-full p-2 {isProjectTitleValid
         ? ''
-        : 'opacity-50 cursor-not-allowed'}"
+        : 'opacity-100 cursor-not-allowed'}"
       aria-label="Send message"
       disabled={!isProjectTitleValid}
     >
-      <Send size={18} />
+      <Send size={17} />
     </button>
   </div>
 
