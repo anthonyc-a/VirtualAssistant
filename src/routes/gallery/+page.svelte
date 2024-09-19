@@ -81,7 +81,7 @@
 				<img src={image.src} alt={image.alt} class="w-full h-full object-cover" />
 			{/await}
 			{#if image.chroma}
-				<a href="https://chroma.co.in" target="_blank" rel="noreferrer" class="hover:brightness-75 transition-all">
+				<a href="https://chroma-v2.vercel.app" target="_blank" rel="noreferrer" class="hover:brightness-75 transition-all">
 					<img
 						src="/app-icon.png"
 						alt="Chroma"
