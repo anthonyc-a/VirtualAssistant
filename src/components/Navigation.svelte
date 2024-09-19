@@ -16,6 +16,7 @@
   let currentPath = window.location.pathname;
   let isVisible = true;
   let lastScrollY = 0;
+  let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   onMount(() => {
     const handlePathChange = () => {
@@ -28,12 +29,18 @@
       lastScrollY = currentScrollY;
     };
 
+    const handleResize = () => {
+      isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    };
+
     window.addEventListener("popstate", handlePathChange);
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("popstate", handlePathChange);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   });
 
@@ -55,9 +62,13 @@
     { href: "/work", icon: Briefcase },
     { href: "/gallery", icon: Folder },
     { href: "/blog", icon: Book },
-    { href: "/contact", icon: Mail },
     { href: "https://portfolio-2024-ten-umber.vercel.app/", icon: Globe },
   ];
+
+  // Add the contact link conditionally based on screen size
+  $: if (isDesktop) {
+    navItems.push({ href: "/contact", icon: Mail });
+  }
 </script>
 
 <div
