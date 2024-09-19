@@ -4,8 +4,8 @@
 
 <div class="max-w-2xl mx-auto px-2">
   <Heading
-    heading="Blog & Thoughts Soon"
-    subheading="Usually focussing on an iterative approach to design and development where products can naturally grow  and be tailored by clients."
+    heading="Blog & Thoughts"
+    subheading="In progress"
     showBreak={false}
   />
 </div>

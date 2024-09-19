@@ -32,7 +32,7 @@
 
 <div class="max-w-2xl mx-auto px-2">
   <Heading
-    heading="Interface Designer & Senior Full-Stack Developer"
+    heading="Senior Interface Designer &  Full-Stack Developer"
     subheading="Embracing an iterative approach to design and development, creating flexible products that evolve with client needs and market demands."
     showBreak={false}
   />
