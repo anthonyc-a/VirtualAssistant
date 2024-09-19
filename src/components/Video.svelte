@@ -4,6 +4,7 @@
 		loop
 		muted
 		playsinline
+		autoplay
 		class="w-full h-full object-cover"
 	></video>
 </div>

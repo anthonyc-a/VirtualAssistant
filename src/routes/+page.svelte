@@ -183,10 +183,10 @@
 
   {#if savedName === ""}
     <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
-      <h3 class="text-2xl  text-center md:text-3xl font-medium">
+      <h3 class="text-2xl md:text-3xl font-medium">
         What I'm Working On Now
       </h3>
-      <p class="mt-3  text-center text-muted-foreground leading-[1.5] text-[16px]">
+      <p class="mt-3   text-muted-foreground leading-[1.5] text-[16px]">
         These are projects and companies that I've worked on/with. Some are
         well-established businesses.
       </p>

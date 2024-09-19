@@ -52,7 +52,7 @@
 </script>
 
 <div
-  class="fixed flex p-1.5 px-3 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 z-[99999] transition-all duration-300"
+  class="fixed flex p-1.5 px-2 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 z-[99999] transition-all duration-300"
   class:bottom-4={isVisible}
   class:-bottom-20={!isVisible}
   use:haptic={100}
