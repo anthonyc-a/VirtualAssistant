@@ -12,7 +12,7 @@
 
 <div class="max-w-2xl mx-auto">
   <Heading
-    heading="Collaborating With Clients from Across the Globe"
+    heading="Collaborating With Clients<br> from Across the Globe"
     subheading="These are the projects and companies that I've worked on/with. Some are well-established
         businesses backed by VCs. "
     showBreak={true}

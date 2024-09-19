@@ -62,7 +62,7 @@
     </div>
   </div>
   <span
-    class="tag leading-[1.7] font-[450] tracking-[0.1px] bg-foreground text-background text-[14px] p-2.5 py-1 rounded-2xl cursor-pointer mt-2"
+    class="tag leading-[1.7] font-[450] tracking-[0.1px] bg-accent text-foreground text-[14px] p-2.5 py-1 rounded-2xl cursor-pointer mt-2"
     on:click={() => (window.location.href = "mailto:anthonyc.animba@gmail.com")}
     role="presentation">anthonyc.animba@gmail.com</span
   >

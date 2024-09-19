@@ -1,6 +1,14 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Home, User, Briefcase, Book, Globe, Folder } from "lucide-svelte";
+  import {
+    Home,
+    User,
+    Briefcase,
+    Book,
+    Globe,
+    Folder,
+    Mail,
+  } from "lucide-svelte";
   import { page } from "$app/stores";
   import { haptic } from "../utils/haptic";
 
@@ -47,6 +55,7 @@
     { href: "/work", icon: Briefcase },
     { href: "/gallery", icon: Folder },
     { href: "/blog", icon: Book },
+    { href: "/contact", icon: Mail },
     { href: "https://portfolio-2024-ten-umber.vercel.app/", icon: Globe },
   ];
 </script>
@@ -58,9 +67,12 @@
   use:haptic={100}
 >
   {#each navItems as item, index}
+    {#if index === 3 || (index > 3 && (index - 3) % 2 === 0)}
+      <div class="h-8 w-px bg-border"></div>
+    {/if}
     <a
       href={item.href}
-      class="nav-item flex overflow-hidden justify-center border border-border bg-background bg-opacity-90 backdrop-blur items-center rounded-full !font-light w-11 h-11"
+      class="nav-item flex overflow-hidden transition-colors hover:bg-foreground hover:text-background justify-center border border-border bg-background bg-opacity-90 backdrop-blur items-center rounded-full !font-light w-11 h-11"
       class:expanded={true}
       class:bg-foreground={item.href === $page.url.pathname}
       class:text-background={item.href === $page.url.pathname}

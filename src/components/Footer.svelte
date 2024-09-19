@@ -4,7 +4,7 @@
 </script>
 
 <footer
-  class="max-w-[640px] w-[calc(100%-64px)] mx-auto flex flex-col md:flex-row justify-between items-center px-6 mt-12 pt-10 pb-28 md:pb-40 border-t border-accent"
+  class="max-w-[640px] w-[calc(100%-64px)] mx-auto flex flex-col md:flex-row justify-between items-center px-6 mt-12 pt-10 pb-28 md:pb-12 border-t border-accent"
 >
   <div class="flex items-center gap-6">
     <a
@@ -51,7 +51,7 @@
     <Theme />
     <a
       href="#"
-      class="relative -ms-3.5 backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative invert -ms-3.5 backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
     >
       <ArrowUp size={16} />
     </a>

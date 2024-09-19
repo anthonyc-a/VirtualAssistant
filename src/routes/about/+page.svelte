@@ -38,7 +38,7 @@
   />
 
   <div
-    class="flex flex-col gap-6 mt-8 px-4 md:p-8 md:border border-border rounded-3xl"
+    class="flex flex-col gap-6 mt-8 px-4 md:p-8 md:border border-border dark:border-accent rounded-3xl"
   >
     {#each items as item}
       <div class="p-6 px-8 border border-border dark:border-accent rounded-3xl flex flex-col gap-3 items-start">
