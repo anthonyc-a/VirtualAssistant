@@ -28,7 +28,7 @@
     </div>
     <div>
       <p
-        class="text-[15px] leading-[1.55] font-[310] tracking-[0.2px] dark:text-muted-foreground"
+        class="text-[16px] leading-[1.55] font-[310] tracking-[0.2px] dark:text-muted-foreground"
       >
         My design, development and visualisation studio for creative businesses
         

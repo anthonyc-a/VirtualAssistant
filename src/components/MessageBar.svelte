@@ -34,7 +34,7 @@
   const MAX_FILES = 3;
 
   $: isProjectTitleValid = projectTitle.trim().length > 0;
-  $: if (isFocused) {
+  $: if (messaging) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "";
@@ -141,6 +141,12 @@
 </script>
 
 {#if messaging}
+  <div
+    role="presentation"
+    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-black/80"
+    on:click={notMessaging}
+  ></div>
+
   {#if isFocused}
     <div
       transition:fade={{ duration: 200 }}
@@ -163,9 +169,9 @@
 
   <form
     on:submit|preventDefault={handleSubmit}
-    class="w-[95%] fade-up mb-1.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed  left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
+    class="w-[95%] z-[99999999] fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed  left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-65 backdrop-blur text-left border border-border text-foreground rounded-full"
     style="height: {isFocused ? 'auto' : '3.4rem'}; max-height: {isFocused
-      ? '35vh'
+      ? '45vh'
       : '3.5rem'}; border-radius: {isFocused
       ? '20px'
       : '56px'}; border-color: {fileError || errors.length > 0
@@ -184,6 +190,14 @@
         bind:value={projectTitle}
         on:focus={handleFocus}
         on:blur={handleBlur}
+        readonly
+        on:click={() => {
+          if (window.matchMedia("(max-width: 1024px)").matches) {
+        handleFocus();
+          } else {
+        document.querySelector('input[readonly]').removeAttribute('readonly');
+          }
+        }}
       />
       <button
         type="submit"
@@ -200,7 +214,7 @@
     {#if isFocused}
       <div
         transition:fly={{ y: 10, duration: 500, easing: cubicOut }}
-        class="p-4 space-y-6"
+        class="p-2 space-y-6"
       >
         <div class="relative {isProjectTitleValid ? '' : 'opacity-50'}">
           <User

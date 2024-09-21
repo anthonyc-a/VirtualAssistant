@@ -51,7 +51,7 @@
     <Theme />
     <a
       href="#"
-      class="relative invert -ms-3.5 backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative invert  -ms-3.5 backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
     >
       <ArrowUp size={16} />
     </a>

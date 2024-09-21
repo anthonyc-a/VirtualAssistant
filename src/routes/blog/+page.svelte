@@ -5,23 +5,23 @@
   const blogPosts = [
     {
       id: 1,
-      title: "10 Tips for Productive Remote Work",
+      title: "Adaptive UI 1",
       description:
         "Learn how to stay focused and efficient while working from home.",
-      imageUrl: "/api/placeholder/60/60",
+      imageUrl: "/refract.png",
     },
     {
       id: 2,
-      title: "The Future of Artificial Intelligence",
+      title: "Aarkyv OS",
       description:
         "Exploring the potential impact of AI on various industries.",
-      imageUrl: "/api/placeholder/60/60",
-    },
+        imageUrl: "/refract.png",
+      },
     {
       id: 3,
-      title: "Healthy Eating Habits for Busy Professionals",
+      title: "Workflow 24/25",
       description: "Quick and nutritious meal ideas for your hectic schedule.",
-      imageUrl: "/api/placeholder/60/60",
+      imageUrl: "/refract.png",
     },
   ];
 
@@ -33,21 +33,21 @@
 
 <div class="max-w-2xl mx-auto px-2">
   <Heading
-    heading="Blog & Thoughts"
-    subheading="In progress"
+    heading="My Blog, Thoughts and Implementations"
+    subheading="I write about design, development, and productivity."
     showBreak={false}
   />
 </div>
 <div
-  class="max-w-xl mx-auto bg-background shadow-md rounded-lg overflow-hidden"
+  class="max-w-xl w-[calc(100%-40px)] mt-3 mx-auto overflow-hidden"
 >
-  <ul class="divide-y divide-accent/20">
+  <ul class="divide-y divide-accent">
     {#each blogPosts as post}
-      <li class="p-4 hover:bg-accent/5 transition duration-150 ease-in-out">
+      <li class="p-4 px-1 hover:bg-accent/5 transition duration-150 ease-in-out">
         <div class="flex items-center space-x-4">
           <div class="flex-shrink-0">
             <img
-              class="h-12 w-12 bg-accent rounded-full"
+              class="h-12 w-12 shadow bg-accent rounded-full"
               src={post.imageUrl}
               alt={post.title}
             />
@@ -65,7 +65,7 @@
               on:click={() => handleReadMore(post.id)}
               class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-foreground bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/50"
             >
-              Read More
+              In Progress
             </button>
           </div>
         </div>
