@@ -1,14 +1,14 @@
 export const workItems = [
   {
     title: "Director at Refract Agency",
-    tags: ["Marketing", "Development"],
+    tags: ["Agency", "Development"],
     description: "Senior UX/UI & Full Stack Development.",
     image: "/refract.png",
     link: "https://refract-agency.com",
   },
   {
     title: "Lead at De Salvo Yachts",
-    tags: ["Consultancy", "In Progress"],
+    tags: ["Freelance", "In Progress"],
     description: "Creating the online presence for a yacht designer.",
     image: "/dsy.png",
     link: "https://desalvoyachts.com",
@@ -31,13 +31,7 @@ export const workItems = [
     image: "/chroma.png",
     link: "https://chroma.co.in",
   },
-  {
-    title: "Director at Aarkyv Studios",
-    tags: ["Founder", "Design Studio"],
-    description: "Design, development + visualisation studio.",
-    image: "/aarkyv.png",
-    link: "https://aarkyv.com/studio",
-  },
+
 
   {
     title: "UX/UI & Front-End at Double",
@@ -60,6 +54,14 @@ export const workItems = [
     description: "Note-taking app using a semantic graph database.",
     image: "/samarai.png",
     link: "https://github.com/samarai-project",
+  },
+
+  {
+    title: "Director at Aarkyv Studios",
+    tags: ["Founder", "Design Studio"],
+    description: "Design, development + visualisation studio.",
+    image: "/aarkyv.png",
+    link: "https://aarkyv.com/studio",
   },
 
   {
