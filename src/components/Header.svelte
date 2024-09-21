@@ -1,5 +1,5 @@
 <header
-  class="pb-5 mt-0 px-4 max-w-2xl w-[calc(100%-64px)] mx-auto flex flex-col items-center justify-between mb-3 border-b border-accent"
+  class="animate mt-0  max-w-2xl w-[calc(100%-56px)] mx-auto flex flex-col items-center justify-between mb-3"
 >
   <div class="flex flex-col items-center text-center">
     <a
@@ -66,4 +66,34 @@
     on:click={() => (window.location.href = "mailto:anthonyc.animba@gmail.com")}
     role="presentation">anthonyc.animba@gmail.com</span
   >
+  <div class="w-0 mt-5 stretch h-px bg-accent"></div>
 </header>
+
+<style>
+  .animate {
+    opacity: 0;
+    animation: fadeIn 0.75s ease-in-out 1.5s forwards;
+  }
+
+  .stretch {
+    animation: stretch 1.25s ease-out 2s forwards;
+  }
+
+  @keyframes stretch {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

@@ -72,7 +72,7 @@
 </script>
 
 <div
-  class="fixed flex p-1.5 px-2 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 z-[99999] transition-all duration-300"
+  class="fixed fade-up flex p-1.5 px-2 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 z-[99999] transition-all duration-300"
   class:bottom-4={isVisible}
   class:-bottom-20={!isVisible}
   use:haptic={100}
@@ -94,3 +94,22 @@
     </a>
   {/each}
 </div>
+
+<style>
+  .fade-up {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    animation: fadeUp 0.5s ease-in-out 2.65s forwards;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+</style>

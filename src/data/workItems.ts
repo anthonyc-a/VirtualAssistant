@@ -1,12 +1,11 @@
 export const workItems = [
   {
-    title: "Full-Stack at SI World",
-    tags: ["Consultancy", "SaaS"],
+    title: "Director at Refract Agency",
+    tags: ["Marketing", "Development"],
     description: "Senior UX/UI & Full Stack Development.",
-    image: "/si-world.png",
-    link: "https://stocknetinstitute.com",
+    image: "/refract.png",
+    link: "https://refract-agency.com",
   },
-
   {
     title: "Lead at De Salvo Yachts",
     tags: ["Consultancy", "In Progress"],
@@ -14,6 +13,17 @@ export const workItems = [
     image: "/dsy.png",
     link: "https://desalvoyachts.com",
   },
+
+
+  {
+    title: "Full-Stack at SI World",
+    tags: ["Consultancy", "SaaS"],
+    description: "Senior UX/UI & Full Stack Development.",
+    image: "/si-world.png",
+    link: "https://stocknetinstitute.com",
+  },
+
+
   {
     title: "Founder at Chroma",
     tags: ["SaaS", "Early Access"],
@@ -28,6 +38,7 @@ export const workItems = [
     image: "/aarkyv.png",
     link: "https://aarkyv.com/studio",
   },
+
   {
     title: "UX/UI & Front-End at Double",
     tags: ["Consultancy", "Contract"],

@@ -13,6 +13,7 @@
     Lightbulb,
     Folder,
   } from "lucide-svelte";
+  import { onMount } from "svelte";
 
   export let projectTitle: string = "";
   export let message: string = "";
@@ -106,15 +107,40 @@
   function notMessaging() {
     messaging = false;
   }
+
+  let isVisible = true;
+  let lastScrollY = 0;
+  let currentPath = window.location.pathname;
+  let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+  onMount(() => {
+    const handlePathChange = () => {
+      currentPath = window.location.pathname;
+    };
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      isVisible = currentScrollY < lastScrollY || currentScrollY < 50;
+      lastScrollY = currentScrollY;
+    };
+
+    const handleResize = () => {
+      isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    };
+
+    window.addEventListener("popstate", handlePathChange);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("popstate", handlePathChange);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 </script>
 
 {#if messaging}
-  <div
-    role="presentation"
-    on:click={notMessaging}
-    class="fixed top-0 left-0 w-full h-screen bg-black/80"
-  ></div>
-
   {#if isFocused}
     <div
       transition:fade={{ duration: 200 }}
@@ -137,7 +163,7 @@
 
   <form
     on:submit|preventDefault={handleSubmit}
-    class="w-[95%] md:w-full overflow-scroll md:overflow-hidden fixed bottom-[88px] left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
+    class="w-[95%] fade-up mb-1.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed  left-1/2 -translate-x-1/2 z-[9999] max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
     style="height: {isFocused ? 'auto' : '3.4rem'}; max-height: {isFocused
       ? '35vh'
       : '3.5rem'}; border-radius: {isFocused
@@ -147,9 +173,11 @@
       : 'transparent' &&
         projectTitle &&
         'var(--foreground)'}; transition: max-height 0.4s ease;"
+         class:bottom-20={isVisible}
+         class:bottom-4={!isVisible}
   >
     <div class="p-5 py-2.5 border-b border-muted flex items-center">
-      <Folder class="text-muted-foreground mr-3" size={18} />
+      <Lightbulb class="text-muted-foreground mr-3" size={18} />
       <input
         placeholder="Describe your project here..."
         class="w-full bg-transparent !outline-none text-[16px] placeholder:tracking-[0.1px] placeholder:text-muted-foreground text-foreground"
@@ -285,3 +313,22 @@
     {/if}
   </form>
 {/if}
+
+<style>
+  .fade-up {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    animation: fadeUp 0.15s ease-in-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+</style>

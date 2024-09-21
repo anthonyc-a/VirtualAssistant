@@ -15,6 +15,7 @@
   import { fade } from "svelte/transition";
   import { navigating } from "$app/stores";
   import { Mail, MessageCircle } from "lucide-svelte";
+  import Loader from "../components/Loader.svelte";
 
   let themeColor = "";
   let messaging = false;
@@ -70,57 +71,110 @@
   <meta name="theme-color" content={themeColor} />
 </svelte:head>
 
-<div class="fixed text-sm text-muted-foreground bottom-4 right-4">
+<div
+  class="fixed hidden md:block text-sm text-muted-foreground bottom-4 right-4"
+>
   ⓒ 2024
 </div>
 
 <div
-  class="w-full bg-background max-w-screen-lg mx-auto z-50 px-11 py-3 flex justify-between items-center sticky top-0 left-0"
+  class="w-full z-[9999999] bg-background max-w-screen-lg mx-auto px-11 py-3 flex justify-between items-center sticky top-0 left-0"
 >
   <a href="/" class="relative invert-[0.85] dark:invert-0">
-    <img src="/logo.svg" alt="Logo" class="w-[17px]" />
+    <img src="/logo.svg" alt="Logo" class="fade-up w-[16px]" />
   </a>
-  <div class="flex items-center gap-2.5">
+  <div class="flex animate three   items-center gap-2.5">
+  
     <Theme />
     <div
       role="presentation"
-      class="relative backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative backdrop-blur-sm text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
       on:click={() => (messaging = !messaging)}
     >
       <MessageCircle class="w-[16px] h-[16px]" />
     </div>
     <div
       role="presentation"
-      class="relative backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 hidden md:flex  justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative backdrop-blur-sm text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 hidden md:flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
       on:click={() => (messaging = !messaging)}
     >
-    <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
-    fill="currentColor"
-    viewBox="0 0 256 256"
-    class="w-[16px] h-[16px] rotate-180"
-  >
-    <path
-      d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H80V200H40ZM216,200H96V56H216V200Z"
-    ></path>
-  </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        viewBox="0 0 256 256"
+        class="w-[16px] h-[16px] rotate-180"
+      >
+        <path
+          d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H80V200H40ZM216,200H96V56H216V200Z"
+        ></path>
+      </svg>
     </div>
+    <div class="w-[6px] h-[6px] ml-2 bg-success rounded-full">
+
+    </div>
+
   </div>
 </div>
 
 <MessageBar {messaging} />
 
 <Navigation />
+
+<Loader/>
+
 <Header />
 
 {#key isNavigating}
   <div
-    class="md:container bg-background w-full pt-3.5 px-0 md:px-0 md:w-[calc(100%-40px)] max-w-3xl mx-auto"
-    in:fade={{ duration: 150 }}
+    class="md:container animate two bg-background w-full pt-3.5 px-0 md:px-0 md:w-[calc(100%-40px)] max-w-3xl mx-auto"
   >
     <slot />
     <Footer />
   </div>
 {/key}
+
+<style>
+   .fade-up {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  .animate {
+    opacity: 0;
+    animation: fadeIn 0.75s ease-in-out forwards;
+  }
+  .one {
+    animation-delay: 0.15s;
+  }
+
+  .two {
+    animation-delay: 1s;
+  }
+
+  .three {
+    animation-delay: 1.5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
