@@ -20,7 +20,7 @@ import Heading from "../../components/Heading.svelte";
   />
 
 
-  <div class="px-6 mt-8 md:px-0">
+  <div class="px-6 mt-6 md:px-0">
     {#each workItems.slice(0, showMore ? workItems.length : maxItems) as item}
       <a
         href={item.link}

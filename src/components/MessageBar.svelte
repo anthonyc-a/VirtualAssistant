@@ -143,8 +143,9 @@
 {#if messaging}
   <div
     role="presentation"
-    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-black/80"
+    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-black/70"
     on:click={notMessaging}
+
   ></div>
 
   {#if isFocused}

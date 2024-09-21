@@ -5,9 +5,9 @@
     class="min-w-[180px] w-full md:w-[unset] h-full flex justify-center items-center bg-white border border-accent dark:border-accent rounded-3xl"
   >
     <img
-      src="https://www.refract-agency.com/favicon.png"
+      src="/refract-tm.png"
       alt="Logo"
-      class="w-[100px] md:w-32 h-[100px] md:h-32 my-4"
+      class="w-[140px] md:w-32 h-[140px] md:h-32 my-0"
     />
   </div>
 

@@ -5,7 +5,7 @@
   const blogPosts = [
     {
       id: 1,
-      title: "Adaptive UI 1",
+      title: "Adaptive UI",
       description:
         "Learn how to stay focused and efficient while working from home.",
       imageUrl: "/refract.png",
@@ -33,7 +33,7 @@
 
 <div class="max-w-2xl mx-auto px-2">
   <Heading
-    heading="My Blog, Thoughts and Implementations"
+    heading="Thoughts & Contemplations"
     subheading="I write about design, development, and productivity."
     showBreak={false}
   />

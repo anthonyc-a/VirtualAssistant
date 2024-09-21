@@ -62,7 +62,7 @@
     { href: "/work", icon: Briefcase },
     { href: "/gallery", icon: Folder },
     { href: "/blog", icon: Book },
-    { href: "https://portfolio-2024-ten-umber.vercel.app/", icon: Globe },
+    { href: "https://portfolio-lime-nine-55.vercel.app/", icon: Globe },
   ];
 
   // Add the contact link conditionally based on screen size
@@ -99,7 +99,7 @@
   .fade-up {
     opacity: 0;
     transform: translateX(-50%) translateY(20px);
-    animation: fadeUp 0.5s ease-in-out 2.65s forwards;
+    animation: fadeUp 0.75s ease-in-out 2.25s forwards;
   }
   
   @keyframes fadeUp {

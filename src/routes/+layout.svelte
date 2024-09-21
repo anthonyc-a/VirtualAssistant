@@ -94,9 +94,7 @@
     <Theme />
     <div
       role="presentation"
-      class="relative backdrop-blur-sm {messaging
-        ? 'invert'
-        : ''} text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative backdrop-blur-sm invert text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
       on:click={() => (messaging = !messaging)}
     >
       {#if messaging}
@@ -195,7 +193,7 @@
     animation-delay: 1.5s;
   }
   .four {
-    animation-delay: 2s;
+    animation-delay: 2.25s;
   }
 
   @keyframes fadeIn {
