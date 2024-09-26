@@ -104,7 +104,7 @@
     <Theme />
     <div
       role="presentation"
-      class="relative -me-3 backdrop-blur-sm invert text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 md:bg-accent flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative -me-3 md:me-0 backdrop-blur-sm invert text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 md:bg-accent flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
       on:click={() => (messaging = !messaging)}
     >
       {#if messaging}

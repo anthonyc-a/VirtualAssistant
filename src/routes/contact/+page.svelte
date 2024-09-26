@@ -19,7 +19,7 @@
     showBreak={false}
   />
 
-  <div class="max-w-2xl mx-auto mt-0 p-6 bg-background rounded-lg">
+  <div class="max-w-2xl mx-auto mt-6">
     <form class="p-6 border border-border rounded-3xl" on:submit={handleSubmit}>
       <div class="mb-4">
         <label class="block text-foreground text-sm font-bold mb-2" for="name"
