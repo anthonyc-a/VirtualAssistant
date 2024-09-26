@@ -17,7 +17,7 @@
 </script>
 
 <nav
-  class="md:w-full w-[calc(100%-64px)] border-t border-border dark:border-accent max-w-3xl mx-auto mt-8 md:mt-16 bg-background text-muted-foreground py-8 flex justify-between items-center"
+  class="md:w-full w-[calc(100%-64px)] border-t border-border dark:border-accent max-w-2xl mx-auto mt-8 md:mt-16 bg-background text-muted-foreground py-8 flex justify-between items-center"
 >
   {#if prevPage}
     <a

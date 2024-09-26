@@ -30,7 +30,7 @@
   ];
 </script>
 
-<div class="max-w-2xl mx-auto px-2">
+<div class="max-w-2xl  mx-auto">
   <Heading
     heading="Senior Interface Designer &  Full-Stack Developer"
     subheading="Embracing an iterative approach to design and development, creating flexible products that evolve with client needs and market demands."
@@ -38,7 +38,7 @@
   />
 
   <div
-    class="flex flex-col gap-6 mt-6 px-4 md:p-8 md:border border-border dark:border-accent rounded-3xl"
+    class="flex w-full flex-col gap-6 mt-6 px-4 md:p-8 md:border border-border dark:border-accent rounded-3xl"
   >
     {#each items as item}
       <div class="p-6 px-8 border border-border dark:border-accent rounded-3xl flex flex-col gap-3 items-start">
