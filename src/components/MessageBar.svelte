@@ -143,9 +143,8 @@
 {#if messaging}
   <div
     role="presentation"
-    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-black/70"
+    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-black/80 backdrop-blur-sm"
     on:click={notMessaging}
-
   ></div>
 
   {#if isFocused}
@@ -170,7 +169,7 @@
 
   <form
     on:submit|preventDefault={handleSubmit}
-    class="w-[95%] z-[99999999] fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed  left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-65 backdrop-blur text-left border border-border text-foreground rounded-full"
+    class="w-[95%] z-[99999999] fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-65 backdrop-blur text-left border border-border text-foreground rounded-full"
     style="height: {isFocused ? 'auto' : '3.4rem'}; max-height: {isFocused
       ? '45vh'
       : '3.5rem'}; border-radius: {isFocused
@@ -180,8 +179,8 @@
       : 'transparent' &&
         projectTitle &&
         'var(--foreground)'}; transition: max-height 0.4s ease;"
-         class:bottom-20={isVisible}
-         class:bottom-4={!isVisible}
+    class:bottom-20={isVisible}
+    class:bottom-4={!isVisible}
   >
     <div class="p-5 py-2.5 border-b border-muted flex items-center">
       <Lightbulb class="text-muted-foreground mr-3" size={18} />
@@ -194,9 +193,11 @@
         readonly
         on:click={() => {
           if (window.matchMedia("(max-width: 1024px)").matches) {
-        handleFocus();
+            handleFocus();
           } else {
-        document.querySelector('input[readonly]').removeAttribute('readonly');
+            document
+              .querySelector("input[readonly]")
+              .removeAttribute("readonly");
           }
         }}
       />
@@ -326,6 +327,10 @@
         {/if}
       </div>
     {/if}
+  <div class="w-8 h-8 bg-red-500">
+    hello
+  </div>
+
   </form>
 {/if}
 
@@ -335,7 +340,7 @@
     transform: translateX(-50%) translateY(20px);
     animation: fadeUp 0.15s ease-in-out forwards;
   }
-  
+
   @keyframes fadeUp {
     from {
       opacity: 0;

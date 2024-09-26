@@ -17,6 +17,7 @@
   import { Mail, MessageCircle, SidebarCloseIcon, X } from "lucide-svelte";
   import Loader from "../components/Loader.svelte";
   import FooterNav from "../components/FooterNav.svelte";
+  import Scrollbar from "../components/Scrollbar.svelte";
 
   let themeColor = "";
   let messaging = false;
@@ -73,15 +74,20 @@
 </svelte:head>
 
 <div
-  class="fixed hidden md:block text-sm text-muted-foreground bottom-4 right-4"
+  class="max-w-screen-lg px-9 fixed bottom-4 left-1/2 -translate-x-1/2 w-full hidden items-center justify-between"
 >
-  ⓒ 2024
+  <div
+    class=" hidden tracking-[0.2px] md:block text-[13px] font-medium text-muted-foreground bottom-4 left-6"
+  >
+    ⓒ 2024
+  </div>
+  <Scrollbar />
 </div>
 
 <div
-  class="w-full z-[99999999] bg-background max-w-screen-lg mx-auto px-11 py-3 flex justify-between items-center sticky top-0 left-0"
+  class="w-full z-[99999999] bg-background/80  backdrop-blur  max-w-2xl md:mx-auto py-3 px-9 md:px-0 flex justify-between items-center sticky top-0 left-0"
 >
-  <a href="/" class="relative fade-up invert-[0.85] dark:invert-0">
+  <a href="/" class="relative flex gap-3.5 fade-up invert-[0.85] dark:invert-0">
     <img src="/logo.svg" alt="Logo" class=" w-[16px]" />
   </a>
   <div class="flex animate four items-center gap-2.5">
@@ -91,10 +97,14 @@
       <div class="w-[5px] h-[5px] bg-success rounded-full"></div>
     </div>
 
+    <div class="mr-1 text-border">
+      |
+    </div>
+
     <Theme />
     <div
       role="presentation"
-      class="relative backdrop-blur-sm invert text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative -me-3 backdrop-blur-sm invert text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 md:bg-accent flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
       on:click={() => (messaging = !messaging)}
     >
       {#if messaging}
@@ -102,24 +112,6 @@
       {:else}
         <MessageCircle class="w-[16px] h-[16px]" />
       {/if}
-    </div>
-    <div
-      role="presentation"
-      class="relative backdrop-blur-sm text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 hidden md:flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
-      on:click={() => (messaging = !messaging)}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        viewBox="0 0 256 256"
-        class="w-[16px] h-[16px] rotate-180"
-      >
-        <path
-          d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H80V200H40ZM216,200H96V56H216V200Z"
-        ></path>
-      </svg>
     </div>
   </div>
 </div>
@@ -138,7 +130,7 @@
     in:fade={{ duration: 300 }}
   >
     <slot />
-    <FooterNav/>
+    <FooterNav />
     <Footer />
   </div>
 {/key}

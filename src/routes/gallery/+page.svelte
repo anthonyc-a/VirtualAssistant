@@ -85,7 +85,7 @@
 					<img
 						src="/app-icon.png"
 						alt="Chroma"
-						class="w-7 h-7 absolute bottom-3 right-3 rounded-md"
+						class="w-6 h-6 absolute bottom-3 right-3 rounded-md"
 					/>
 				</a>
 			{/if}

@@ -4,7 +4,7 @@
 
 <div class="loader w-full max-w-[100vw] h-[100dvh] fixed top-0 left-0 bg-background z-[99999]">
 	<div class="absolute  invert dark:invert-0  z-50 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-		<Moon size={32} unit="px" color="#fff"/>
+		<Moon size={28} unit="px" color="#fff"/>
 	</div>
 </div>
 

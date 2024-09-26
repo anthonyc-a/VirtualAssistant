@@ -22,6 +22,7 @@
   import HeroSwiper from "../components/Misc/Hero/HeroSwiper.svelte";
   import { heroItems } from "../data/Hero";
   import Heading from "../components/Heading.svelte";
+  import WorkItem from "../components/WorkItem.svelte";
 
   interface FileInfo {
     name: string;
@@ -121,7 +122,7 @@
     {/if}
     {#if savedName === ""}
       <Heading
-        heading="Creating Digital Experiences with<br> Functional Design"
+        heading="Creating Digital Experiences with Functional<br> Design & Precise Expertise "
         subheading="I'm a Designer and Full-Stack Developer with over 7 years experience working with small to medium-sized businesses, startups and individuals."
         showBreak={true}
       />
@@ -183,82 +184,37 @@
 
   {#if savedName === ""}
     <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
-      <h3 class="text-2xl md:text-3xl font-medium">
-        What I'm Working On Now
-      </h3>
-      <p class="mt-3   text-muted-foreground leading-[1.5] text-[16px]">
+      <h3 class="text-2xl md:text-2xl font-medium">What I'm Working on Now</h3>
+      <p
+        class="mt-3 text-muted-foreground font-[320] tracking-[0.3px] leading-[1.5] text-[16px] md:text-lg"
+      >
         These are projects and companies that I've worked on/with. Some are
         well-established businesses.
       </p>
       <div class="w-full h-[1px] my-6 mb-4 bg-[--color-secondary]"></div>
-      {#each workItems.slice(0, 2) as item}
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col md:flex-row !text-foreground md:items-center transition-all border border-border md:border-none gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
-          >
-          <div
-          class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden r"
-          >
-            <img
-              src={item.image}
-              alt="Project Logo"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <div class="flex flex-wrap items-center gap-3">
-              <h4 class="w-full text-[22px] leading-8 md:w-fit">{item.title}</h4>
-              {#each item.tags as tag}
-                <span
-                class="tag bg-accent px-3 p-1 !rounded-full whitespace-nowrap leading-[1.2]"
-                  >{tag}</span
-                >
-              {/each}
-            </div>
-            <p class="mt-4 md:mt-2 text-sm traking-[0.1px] text-muted-foreground text- md:text-[16px]">
-              {item.description}
-            </p>
-          </div>
-        </a>
-      {/each}
+      <div class="md:space-y-5">
+        {#each workItems.slice(0, 2) as item}
+          <WorkItem {item} />
+        {/each}
+      </div>
     </div>
-    <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto">
-      <h3 class="text-2xl font-medium">Previously worked on</h3>
+    <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto space-y-4">
+      <h3 class="text-2xl md:text-2xl font-medium">Previously Worked on</h3>
       <div class="w-full h-[1px] bg-[--color-secondary]"></div>
-      {#each workItems.slice(2, 6) as item}
-        <a
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col md:flex-row !text-foreground md:items-center transition-all border border-border md:border-none gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
-        >
-        <div
-        class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden r"
-        >
-          <img
-            src={item.image}
-            alt="Project Logo"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div>
-          <div class="flex flex-wrap items-center gap-3">
-            <h4 class="w-full text-[22px] leading-8 md:w-fit">{item.title}</h4>
-            {#each item.tags as tag}
-              <span
-              class="tag bg-accent px-3 p-1 !rounded-full whitespace-nowrap leading-[1.2]"
-                >{tag}</span
-              >
-            {/each}
+      <div class="space-y-4">
+        {#each workItems.slice(2, 6) as item}
+          <WorkItem {item} />
+        {/each}
+        <a href="/work" class="w-full flex justify-center hover:bg-accent/30 items-center min-h-14 border border-accent rounded-2xl">
+          <div class="flex justify-center items-center h-full">
+            <button
+              class="text-foreground font-medium"
+            >
+             + More work
+            </button>
           </div>
-          <p class="mt-4 md:mt-2 tracking-[0.1px] text-sm text-muted-foreground md:text-[16px]">
-            {item.description}
-          </p>
-        </div>
         </a>
-      {/each}
+      </div>
     </div>
   {/if}
 </div>
@@ -270,46 +226,5 @@
 
   .logo.svelte-kit:hover {
     filter: drop-shadow(0 0 2em #ff3e00);
-  }
-
-  :root {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-
-    color: #0f0f0f;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: 0.75s;
-  }
-
-  .logo.tauri:hover {
-    filter: drop-shadow(0 0 2em #24c8db);
-  }
-
-  .row {
-    display: flex;
-    justify-content: center;
-  }
-
-  a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-  }
-
-  a:hover {
-    color: #535bf2;
   }
 </style>

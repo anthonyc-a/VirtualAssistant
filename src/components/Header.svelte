@@ -1,18 +1,18 @@
 <header
-  class="animate mt-0  max-w-2xl w-[calc(100%-56px)] mx-auto flex flex-col items-center justify-between mb-3"
+  class="animate md:mt-8 max-w-2xl xl:max-w-2xl md:border-b border-border dark:border-accent  md:mb-7 md:pb-5 w-[calc(100%-48px)] mx-auto flex flex-col md:flex-row items-center justify-between mb-3"
 >
-  <div class="flex flex-col items-center text-center">
+  <div class="flex flex-col md:flex-row items-center text-center">
     <a
       href="https://wa.me/447715929392"
       target="_blank"
-      class=" w-[68px] h-[68px] rounded-full overflow-hidden mb-3 shadow-sm border border-accent dark:border-transparent hover:borer-2 transition-all hover:border-success"
+      class=" w-[64px]  h-[64px] rounded-full overflow-hidden mb-3 shadow-sm border border-accent dark:border-transparent hover:borer-2 transition-all hover:border-success"
     >
       <img src="/me.jpeg" alt="Me" class="w-full h-full object-cover" />
     </a>
     <div class="flex flex-col justify-center ml-4">
-      <div class="flex justify-center items-center gap-2.5">
+      <div class="flex justify-center md:justify-start items-center gap-2.5">
         <a href="/" class="text-lg">
-          <h1 class="font-[510]">Anthony Animba</h1>
+          <h1 class="font-[510] leading-0">Anthony Animba</h1>
         </a>
         <a
           href="https://www.instagram.com/aarkyvstudios/"
@@ -56,17 +56,17 @@
           </svg></a
         >
       </div>
-      <h5 class="text-muted-foreground tracking-wide">
+      <h5 class="text-muted-foreground md:pb-3 tracking-wide">
         Designer, Developer, Creative Director
       </h5>
     </div>
   </div>
   <span
-    class="tag leading-[1.7] font-[450] tracking-[0.1px] bg-accent text-muted-foreground dark:text-foreground text-[14px] p-2.5 py-1 rounded-2xl cursor-pointer mt-2"
+    class="tag leading-[1.7] mb-3  font-[450] tracking-[0.1px] bg-accent text-muted-foreground dark:text-foreground text-[14px] p-2.5 py-1 rounded-lg md:rounded-2xl cursor-pointer mt-2"
     on:click={() => (window.location.href = "mailto:anthonyc.animba@gmail.com")}
     role="presentation">anthonyc.animba@gmail.com</span
   >
-  <div class="w-0 mt-5 stretch h-px bg-accent"></div>
+  <div class="w-0 mt-5 stretch h-px bg-border dark:bg-accent md:hidden"></div>
 </header>
 
 <style>

@@ -7,7 +7,7 @@ export const workItems = [
     link: "https://refract-agency.com",
   },
   {
-    title: "Lead at De Salvo Yachts",
+    title: "Developer at De Salvo Yachts",
     tags: ["Freelance", "In Progress"],
     description: "Creating the online presence for a yacht designer.",
     image: "/dsy.png",
@@ -38,7 +38,7 @@ export const workItems = [
     tags: ["Consultancy", "Contract"],
     description: "Growth marketing agency for ambitious businesses.",
     image: "/double.png",
-    link: "https://www.linkedin.com/company/double-agency/",
+    link: "https://www.double-agency.com",
   },
   {
     title: "Back-End at Fabric Token",

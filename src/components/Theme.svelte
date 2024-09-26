@@ -58,7 +58,7 @@
 </script>
 
 <div
-  class="relative backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+  class="relative backdrop-blur-sm text-muted-foreground hover:text-foreground border border-border dark:border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
   on:click={toggleTheme}
   role="presentation"
 >
