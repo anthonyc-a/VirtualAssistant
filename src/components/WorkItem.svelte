@@ -23,14 +23,14 @@
 
   onMount(() => {
     gsap.from(componentElement, {
-      x: -20,
+      x: -12,
       opacity: 0,
       duration: 0.35,
-      ease: "power1",
+      ease: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
       scrollTrigger: {
         trigger: componentElement,
         start: "top bottom-=100",
-        toggleActions: "play none none reverse",
+        toggleActions: "play none",
       },
     });
 
