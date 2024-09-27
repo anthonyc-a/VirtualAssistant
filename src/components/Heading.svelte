@@ -15,7 +15,7 @@
       {/if}
     </h1>
     <p
-      class="pt-4 text-center md:text-left md:text-[18px] leading-[1.65] md:leading-8 tracking-[0.3px] font-[320] text-muted-foreground  mx-auto"
+      class="pt-3 md:pt-4 text-center md:text-left md:text-[18px] leading-[1.65] md:leading-8 tracking-[0.3px] font-[320] text-muted-foreground  mx-auto"
     >
       {subheading}
     </p>

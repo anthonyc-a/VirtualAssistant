@@ -205,13 +205,12 @@
         {#each workItems.slice(2, 6) as item}
           <WorkItem {item} />
         {/each}
-        <a href="/work" class="w-full flex justify-center hover:bg-accent/30 items-center min-h-14 border border-accent rounded-2xl">
+        <a
+          href="/work"
+          class="w-fit mt-2 px-4 p-1 flex mx-auto justify-center hover:bg-accent/30 items-center border border-accent rounded-2xl"
+        >
           <div class="flex justify-center items-center h-full">
-            <button
-              class="text-foreground font-medium"
-            >
-             + More work
-            </button>
+            <button class="text-foreground font-[320]"> + More work </button>
           </div>
         </a>
       </div>

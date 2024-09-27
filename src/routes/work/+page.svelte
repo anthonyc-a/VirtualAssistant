@@ -29,7 +29,7 @@
         class="mx-auto block px-3 p-1 bg-transparent border border-border text-foreground rounded-full"
         on:click={toggleShowMore}
       >
-        Show More
+        Show more
       </button>
     {/if}
 
@@ -38,7 +38,7 @@
         class="mx-auto block px-3 p-1 bg-transparent border border-border text-foreground rounded-full"
         on:click={toggleShowMore}
       >
-        Show Less
+        Show less
       </button>
     {/if}
   </div>

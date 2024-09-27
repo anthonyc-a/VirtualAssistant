@@ -143,8 +143,7 @@
 {#if messaging}
   <div
     role="presentation"
-    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-black/80 backdrop-blur-sm"
-    on:click={notMessaging}
+    class="fixed top-0 z-[9999999] left-0 w-full h-screen bg-transparent backdrop-blur"
   ></div>
 
   {#if isFocused}
@@ -169,9 +168,9 @@
 
   <form
     on:submit|preventDefault={handleSubmit}
-    class="w-[95%] z-[99999999] fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-65 backdrop-blur text-left border border-border text-foreground rounded-full"
+    class="w-[calc(100%-40px)] z-[99999999] px-2  fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
     style="height: {isFocused ? 'auto' : '3.4rem'}; max-height: {isFocused
-      ? '45vh'
+      ? '55vh'
       : '3.5rem'}; border-radius: {isFocused
       ? '20px'
       : '56px'}; border-color: {fileError || errors.length > 0
@@ -182,24 +181,14 @@
     class:bottom-20={isVisible}
     class:bottom-4={!isVisible}
   >
-    <div class="p-5 py-2.5 border-b border-muted flex items-center">
-      <Lightbulb class="text-muted-foreground mr-3" size={18} />
+    <div class="p-3 pr-4 py-2.5 border-b border-muted dark:border-border flex items-center">
+      <Lightbulb class="text-muted-foreground mr-3" size={20} />
       <input
         placeholder="Describe your project here..."
         class="w-full bg-transparent !outline-none text-[16px] placeholder:tracking-[0.1px] placeholder:text-muted-foreground text-foreground"
         bind:value={projectTitle}
         on:focus={handleFocus}
         on:blur={handleBlur}
-        readonly
-        on:click={() => {
-          if (window.matchMedia("(max-width: 1024px)").matches) {
-            handleFocus();
-          } else {
-            document
-              .querySelector("input[readonly]")
-              .removeAttribute("readonly");
-          }
-        }}
       />
       <button
         type="submit"
@@ -216,7 +205,7 @@
     {#if isFocused}
       <div
         transition:fly={{ y: 10, duration: 500, easing: cubicOut }}
-        class="p-2 space-y-6"
+        class="p-2 space-y-5 py-5"
       >
         <div class="relative {isProjectTitleValid ? '' : 'opacity-50'}">
           <User
@@ -225,7 +214,7 @@
           />
           <input
             id="name"
-            class="w-full bg-muted rounded-2xl p-3 pl-10 border border-muted-foreground !outline-none text-foreground pt-6"
+            class="w-full bg-muted rounded-xl !p-3 !pl-10 border border-muted-foreground !outline-none text-foreground pt-6"
             bind:value={name}
             disabled={!isProjectTitleValid}
             on:focus={() => (nameFocused = true)}
@@ -235,10 +224,10 @@
             for="name"
             class="absolute left-10 text-[#999] transition-all duration-200 {name ||
             nameFocused
-              ? 'text-xs top-2'
+              ? 'text-xs hidden -top-2'
               : 'top-1/2 -translate-y-1/2'}"
           >
-            Your Name
+           Name
           </label>
         </div>
 
@@ -250,7 +239,7 @@
           <input
             id="email"
             type="email"
-            class="w-full bg-muted border border-muted-foreground rounded-2xl p-3 pl-10 !outline-none text-white pt-6"
+            class="w-full bg-muted border border-muted-foreground rounded-xl !p-3 !pl-10 !outline-none text-white pt-6"
             bind:value={email}
             disabled={!isProjectTitleValid}
             on:focus={() => (emailFocused = true)}
@@ -258,12 +247,12 @@
           />
           <label
             for="email"
-            class="absolute left-10 text-[#999] transition-all duration-200 {email ||
+            class="absolute left-10 text-[#999]  transition-all duration-200 {email ||
             emailFocused
-              ? 'text-xs top-2'
+              ? 'text-xs hidden -top-2'
               : 'top-1/2 -translate-y-1/2'}"
           >
-            Your Email Address
+            Email Address
           </label>
         </div>
 
@@ -271,7 +260,7 @@
           <MessageSquare size={18} class="absolute left-3 top-5 text-[#999]" />
           <textarea
             id="message"
-            class="w-full bg-muted border border-muted-foreground rounded-2xl p-3 pl-10 !outline-none text-foreground resize-none h-24 pt-6"
+            class="w-full bg-muted border border-muted-foreground rounded-xl !p-0 !pt-4 !pl-10 !outline-none text-foreground resize-none h-24 pt-6"
             bind:value={message}
             disabled={!isProjectTitleValid}
             on:focus={() => (messageFocused = true)}
@@ -279,17 +268,17 @@
           ></textarea>
           <label
             for="message"
-            class="absolute left-10 text-[#999] transition-all duration-200 {message ||
+            class="absolute left-10 text-[#999]  transition-all duration-200 {message ||
             messageFocused
-              ? 'text-xs top-2'
+              ? 'text-xs hidden -top-2'
               : 'top-5'}"
           >
-            Enter your message here
+            Your Message
           </label>
         </div>
 
         <div
-          class="flex items-center space-x-3 p-3 bg-[#333] rounded-2xl {isProjectTitleValid
+          class="flex items-center space-x-3 p-3 bg-[#333] rounded-xl {isProjectTitleValid
             ? ''
             : 'opacity-50'}"
         >
@@ -327,10 +316,6 @@
         {/if}
       </div>
     {/if}
-  <div class="w-8 h-8 bg-red-500">
-    hello
-  </div>
-
   </form>
 {/if}
 

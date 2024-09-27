@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { Stretch } from "svelte-loading-spinners";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -61,13 +62,8 @@
         {post.description}
       </p>
     </div>
-    <div>
-      <button
-        on:click={() => handleReadMore(post.id)}
-        class="inline-flex items-center px-2 py-1 border border-transparent text-lg leading-4 rounded-full text-background bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/50"
-      >
-        +
-      </button>
-    </div>
+      <div class="invert pr-6 dark:invert-0  whitespace-nowrap">
+        <Stretch size={10} color="#fff" />
+      </div>
   </div>
 </a>

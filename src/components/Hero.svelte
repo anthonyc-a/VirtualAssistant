@@ -1,5 +1,9 @@
+<script>
+  import { Stretch } from "svelte-loading-spinners";
+</script>
+
 <div
-  class="max-w-3xl hover:!border-border w-[calc(100%-56px)] md:w-full flex flex-col md:flex-row items-center gap-7 md:gap-10 p-6 md:!py-2 transition-all border border-border hover:bg-accent/30 dark:border-accent rounded-3xl min-h-[224px] md:min-h-[232px] mx-auto"
+  class="max-w-3xl hover:!border-border w-[calc(100%-40px)] md:w-full flex flex-col md:flex-row items-center gap-7 md:gap-10 p-6 md:!py-2 transition-all border border-border hover:bg-accent/30 dark:border-accent rounded-3xl min-h-[224px] md:min-h-[232px] mx-auto"
 >
   <div
     class="min-w-[180px] md:min-h-[170px] w-full md:w-[unset] h-full flex justify-center items-center bg-white border border-accent dark:border-accent rounded-3xl"
@@ -34,13 +38,18 @@
     </div>
     <div class="flex gap-2 mt-4">
       <button
-        class="px-4 p-2 border text-sm bg-foreground text-background font-[500] rounded-full"
+        class="px-4 p-2 flex border text-sm bg-foreground text-background font-[500] rounded-full"
         on:click={() => window.open("https://refract-agency.com")}
-        >Visit website</button
-      >
+        ><div class="dark:invert whitespace-nowrap">
+          <Stretch size={10} color="#fff" />
+        </div>
+        <span class="pl-6">
+          In progress
+        </span>
+      </button>
       <button
         class="bg-transparent px-4 p-2 text-sm rounded-full border border-[#555] hover:border-white"
-        on:click={() => (window.location.href = "mailto:hello@aarkyv.com")}
+        on:click={() => (window.location.href = "mailto:info@refract-agency.com")}
         >Get in touch</button
       >
     </div>

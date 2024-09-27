@@ -5,9 +5,9 @@
     <a
       href="https://wa.me/447715929392"
       target="_blank"
-      class=" w-[64px]  h-[64px] rounded-full overflow-hidden mb-3 shadow-sm border border-accent dark:border-transparent hover:borer-2 transition-all hover:border-success"
+      class=" w-[64px] bg-foreground/10 dark:bg-foreground/65 overflow-hidden  h-[64px] rounded-full overflow-hidden mb-3 shadow-sm  hover:borer-2  hover:border-success"
     >
-      <img src="/me.jpeg" alt="Me" class="w-full h-full object-cover" />
+      <img src="/me.png" alt="Me" class="w-full h-full object-cover" />
     </a>
     <div class="flex flex-col justify-center ml-4">
       <div class="flex justify-center md:justify-start items-center gap-2.5">

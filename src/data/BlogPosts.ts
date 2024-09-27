@@ -17,7 +17,7 @@ export const blogPosts = [
   },
   {
     id: 3,
-    title: "My Workflow",
+    title: "Working Process",
     description:
       "Boost your productivity with these workflow optimization tips.",
     category: "productivity",

@@ -36,7 +36,7 @@
 <div class="max-w-2xl mx-auto">
   <Heading
     heading="My Blog and Ideas"
-    subheading="Thoughts and insights on product development, design, and technology. Sharing observations from the evolving world of tech."
+    subheading="Thoughts and insights on product development, design, and technology. Sharing my observations from the evolving world of technology."
     showBreak={false}
   />
 </div>
@@ -52,9 +52,7 @@
         class:opacity-80={selectedCategory !== category.name}
         class:text-foreground={selectedCategory !== category.name}
       >
-        {#if category.icon === Filter}
           <svelte:component this={category.icon} class="w-4 h-4 mr-2" />
-        {/if}
         {category.name}
       </button>
     {/each}
