@@ -41,7 +41,7 @@
     class="flex w-full flex-col gap-6 mt-6 px-4 md:p-8 md:border border-border dark:border-accent rounded-3xl"
   >
     {#each items as item}
-      <div class="p-6 px-8 border border-border dark:border-accent rounded-3xl flex flex-col gap-3 items-start">
+      <div class="p-6 shadow px-8 border border-border dark:border-accent rounded-3xl flex flex-col gap-3 items-start">
         <svelte:component this={item.icon} strokeWidth={1.65} class="w-8 h-8 mr-4 flex-shrink-0 text-muted-foreground" />
         <div>
           <h4 class="text-[23px] leading-8 font-medium">{item.title}</h4>

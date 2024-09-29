@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { Stretch } from "svelte-loading-spinners";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -26,35 +27,25 @@
       x: -12,
       opacity: 0,
       duration: 0.35,
-      ease: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      ease: "cubic-bezier(0.25, 0.46, 0.48, 1)",
       scrollTrigger: {
         trigger: componentElement,
         start: "top bottom-=100",
         toggleActions: "play none",
       },
     });
-
   });
 </script>
-
-<svelte:head>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
-  ></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
-  ></script>
-</svelte:head>
 
 <a
   bind:this={componentElement}
   href={item.link}
   target="_blank"
   rel="noopener noreferrer"
-  class="flex animate-item  flex-col md:flex-row !text-foreground md:items-center transition-all border border-border dark:border-accent gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
+  class="flex relative shadow animate-item flex-col md:flex-row !text-foreground md:items-center transition-all border border-border dark:border-accent gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
 >
   <div
-    class="w-16 h-16 mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden"
+    class="w-16 h-16 border border-border dark:border-accent mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden"
   >
     <img
       src={item.image}
@@ -62,6 +53,13 @@
       class="w-full h-full object-cover"
     />
   </div>
+  {#if item.tags.includes("In Progress")}
+    <div
+      class="invert absolute top-4 right-4 pr-6 dark:invert-0 whitespace-nowrap"
+    >
+      <Stretch size={10} color="#fff" />
+    </div>
+  {/if}
   <div>
     <div class="flex flex-wrap items-center gap-3">
       <h4 class="w-full font-medium text-[22px] leading-8 md:w-fit">

@@ -1,7 +1,7 @@
 export const workItems = [
   {
     title: "Director at Refract Agency",
-    tags: ["Agency", "Development"],
+    tags: ["Marketing", "In Progress"],
     description: "Senior UX/UI & Full Stack Development.",
     image: "/refract.png",
     link: "https://refract-agency.com",
@@ -14,7 +14,6 @@ export const workItems = [
     link: "https://desalvoyachts.com",
   },
 
-
   {
     title: "Full-Stack at SI World",
     tags: ["Consultancy", "SaaS"],
@@ -23,7 +22,6 @@ export const workItems = [
     link: "https://stocknetinstitute.com",
   },
 
-
   {
     title: "Founder at Chroma",
     tags: ["SaaS", "Early Access"],
@@ -31,7 +29,6 @@ export const workItems = [
     image: "/chroma.png",
     link: "https://chroma.co.in",
   },
-
 
   {
     title: "UX/UI & Front-End at Double",
@@ -58,7 +55,7 @@ export const workItems = [
 
   {
     title: "Director at Aarkyv Studios",
-    tags: ["Founder", "Design Studio"],
+    tags: ["Design Studio", "In Progress"],
     description: "Design, development + visualisation studio.",
     image: "/aarkyv.png",
     link: "https://aarkyv.com/studio",

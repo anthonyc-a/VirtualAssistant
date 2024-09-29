@@ -87,8 +87,9 @@
 <div
   class="w-full z-[99999999] bg-background/80  backdrop-blur  max-w-2xl md:mx-auto py-3 px-9 md:px-0 flex justify-between items-center sticky top-0 left-0"
 >
-  <a href="/" class="relative flex gap-3.5 fade-up invert-[0.85] dark:invert-0">
-    <img src="/logo.svg" alt="Logo" class=" w-[16px]" />
+  <a href="/" class="relative flex gap-5  fade-up ">
+    <img src="/logo.svg" alt="Logo" class="invert-[0.85] dark:invert-0 w-[16px]" />
+  
   </a>
   <div class="flex animate four items-center gap-2.5">
     <div

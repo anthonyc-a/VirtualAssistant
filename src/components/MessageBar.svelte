@@ -182,7 +182,7 @@
     <div class="p-3 pr-4 py-2.5 border-b border-muted dark:border-border flex items-center">
       <Lightbulb class="text-muted-foreground mr-3" size={20} />
       <input
-        placeholder="Describe your project here..."
+        placeholder="Describe your idea here"
         class="w-full bg-transparent !outline-none text-[16px] placeholder:tracking-[0.1px] placeholder:text-muted-foreground text-foreground"
         bind:value={projectTitle}
         on:focus={handleFocus}
