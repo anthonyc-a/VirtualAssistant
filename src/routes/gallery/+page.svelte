@@ -88,7 +88,7 @@
       {/await}
       {#if image.chroma}
         <a
-          href="hhttps://chroma.co.in"
+          href="https://chroma.co.in"
           target="_blank"
           rel="noreferrer"
           class="hover:brightness-75 transition-all"
