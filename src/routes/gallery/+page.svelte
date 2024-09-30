@@ -88,7 +88,7 @@
       {/await}
       {#if image.chroma}
         <a
-          href="https://chroma-v2.vercel.app"
+          href="hhttps://chroma.co.in"
           target="_blank"
           rel="noreferrer"
           class="hover:brightness-75 transition-all"
