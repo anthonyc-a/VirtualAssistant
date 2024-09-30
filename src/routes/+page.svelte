@@ -201,7 +201,7 @@
     <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto space-y-4">
       <h3 class="text-2xl md:text-2xl font-medium">Previously Worked on</h3>
       <div class="w-full h-[1px] bg-[--color-secondary]"></div>
-      <div class="md:space-y-10">
+      <div class="md:space-y-5">
         {#each workItems.slice(2, 6) as item}
           <WorkItem {item} />
         {/each}
