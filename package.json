@@ -15,6 +15,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.26.1",
     "@fal-ai/serverless-client": "^0.14.2",
+    "@sveltejs/adapter-auto": "^3.2.5",
     "@tauri-apps/api": "^1",
     "fusioncharts": "^4.0.2",
     "gsap": "^3.12.5",
