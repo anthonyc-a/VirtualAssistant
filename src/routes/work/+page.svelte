@@ -26,7 +26,7 @@
 
     {#if !showMore && workItems.length > maxItems}
       <button
-        class="mx-auto block px-3 p-1 bg-transparent border border-border text-foreground rounded-full"
+        class="mx-auto text-sm block px-3 p-1.5 bg-transparent border border-border text-foreground rounded-full"
         on:click={toggleShowMore}
       >
         Show more
@@ -35,7 +35,7 @@
 
     {#if showMore}
       <button
-        class="mx-auto block px-3 p-1 bg-transparent border border-border text-foreground rounded-full"
+        class="mx-auto text-sm block px-3 p-1.5 bg-transparent border border-border text-foreground rounded-full"
         on:click={toggleShowMore}
       >
         Show less

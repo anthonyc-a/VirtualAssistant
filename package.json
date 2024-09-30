@@ -20,6 +20,7 @@
     "gsap": "^3.12.5",
     "highlight.js": "^11.10.0",
     "lucide-svelte": "^0.428.0",
+    "nodemailer": "^6.9.15",
     "svelte-fusioncharts": "^1.1.0",
     "svelte-loading-spinners": "^0.3.6"
   },

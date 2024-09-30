@@ -41,7 +41,7 @@
 <a
   href="#"
   bind:this={componentElement}
-  class="p-6 block shadow relative border border-border dark:border-accent rounded-2xl px-4 hover:bg-accent/5 transition duration-150 ease-in-out"
+  class="p-6 block shadow dark:shadow-none shadow-foreground/5 relative border border-border dark:border-accent rounded-2xl px-4 hover:bg-accent/5 transition duration-150 ease-in-out"
 >
   <div class="flex items-center space-x-4">
     <div class="flex-shrink-0">
@@ -62,8 +62,8 @@
         {post.description}
       </p>
     </div>
-      <div class="invert pr-6 dark:invert-0  whitespace-nowrap">
-        <Stretch size={10} color="#fff" />
-      </div>
+    <div class="invert pr-6 dark:invert-0 whitespace-nowrap">
+      <Stretch size={10} color="#fff" />
+    </div>
   </div>
 </a>

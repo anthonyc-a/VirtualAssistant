@@ -25,7 +25,9 @@
       class="flex items-center bg-foreground text-background p-1 px-2 pl-1 pr-3 rounded-full space-x-2 hover:underline transition-colors duration-200"
     >
       <ChevronLeft strokeWidth={1.75} size={16} />
-      <span class="uppercase text-xs leading-[0] translate-y-px font-medium">{prevPage.title}</span>
+      <span class="uppercase text-xs leading-[0] translate-y-px font-medium"
+        >{prevPage.title}</span
+      >
     </a>
   {:else}
     <div></div>

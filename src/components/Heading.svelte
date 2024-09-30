@@ -6,7 +6,7 @@
   
   <section class="heading-section space-y-1 pb-2 px-7 md:px-0">
     <h1
-      class="text-[27px] leading-[35px] md:leading-[42px] text-center md:text-left md:text-[30px] max-w-2xl xl:max-w-3xl tracking-[0.1px] font-[510] mx-auto md:mx-0 w-fit"
+      class="text-[27px] leading-[35px] md:leading-[42px] text-center md:text-left md:text-[30px] max-w-2xl xl:max-w-3xl tracking-[0.1px] font-[500] mx-auto md:mx-0 w-fit"
     >
       {#if showBreak}
         {@html heading.replace('<br>', '<br class="hidden xl:inline" />')}

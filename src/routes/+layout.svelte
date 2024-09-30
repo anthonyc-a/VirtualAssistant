@@ -85,11 +85,14 @@
 </div>
 
 <div
-  class="w-full z-[99999999] bg-background/80  backdrop-blur  max-w-2xl md:mx-auto py-3 px-9 md:px-0 flex justify-between items-center sticky top-0 left-0"
+  class="w-full z-[99999999] bg-background/80 backdrop-blur max-w-2xl md:mx-auto py-3 px-9 md:px-0 flex justify-between items-center sticky top-0 left-0"
 >
-  <a href="/" class="relative flex gap-5  fade-up ">
-    <img src="/logo.svg" alt="Logo" class="invert-[0.85] dark:invert-0 w-[16px]" />
-  
+  <a href="/" class="relative flex gap-5 fade-up">
+    <img
+      src="/logo.svg"
+      alt="Logo"
+      class="invert-[0.85] dark:invert-0 w-[16px]"
+    />
   </a>
   <div class="flex animate four items-center gap-2.5">
     <div
@@ -98,18 +101,23 @@
       <div class="w-[5px] h-[5px] bg-success rounded-full"></div>
     </div>
 
-    <div class="mr-1 text-border">
-      |
-    </div>
+    <div class="mr-1 text-border">|</div>
 
     <Theme />
     <div
       role="presentation"
-      class="relative -me-3 md:me-0 backdrop-blur-sm invert text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 md:bg-accent flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+      class="relative {messaging
+        ? 'invert'
+        : ''} -me-3 md:me-0 backdrop-blur-sm text-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 md:bg-accent flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
       on:click={() => (messaging = !messaging)}
     >
+      {#if !messaging}
+        <div
+          class="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"
+        ></div>
+      {/if}
       {#if messaging}
-        <X class="w-[16px] h-[16px]" />
+        <X class="w-[16px]  h-[16px]" />
       {:else}
         <MessageCircle class="w-[16px] h-[16px]" />
       {/if}

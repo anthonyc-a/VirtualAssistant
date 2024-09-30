@@ -122,7 +122,7 @@
     {/if}
     {#if savedName === ""}
       <Heading
-        heading="Creating Digital Experiences with Functional<br> Design and Expertise "
+        heading="Creating Digital Experiences with Functional<br> Design and Expertise"
         subheading="I'm a Designer and Full-Stack Developer with over 7 years experience working with small to medium-sized businesses, startups and individuals."
         showBreak={true}
       />
@@ -201,16 +201,16 @@
     <div class="mt-16 px-6 md:px-0 max-w-2xl mx-auto space-y-4">
       <h3 class="text-2xl md:text-2xl font-medium">Previously Worked on</h3>
       <div class="w-full h-[1px] bg-[--color-secondary]"></div>
-      <div class="space-y-10">
+      <div class="md:space-y-10">
         {#each workItems.slice(2, 6) as item}
           <WorkItem {item} />
         {/each}
         <a
           href="/work"
-          class="w-fit px-4 p-1 flex mx-auto justify-center hover:bg-accent/30 items-center border border-border dark:border-accent rounded-2xl"
+          class="w-fit px-3 p-1.5 flex mx-auto justify-center hover:bg-accent/30 items-center border border-border dark:border-accent rounded-2xl"
         >
           <div class="flex justify-center items-center h-full">
-            <button class="text-foreground font-[350]"> + More work </button>
+            <button class="text-foreground text-sm tracking-[0.1px]"> + More work </button>
           </div>
         </a>
       </div>

@@ -73,7 +73,7 @@
 </script>
 
 <div
-  class="fixed shadow fade-up z-[99999999] flex p-1.5 px-2 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 md:left-1/2 transition-all duration-300"
+  class="fixed fade-up z-[99999999] flex p-1.5 px-2 border border-border rounded-full bg-accent bg-opacity-90 backdrop-blur flex-row items-center gap-3 left-1/2 -translate-x-1/2 md:left-1/2 transition-all duration-300"
   class:bottom-3={isVisible}
   class:-bottom-20={!isVisible}
   use:haptic={100}

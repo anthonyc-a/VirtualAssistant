@@ -8,12 +8,11 @@
     Mail,
     MessageSquare,
     X,
-    Briefcase,
-    CheckCircle,
     Lightbulb,
-    Folder,
+    CheckCircle,
   } from "lucide-svelte";
   import { onMount } from "svelte";
+  import Popup from "./Popup.svelte";
 
   export let projectTitle: string = "";
   export let message: string = "";
@@ -22,13 +21,31 @@
   export let email: string = "";
 
   let isFocused: boolean = false;
-  let files: File[] = [];
+  let files: FileList | null = null;
   let fileError: string = "";
   let errors: string[] = [];
   let nameFocused = false;
   let emailFocused = false;
   let messageFocused = false;
   let showConfirmation = false;
+  let isLoading = false;
+  let isVisible = true;
+  let lastScrollY = 0;
+
+  onMount(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      isVisible = currentScrollY < lastScrollY || currentScrollY < 50;
+      lastScrollY = currentScrollY;
+      console.log(isVisible);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
   const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
   const MAX_FILES = 3;
@@ -45,7 +62,7 @@
   }
 
   function handleBlur() {
-    if (!projectTitle && !message && !name && !email && files.length === 0) {
+    if (!projectTitle && !message && !name && !email && !files) {
       isFocused = false;
     }
   }
@@ -60,84 +77,93 @@
     return errors.length === 0;
   }
 
-  function handleSubmit() {
-    if (isProjectTitleValid && validateForm()) {
-      console.log("Submitting:", { projectTitle, message, name, email, files });
-      isFocused = false;
-      setTimeout(() => {
-        showConfirmation = true;
-        setTimeout(() => {
-          projectTitle = "";
-          message = "";
-          name = "";
-          email = "";
-          files = [];
-          fileError = "";
-          showConfirmation = false;
-        }, 2000);
-      }, 300); // Wait for collapse animation before showing confirmation
-    }
-  }
-
   function handleFileChange(event: Event) {
     if (!isProjectTitleValid) return;
     const target = event.target as HTMLInputElement;
     if (target.files) {
-      const newFiles = Array.from(target.files);
-      if (files.length + newFiles.length > MAX_FILES) {
+      if (target.files.length > MAX_FILES) {
         fileError = `You can only attach up to ${MAX_FILES} files`;
-        return;
-      }
-      const invalidFiles = newFiles.filter((file) => file.size > MAX_FILE_SIZE);
-      if (invalidFiles.length > 0) {
-        fileError = "One or more files exceed 5MB limit";
+        files = null;
       } else {
-        files = [...files, ...newFiles];
-        fileError = "";
+        const invalidFiles = Array.from(target.files).filter(
+          (file) => file.size > MAX_FILE_SIZE
+        );
+        if (invalidFiles.length > 0) {
+          fileError = "One or more files exceed 5MB limit";
+          files = null;
+        } else {
+          files = target.files;
+          fileError = "";
+        }
       }
     }
-    target.value = "";
+  }
+
+  async function handleSubmit() {
+    if (isProjectTitleValid && validateForm()) {
+      isLoading = true;
+      errors = [];
+      const formData = new FormData();
+      formData.append("projectTitle", projectTitle);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("message", message);
+      if (files) {
+        Array.from(files)
+          .slice(0, MAX_FILES)
+          .forEach((file) => {
+            formData.append("files", file);
+          });
+      }
+
+      try {
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          console.log("Email sent successfully");
+          isFocused = false;
+          showConfirmation = true;
+          setTimeout(() => {
+            projectTitle = "";
+            message = "";
+            name = "";
+            email = "";
+            files = null;
+            fileError = "";
+            showConfirmation = false;
+          }, 2000);
+        } else {
+          console.error("Failed to send email:", result.message);
+          errors = [result.message || "Failed to send email"];
+        }
+      } catch (error) {
+        console.error("Error sending email:", error);
+        errors = ["An error occurred. Please try again."];
+      } finally {
+        isLoading = false;
+      }
+    }
   }
 
   function removeFile(index: number) {
-    files = files.filter((_, i) => i !== index);
+    if (files) {
+      const dt = new DataTransfer();
+      Array.from(files).forEach((file, i) => {
+        if (i !== index) dt.items.add(file);
+      });
+      files = dt.files;
+    }
     fileError = "";
   }
 
   function notMessaging() {
     messaging = false;
   }
-
-  let isVisible = true;
-  let lastScrollY = 0;
-  let currentPath = window.location.pathname;
-  let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
-  onMount(() => {
-    const handlePathChange = () => {
-      currentPath = window.location.pathname;
-    };
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      isVisible = currentScrollY < lastScrollY || currentScrollY < 50;
-      lastScrollY = currentScrollY;
-    };
-
-    const handleResize = () => {
-      isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    };
-
-    window.addEventListener("popstate", handlePathChange);
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("popstate", handlePathChange);
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  });
 </script>
 
 {#if messaging}
@@ -156,19 +182,12 @@
   {/if}
 
   {#if showConfirmation}
-    <div
-      in:scale={{ duration: 300, start: 0.5, opacity: 0, easing: cubicOut }}
-      out:fade={{ duration: 300 }}
-      class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[10000] bg-green-500 text-white px-4 py-2 rounded-full flex items-center space-x-2"
-    >
-      <CheckCircle size={18} />
-      <span>Message sent successfully!</span>
-    </div>
+    <Popup {isVisible} />
   {/if}
 
   <form
     on:submit|preventDefault={handleSubmit}
-    class="w-[calc(100%-40px)] z-[99999999] px-2 mt-6  fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
+    class="w-[calc(100%-40px)] z-[99999999] px-2 mt-6 fade-up mb-2.5 md:w-full !transition-all duration-300 overflow-scroll md:overflow-hidden fixed left-1/2 -translate-x-1/2 max-w-xl bg-accent bg-opacity-90 backdrop-blur text-left border border-border text-foreground rounded-full"
     style="height: {isFocused ? 'auto' : '3.4rem'}; max-height: {isFocused
       ? '55vh'
       : '3.5rem'}; border-radius: {isFocused
@@ -179,7 +198,9 @@
         projectTitle &&
         'var(--foreground)'}; transition: max-height 0.4s ease;"
   >
-    <div class="p-3 pr-4 py-2.5 border-b border-muted dark:border-border flex items-center">
+    <div
+      class="p-3 pr-4 py-2.5 border-b border-muted dark:border-border flex items-center"
+    >
       <Lightbulb class="text-muted-foreground mr-3" size={20} />
       <input
         placeholder="Describe your idea here"
@@ -190,11 +211,11 @@
       />
       <button
         type="submit"
-        class="ml-2 -me-3 text-background hover:text-subaccent transition-colors bg-foreground rounded-full p-2 {isProjectTitleValid
+        class="ml-2 -me-3 hover:invert text-background hover:text-subaccent transition-colors bg-foreground rounded-full p-2 {isProjectTitleValid
           ? ''
           : 'opacity-100 cursor-not-allowed'}"
         aria-label="Send message"
-        disabled={!isProjectTitleValid}
+        disabled={!isProjectTitleValid || isLoading}
       >
         <Send size={17} />
       </button>
@@ -225,7 +246,7 @@
               ? 'text-xs hidden -top-2'
               : 'top-1/2 -translate-y-1/2'}"
           >
-           Name
+            Your Name
           </label>
         </div>
 
@@ -237,7 +258,7 @@
           <input
             id="email"
             type="email"
-            class="w-full bg-muted border border-muted-foreground rounded-xl !p-3 !pl-10 !outline-none text-white pt-6"
+            class="w-full bg-muted border border-muted-foreground text-foreground rounded-xl !p-3 !pl-10 !outline-none pt-6"
             bind:value={email}
             disabled={!isProjectTitleValid}
             on:focus={() => (emailFocused = true)}
@@ -245,12 +266,12 @@
           />
           <label
             for="email"
-            class="absolute left-10 text-[#999]  transition-all duration-200 {email ||
+            class="absolute left-10 text-[#999] transition-all duration-200 {email ||
             emailFocused
               ? 'text-xs hidden -top-2'
               : 'top-1/2 -translate-y-1/2'}"
           >
-            Email Address
+            Your Email Address
           </label>
         </div>
 
@@ -266,7 +287,7 @@
           ></textarea>
           <label
             for="message"
-            class="absolute left-10 text-[#999]  transition-all duration-200 {message ||
+            class="absolute left-10 text-[#999] transition-all duration-200 {message ||
             messageFocused
               ? 'text-xs hidden -top-2'
               : 'top-5'}"
@@ -289,14 +310,15 @@
             disabled={!isProjectTitleValid}
           />
         </div>
-        {#if files.length > 0}
+        {#if files && files.length > 0}
           <div class="flex flex-wrap gap-2 px-3">
-            {#each files as file, i}
+            {#each Array.from(files) as file, i}
               <div
-                class="flex items-center bg-[#444] rounded-full px-3 py-1 text-xs"
+                class="flex items-center bg-[#444] text-white rounded-full px-3 py-1 text-xs"
               >
                 <span class="truncate max-w-[150px]">{file.name}</span>
                 <button
+                  type="button"
                   on:click={() => removeFile(i)}
                   class="ml-2 text-[#999] hover:text-white"
                 >

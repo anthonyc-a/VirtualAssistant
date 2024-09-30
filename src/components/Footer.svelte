@@ -1,5 +1,5 @@
 <script>
-  import { ArrowUp } from "lucide-svelte";
+  import { ArrowUp, ArrowUpRight } from "lucide-svelte";
   import Theme from "./Theme.svelte";
 </script>
 
@@ -54,6 +54,13 @@
       class="relative invert -ms-3.5 backdrop-blur-sm text-muted-foreground hover:text-foreground border border-accent p-1.5 bg-accent/30 flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
     >
       <ArrowUp size={16} />
+    </a>
+    <a
+      href="mailto:anthonyc.animba@gmail.com"
+      class="relative gap-1 backdrop-blur-sm tracking-[0.1px] text-foreground hover:text-foreground border border-accent p-1.5 px-3 text-sm flex justify-center items-center rounded-full cursor-pointer transition-colors duration-200 ease-in-out"
+    >
+      Request CV
+      <ArrowUpRight size={16} />
     </a>
   </div>
 
