@@ -33,7 +33,7 @@
       <p
         class="text-[16px] md:text-[17px] leading-[1.6] font-[310] tracking-[0.2px] dark:text-muted-foreground"
       >
-        My marketing agency made to empower businesses and accept/manage client work.
+        My digital agency created to empower businesses and accept/manage client projects.
       </p>
     </div>
     <div class="flex gap-2 mt-4">

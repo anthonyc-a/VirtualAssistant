@@ -140,7 +140,7 @@
           type="file"
           id="files"
           on:change={handleFileChange}
-          class="w-full text-sm text-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent file:text-white hover:file:bg-accent-dark"
+          class="w-full text-sm text-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent file:text-foreground hover:file:bg-accent-dark"
           multiple
           accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png"
         />
@@ -159,7 +159,7 @@
       {/if}
       <div class="flex items-center justify-between">
         <button
-          class="bg-accent w-full hover:bg-accent-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50"
+          class="bg-accent w-full hover:bg-accent-dark text-muted-foreground font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50"
           type="submit"
           disabled={isLoading}
         >
