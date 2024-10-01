@@ -23,7 +23,7 @@ export const workItems = [
   {
     title: "Front-End at SI World",
     tags: ["Consultancy", "SaaS"],
-    description: "Senior UX/UI design & Front-End Development.",
+    description: "An investment platform for smarter traders.",
     image: "/si-world.png",
     link: "https://stocknetinstitute.com",
   },

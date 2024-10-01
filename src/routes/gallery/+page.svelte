@@ -85,7 +85,7 @@
         <img
           src={image.src}
           alt={image.alt}
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover -z-10"
         />
       {/await}
       {#if image.chroma}
@@ -93,7 +93,7 @@
           href="https://chroma.co.in"
           target="_blank"
           rel="noreferrer"
-          class="hover:brightness-75 transition-all !z-50"
+          class="transition-all !z-50"
         >
           <img
             src="/app-icon.png"

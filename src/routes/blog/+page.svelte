@@ -59,7 +59,7 @@
     {/each}
   </div>
 
-  <ul class="space-y-4 dark:divide-accent">
+  <ul class="space-y-4 md:space-y-5 dark:divide-accent">
     {#each filteredPosts as post}
       <BlogItem {post} on:readMore={handleReadMore} />
     {/each}

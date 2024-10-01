@@ -24,7 +24,7 @@
       </h3>
       <div class="md:flex hidden gap-3 flex-wrap">
         <span
-          class="tag-l w-fit bg-accent tracking-[0.1px] font-[450] text-foreground px-2.5 text-[15px] rounded-2xl p-0.5"
+          class="tag-l w-fit bg-accent tracking-[0.1px] font-[450] text-foreground px-2.5 text-[15px] rounded-2xl p-0.5 md:p-1 md:px-2.5"
           >Digital Marketing</span
         >
       </div>

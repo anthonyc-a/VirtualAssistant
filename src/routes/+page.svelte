@@ -188,8 +188,7 @@
       <p
         class="mt-3 text-muted-foreground font-[320] tracking-[0.3px] leading-[1.5] text-[16px] md:text-lg"
       >
-        These are projects and companies that I've worked on/with. Some are
-        well-established businesses.
+        Here are some projects and companies that I've worked on/with.
       </p>
       <div class="w-full h-[1px] my-6 mb-4 bg-[--color-secondary]"></div>
       <div class="md:space-y-5">
