@@ -135,7 +135,7 @@
 
 {#key isNavigating}
   <div
-    class="md:container two bg-background w-full pt-4 px-0 md:px-0 md:w-[calc(100%-40px)] max-w-3xl mx-auto"
+    class="md:container two bg-background w-full pt-4 md:pt-2 px-0 md:px-0 md:w-[calc(100%-40px)] max-w-3xl mx-auto"
     in:fade={{ duration: 300 }}
   >
     <slot />
