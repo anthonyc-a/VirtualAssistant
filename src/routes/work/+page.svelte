@@ -19,7 +19,7 @@
     showBreak={true}
   />
 
-  <div class="px-6 space-y-4 mt-6 md:px-0">
+  <div class="px-6 space-y-4 md:space-y-5 mt-6 md:px-0">
     {#each workItems.slice(0, showMore ? workItems.length : maxItems) as item}
       <WorkItem {item} />
     {/each}

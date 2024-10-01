@@ -38,12 +38,14 @@
   });
 </script>
 
+<!-- bind:this={componentElement} -->
 <a
-  bind:this={componentElement}
   href={item.link}
   target="_blank"
   rel="noopener noreferrer"
-  class="flex relative shadow-md dark:shadow-none shadow-foreground/5 animate-item flex-col md:flex-row !text-foreground md:items-center transition-all border border-border dark:border-accent gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
+  class="flex {item.tags.includes('In Progress')
+    ? 'pointer-events-none'
+    : ''} relative shadow-md dark:shadow-none shadow-foreground/5 animate-item flex-col md:flex-row !text-foreground md:items-center transition-all border border-border dark:border-accent gap-4 mb-6 md:mb-0 hover:bg-accent/50 p-6 px-5 rounded-3xl"
 >
   <div
     class="w-16 h-16 border border-border dark:border-accent mr-1.5 md:min-w-20 md:max-w-20 md:h-20 rounded-2xl md:rounded-2xl overflow-hidden"
@@ -57,7 +59,7 @@
 
   {#if item.tags.includes("In Progress")}
     <div
-      class="invert absolute top-5 right-4 pr-6 dark:invert-0 whitespace-nowrap"
+      class="invert absolute top-5 md:top-[unset] md:bottom-5 right-4 pr-6 dark:invert-0 whitespace-nowrap"
     >
       <Stretch size={10} color="#fff" />
     </div>

@@ -39,7 +39,7 @@
   />
 
   <div
-    class="flex w-full flex-col gap-6 mt-6 px-4 md:p-8 md:border border-border dark:border-accent rounded-3xl"
+    class="flex w-full shadow flex-col gap-6 mt-6 px-4 md:p-8 md:border border-border dark:border-accent rounded-3xl"
   >
     {#each items as item}
       <div

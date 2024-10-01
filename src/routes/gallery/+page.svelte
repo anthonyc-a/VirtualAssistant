@@ -1,30 +1,9 @@
 <script lang="ts">
   const images = [
     {
-      src: "/architecture.png",
-      alt: "Gallery Pic",
-      chroma: true,
-    },
-    {
-      src: "/archviz.png",
+      src: "/pinque.png",
       alt: "Gallery Pic",
       chroma: false,
-    },
-    {
-      src: "/waveform.png",
-      alt: "Gallery Pic",
-      chroma: true,
-    },
-    {
-      src: "/ve-go.png",
-      alt: "Gallery Pic",
-      chroma: true,
-    },
-
-    {
-      src: "/vizcom.png",
-      alt: "Gallery Pic",
-      chroma: true,
     },
     {
       src: "/epoch.png",
@@ -32,37 +11,60 @@
       chroma: false,
     },
     {
-      src: "/revolut.png",
-      alt: "Gallery Pic",
-      chroma: true,
-    },
-    {
-      src: "/studio-pb.png",
+      src: "/archviz.png",
       alt: "Gallery Pic",
       chroma: false,
     },
 
     {
-      src: "/museum.png",
+      src: "/studio-pb.png",
       alt: "Gallery Pic",
       chroma: false,
+    },
+    {
+      src: "/architecture.png",
+      alt: "Gallery Pic",
+      chroma: true,
     },
     {
       src: "/daydream.png",
       alt: "Gallery Pic",
       chroma: true,
     },
+  
+    {
+      src: "/ve-go.png",
+      alt: "Gallery Pic",
+      chroma: true,
+    },
+    {
+      src: "/revolut.png",
+      alt: "Gallery Pic",
+      chroma: true,
+    },
+    // {
+    //   src: "/vizcom.png",
+    //   alt: "Gallery Pic",
+    //   chroma: true,
+    // },
+
+    {
+      src: "/museum.png",
+      alt: "Gallery Pic",
+      chroma: false,
+    },
+   
 
     {
       src: "/space.png",
       alt: "Gallery Pic",
       chroma: false,
     },
-    {
-      src: "/pinque.png",
-      alt: "Gallery Pic",
-      chroma: false,
-    },
+    // {
+    //   src: "/waveform.png",
+    //   alt: "Gallery Pic",
+    //   chroma: true,
+    // },
   ];
 
   function preload(src: any) {
@@ -91,7 +93,7 @@
           href="https://chroma.co.in"
           target="_blank"
           rel="noreferrer"
-          class="hover:brightness-75 transition-all"
+          class="hover:brightness-75 transition-all !z-50"
         >
           <img
             src="/app-icon.png"
