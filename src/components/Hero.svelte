@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="max-w-3xl shadow-md dark:shadow-none shadow-foreground/5 hover:!border-border w-[calc(100%-60px)] md:w-full flex flex-col md:flex-row items-center gap-7 md:gap-10 p-6 md:!py-2 transition-all border border-border hover:bg-accent/30 dark:border-accent rounded-3xl min-h-[224px] md:min-h-[232px] mx-auto"
+  class="max-w-3xl shadow-md dark:shadow-none shadow-foreground/5 hover:!border-border w-[calc(100%-56px)] md:w-full flex flex-col md:flex-row items-center gap-7 md:gap-10 p-6 md:!py-2 transition-all border border-border hover:bg-accent/30 dark:border-accent rounded-3xl min-h-[224px] md:min-h-[232px] mx-auto"
 >
   <div
     class="min-w-[180px] md:min-h-[170px] w-full md:w-[unset] h-full flex justify-center items-center bg-white border border-border dark:border-accent rounded-3xl"
