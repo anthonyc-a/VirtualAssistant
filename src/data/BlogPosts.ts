@@ -27,7 +27,7 @@ export const blogPosts = [
     id: 4,
     title: "HoloVis",
     description:
-      "Rendering 3D visualizations and particle-based holographic projections.",
+      "Rendering 3D visualisations and particle-based holographic projections.",
     category: "data",
     icon: GitBranch,
   },
