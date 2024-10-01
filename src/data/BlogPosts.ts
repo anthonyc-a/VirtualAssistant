@@ -4,14 +4,14 @@ export const blogPosts = [
   {
     id: 1,
     title: "Adaptive UI",
-    description: "Learn how to create responsive and adaptive user interfaces.",
+    description: "Creating a fluid and responsive interface system.",
     category: "design",
     icon: Zap,
   },
   {
     id: 2,
     title: "Aarkyv OS",
-    description: "Exploring the future of operating systems and computing.",
+    description: "Exploring the feasability of creating a lightweight OS layer.",
     category: "technology",
     icon: Laptop,
   },
@@ -19,7 +19,7 @@ export const blogPosts = [
     id: 3,
     title: "Working Process",
     description:
-      "Boost your productivity with these workflow optimization tips.",
+      "My personal workflow and how I manage my time and tasks.",
     category: "productivity",
     icon: Coffee,
   },
@@ -35,7 +35,7 @@ export const blogPosts = [
     id: 5,
     title: "Tailwind Natural Language Processing",
     description:
-      "An overview of natural language processing and its use cases.",
+      "Creating interfaces with nothing but natural language.",
     category: "intelligence",
     icon: Brain,
   },

@@ -25,7 +25,7 @@
     {
       title: "Automation and Efficiency",
       description:
-        "With a deep understanding of workflow optimization, I implement cutting-edge automation solutions that streamline processes, reduce manual tasks, and boost productivity. From simple scripts to complex AI-driven systems, I create tailored automation strategies that drive efficiency and innovation in your business operations.",
+        "With a deep understanding of workflow optimisation, I implement cutting-edge automation solutions that streamline processes, reduce manual tasks, and boost productivity. From simple scripts to complex AI-driven systems, I create tailored automation strategies that drive efficiency and innovation in your business operations.",
       icon: Cog,
     },
   ];
