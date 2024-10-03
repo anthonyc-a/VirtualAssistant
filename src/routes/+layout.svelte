@@ -18,6 +18,11 @@
   import Loader from "../components/Loader.svelte";
   import FooterNav from "../components/FooterNav.svelte";
   import Scrollbar from "../components/Scrollbar.svelte";
+  import { inject } from '@vercel/analytics'
+  import { dev } from '$app/environment';
+
+  inject({ mode: dev ? 'development' : 'production' });
+
 
   let themeColor = "";
   let messaging = false;
