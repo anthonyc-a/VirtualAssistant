@@ -19,9 +19,8 @@
   import FooterNav from "../components/FooterNav.svelte";
   import Scrollbar from "../components/Scrollbar.svelte";
   import { inject } from '@vercel/analytics'
-  import { dev } from '$app/environment';
 
-  inject({ mode: dev ? 'development' : 'production' });
+  inject();
 
 
   let themeColor = "";
