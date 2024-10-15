@@ -259,7 +259,6 @@
         return () => {
             window.removeEventListener('resize', handleResize);
             if (renderer) renderer.dispose();
-            if (labelRenderer) labelRenderer.dispose();
             if (model) {
                 if (model.geometry) model.geometry.dispose();
                 if (model.material) {
@@ -281,7 +280,6 @@
 <style>
     .hud-container {
         font-family: Arial, sans-serif;
-        color: white;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
     .hud-element {
@@ -296,4 +294,4 @@
     .bottom-right { bottom: 10px; right: 10px; }
 </style>
 
-<div bind:this={container} class="w-full h-[480px] relative"></div>
+<div bind:this={container} class="w-full  h-80 relative"></div>

@@ -134,7 +134,7 @@
 
 <Navigation />
 
-<Loader />
+<!-- <Loader /> -->
 
 <Header />
 
