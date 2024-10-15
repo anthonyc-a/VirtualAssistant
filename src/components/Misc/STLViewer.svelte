@@ -245,6 +245,7 @@
     hudContainer.style.left = "0";
     hudContainer.style.width = "100%";
     hudContainer.style.height = "100%";
+    hudContainer.style.color = "black";
     hudContainer.style.pointerEvents = "none";
     container.appendChild(hudContainer);
 
