@@ -3,6 +3,7 @@
     import * as THREE from 'three';
     import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
     import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+    import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
     import TGA from 'tga-js';
     
     export let stlPath: string;
@@ -13,17 +14,40 @@
         roughness?: string;
         metalness?: string;
     } = {};
-    export let fallbackColor: string = "#ffffff"; // New prop for fallback color
+    export let fallbackColor: string = "#ffffff";
+    export let backgroundColor: string = "#333333";
     
     let container: HTMLDivElement;
     let width: number;
     let height: number;
     let renderer: THREE.WebGLRenderer;
+    let labelRenderer: CSS2DRenderer;
     let scene: THREE.Scene;
     let camera: THREE.PerspectiveCamera;
     let controls: OrbitControls;
     let model: THREE.Mesh;
+
+    export let initialRotation: { x: number; y: number; z: number } = { x: 0, y: 0, z: 0 };
     
+    
+    let modelStats = {
+        vertices: 0,
+        faces: 0,
+    };
+    
+    let cameraPosition = { x: 0, y: 0, z: 0 };
+    let zoomLevel = 100;
+    
+    function loadTexture(url: string): Promise<THREE.Texture> {
+        if (url.toLowerCase().endsWith('.tga')) {
+            return loadTGA(url);
+        } else {
+            return new Promise((resolve, reject) => {
+                new THREE.TextureLoader().load(url, resolve, undefined, reject);
+            });
+        }
+    }
+
     function loadTGA(url: string): Promise<THREE.Texture> {
         return new Promise((resolve, reject) => {
             const loader = new THREE.FileLoader();
@@ -35,7 +59,7 @@
                     tga.load(new Uint8Array(buffer as ArrayBuffer));
                     const canvas = tga.getCanvas();
                     const texture = new THREE.CanvasTexture(canvas);
-                    texture.flipY = false;  // TGA textures are often flipped
+                    texture.flipY = false;
                     resolve(texture);
                 },
                 undefined,
@@ -44,9 +68,34 @@
         });
     }
     
+    function createHUDElement(id: string, className: string, innerHTML: string): HTMLElement {
+        const element = document.createElement('div');
+        element.id = id;
+        element.className = className;
+        element.innerHTML = innerHTML;
+        return element;
+    }
+    
+    function updateHUD() {
+        const statsElement = document.getElementById('model-stats');
+        if (statsElement) {
+            statsElement.innerHTML = `Vertices: ${modelStats.vertices} | Faces: ${modelStats.faces}`;
+        }
+    
+        const cameraElement = document.getElementById('camera-position');
+        if (cameraElement) {
+            cameraElement.innerHTML = `Camera: X: ${cameraPosition.x.toFixed(2)} Y: ${cameraPosition.y.toFixed(2)} Z: ${cameraPosition.z.toFixed(2)}`;
+        }
+    
+        const zoomElement = document.getElementById('zoom-level');
+        if (zoomElement) {
+            zoomElement.innerHTML = `Zoom: ${zoomLevel.toFixed(0)}%`;
+        }
+    }
+    
     async function createScene() {
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x333333);  // Set a gray background for contrast
+        scene.background = new THREE.Color(backgroundColor);
         
         camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
         camera.position.set(0, 0, 5);
@@ -56,8 +105,19 @@
         renderer.outputEncoding = THREE.sRGBEncoding;
         container.appendChild(renderer.domElement);
         
-        controls = new OrbitControls(camera, renderer.domElement);
+        labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(width, height);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        container.appendChild(labelRenderer.domElement);
+        
+        controls = new OrbitControls(camera, labelRenderer.domElement);
         controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.enableZoom = true;
+        controls.autoRotate = false;
+        controls.autoRotateSpeed = 0.5;
+        controls.enablePan = true;
         
         const loader = new STLLoader();
         
@@ -65,20 +125,19 @@
             const geometry = await new Promise<THREE.BufferGeometry>((resolve) => loader.load(stlPath, resolve));
     
             const material = new THREE.MeshStandardMaterial({
-                color: new THREE.Color(fallbackColor), // Use fallback color initially
+                color: new THREE.Color(fallbackColor),
                 metalness: 0.5,
                 roughness: 0.5,
             });
     
-            // Load and apply textures
             for (const [key, path] of Object.entries(texturePaths)) {
                 if (path) {
                     try {
-                        const texture = await loadTGA(path);
+                        const texture = await loadTexture(path);
                         switch (key) {
                             case 'diffuse': 
                                 material.map = texture;
-                                material.color.setHex(0xffffff); // Reset color to white when using diffuse texture
+                                material.color.setHex(0xffffff);
                                 break;
                             case 'normal': material.normalMap = texture; break;
                             case 'ao': material.aoMap = texture; break;
@@ -87,7 +146,6 @@
                         }
                     } catch (error) {
                         console.error(`Failed to load texture: ${key}`, error);
-                        // If diffuse texture fails to load, fallback color will be used
                         if (key === 'diffuse') {
                             material.color.set(fallbackColor);
                         }
@@ -99,26 +157,32 @@
     
             model = new THREE.Mesh(geometry, material);
             
-            // Center the model
             geometry.computeBoundingBox();
             const center = new THREE.Vector3();
             geometry.boundingBox!.getCenter(center);
             model.position.sub(center);
+
+            model.rotation.set(
+                THREE.MathUtils.degToRad(initialRotation.x),
+                THREE.MathUtils.degToRad(initialRotation.y),
+                THREE.MathUtils.degToRad(initialRotation.z)
+            );
             
             scene.add(model);
             
-            // Adjust camera and controls based on model size
             const box = new THREE.Box3().setFromObject(model);
             const size = box.getSize(new THREE.Vector3());
             const maxDim = Math.max(size.x, size.y, size.z);
             camera.position.z = maxDim * 2;
             controls.target.copy(center);
             controls.update();
+            
+            modelStats.vertices = geometry.attributes.position.count;
+            modelStats.faces = geometry.index ? geometry.index.count / 3 : geometry.attributes.position.count / 3;
         } catch (error) {
             console.error("Error loading model or textures:", error);
         }
         
-        // Improved lighting setup
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
         
@@ -133,12 +197,40 @@
         const topLight = new THREE.DirectionalLight(0xffffff, 0.3);
         topLight.position.set(0, 1, 0);
         scene.add(topLight);
+        
+        // Create HUD elements
+        const hudContainer = document.createElement('div');
+        hudContainer.className = 'hud-container';
+        hudContainer.style.position = 'absolute';
+        hudContainer.style.top = '0';
+        hudContainer.style.left = '0';
+        hudContainer.style.width = '100%';
+        hudContainer.style.height = '100%';
+        hudContainer.style.pointerEvents = 'none';
+        container.appendChild(hudContainer);
+        
+        const topLeft = createHUDElement('model-stats', 'hud-element top-left', '');
+        const topRight = createHUDElement('camera-position', 'hud-element top-right', '');
+        const bottomLeft = createHUDElement('zoom-level', 'hud-element bottom-left', '');
+        const bottomRight = createHUDElement('controls-info', 'hud-element bottom-right', 'Left click: Rotate | Right click: Pan | Scroll: Zoom');
+        
+        hudContainer.appendChild(topLeft);
+        hudContainer.appendChild(topRight);
+        hudContainer.appendChild(bottomLeft);
+        hudContainer.appendChild(bottomRight);
     }
     
     function animate() {
         requestAnimationFrame(animate);
         controls.update();
+        
+        cameraPosition = camera.position;
+        zoomLevel = 100 / camera.position.distanceTo(controls.target);
+        
+        updateHUD();
+        
         renderer.render(scene, camera);
+        labelRenderer.render(scene, camera);
     }
     
     function handleResize() {
@@ -152,6 +244,9 @@
             if (renderer) {
                 renderer.setSize(width, height);
             }
+            if (labelRenderer) {
+                labelRenderer.setSize(width, height);
+            }
         }
     }
     
@@ -164,6 +259,7 @@
         return () => {
             window.removeEventListener('resize', handleResize);
             if (renderer) renderer.dispose();
+            if (labelRenderer) labelRenderer.dispose();
             if (model) {
                 if (model.geometry) model.geometry.dispose();
                 if (model.material) {
@@ -180,6 +276,24 @@
     afterUpdate(() => {
         handleResize();
     });
-    </script>
-    
-    <div bind:this={container} class="w-full h-[480px]"></div>
+</script>
+
+<style>
+    .hud-container {
+        font-family: Arial, sans-serif;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+    .hud-element {
+        position: absolute;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 5px;
+    }
+    .top-left { top: 10px; left: 10px; }
+    .top-right { top: 10px; right: 10px; }
+    .bottom-left { bottom: 10px; left: 10px; }
+    .bottom-right { bottom: 10px; right: 10px; }
+</style>
+
+<div bind:this={container} class="w-full h-[480px] relative"></div>

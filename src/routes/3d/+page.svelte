@@ -6,12 +6,13 @@
 <div class="w-full rounded-2xl overflow-hidden max-w-2xl mx-auto">
   <StlViewer
     stlPath="/chair.stl"
+    backgroundColor="#e0e0e0"
     texturePaths={{
-  normal: "/textures/splash/Chocolate_Splash_Free_002_norm.tga",
-      ao: "/textures/splash/Chocolate_Splash_Free_002_ao.tga",
-      roughness: "/textures/splash/Chocolate_Splash_Free_002_rough.tga",
-      metalness: "/textures/splash/Chocolate_Splash_Free_002_metal.tga",
+      diffuse: "/textures/chair/base.jpg",
+      normal: "/textures/chair/normal.jpg",
+      roughness: "/textures/chair/roughness.jpg",
     }}
     fallbackColor="#8B4513"
+    initialRotation={{ x: 90, y: 180, z: 180 }}
   />
 </div>
