@@ -108,6 +108,74 @@
     }
   }
 
+  function createAngleSnappingGraph() {
+    const graphContainer = document.createElement("div");
+    graphContainer.className = "angle-snapping-graph";
+    graphContainer.style.position = "absolute";
+    graphContainer.style.bottom = "10px";
+    graphContainer.style.left = "10px";
+    graphContainer.style.width = "150px";
+    graphContainer.style.height = "150px";
+    graphContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    graphContainer.style.borderRadius = "5px";
+    graphContainer.style.display = "flex";
+    graphContainer.style.justifyContent = "center";
+    graphContainer.style.alignItems = "center";
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.style.stroke = "white";
+    svg.style.fill = "none";
+    svg.style.strokeWidth = "2";
+
+    const axes = [
+      { color: "red", d: "M75,75 L135,75" },    // X-axis
+      { color: "green", d: "M75,75 L75,15" },   // Y-axis
+      { color: "blue", d: "M75,75 L35,115" },   // Z-axis
+    ];
+
+    axes.forEach(axis => {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", axis.d);
+      path.style.stroke = axis.color;
+      svg.appendChild(path);
+    });
+
+    for (let i = 0; i < 8; i++) {
+      const angle = i * 45;
+      const x = 75 + 60 * Math.cos(angle * Math.PI / 180);
+      const y = 75 - 60 * Math.sin(angle * Math.PI / 180);
+      
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute("cx", x.toString());
+      circle.setAttribute("cy", y.toString());
+      circle.setAttribute("r", "5");
+      circle.style.fill = "white";
+      circle.style.cursor = "pointer";
+      
+      circle.addEventListener("click", () => snapCameraAngle(angle));
+      
+      svg.appendChild(circle);
+    }
+
+    graphContainer.appendChild(svg);
+    container.appendChild(graphContainer);
+  }
+
+  function snapCameraAngle(angle: number) {
+    const radius = camera.position.distanceTo(controls.target);
+    const phi = THREE.MathUtils.degToRad(angle);
+    const theta = THREE.MathUtils.degToRad(45);
+
+    camera.position.x = radius * Math.sin(theta) * Math.cos(phi);
+    camera.position.y = radius * Math.cos(theta);
+    camera.position.z = radius * Math.sin(theta) * Math.sin(phi);
+
+    camera.lookAt(controls.target);
+    controls.update();
+  }
+
   async function createScene() {
     isLoading = true;
     loadingProgress = 0;
@@ -270,6 +338,9 @@
     hudContainer.appendChild(topRight);
     hudContainer.appendChild(bottomLeft);
     hudContainer.appendChild(bottomRight);
+
+    createAngleSnappingGraph();
+
   }
 
   function animate() {
@@ -378,5 +449,8 @@
     height: 100%;
     background-color: #4caf50;
     transition: width 0.3s ease-in-out;
+  }
+  .angle-snapping-graph {
+    pointer-events: auto;
   }
 </style>
