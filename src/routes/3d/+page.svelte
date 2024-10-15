@@ -12,7 +12,7 @@
     };
   </script>
   
-  <div class="w-full overflow-hidden max-w-2xl mx-auto">
+  <div class="w-[calc(100%-32px)] rounded-2xl overflow-hidden max-w-2xl mx-auto">
     <div class="mb-4">
       <label for="model-select" class="mr-2">Select Model:</label>
       <select id="model-select" class="bg-background" bind:value={selectedModel}>

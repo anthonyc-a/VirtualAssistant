@@ -5,7 +5,7 @@
     <a
       href="https://wa.me/447715929392"
       target="_blank"
-      class=" w-[48px] bg-foreground/10 dark:bg-foreground/65 overflow-hidden  h-[48px] rounded-full overflow-hidden mb-3 shadow-sm  hover:borer-2  hover:border-success"
+      class="w-16 h-16 md:w-[48px] bg-foreground/10 dark:bg-foreground/65 overflow-hidden  md:h-[48px] rounded-full overflow-hidden mb-3 shadow-sm  hover:borer-2  hover:border-success"
     >
       <img src="/me.png" alt="Me" class="w-full h-full object-cover" />
     </a>
