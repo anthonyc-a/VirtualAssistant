@@ -13,6 +13,7 @@
         roughness?: string;
         metalness?: string;
     } = {};
+    export let fallbackColor: string = "#ffffff"; // New prop for fallback color
     
     let container: HTMLDivElement;
     let width: number;
@@ -64,7 +65,7 @@
             const geometry = await new Promise<THREE.BufferGeometry>((resolve) => loader.load(stlPath, resolve));
     
             const material = new THREE.MeshStandardMaterial({
-                color: 0xffffff,
+                color: new THREE.Color(fallbackColor), // Use fallback color initially
                 metalness: 0.5,
                 roughness: 0.5,
             });
@@ -72,13 +73,24 @@
             // Load and apply textures
             for (const [key, path] of Object.entries(texturePaths)) {
                 if (path) {
-                    const texture = await loadTGA(path);
-                    switch (key) {
-                        case 'diffuse': material.map = texture; break;
-                        case 'normal': material.normalMap = texture; break;
-                        case 'ao': material.aoMap = texture; break;
-                        case 'roughness': material.roughnessMap = texture; break;
-                        case 'metalness': material.metalnessMap = texture; break;
+                    try {
+                        const texture = await loadTGA(path);
+                        switch (key) {
+                            case 'diffuse': 
+                                material.map = texture;
+                                material.color.setHex(0xffffff); // Reset color to white when using diffuse texture
+                                break;
+                            case 'normal': material.normalMap = texture; break;
+                            case 'ao': material.aoMap = texture; break;
+                            case 'roughness': material.roughnessMap = texture; break;
+                            case 'metalness': material.metalnessMap = texture; break;
+                        }
+                    } catch (error) {
+                        console.error(`Failed to load texture: ${key}`, error);
+                        // If diffuse texture fails to load, fallback color will be used
+                        if (key === 'diffuse') {
+                            material.color.set(fallbackColor);
+                        }
                     }
                 }
             }
@@ -170,4 +182,4 @@
     });
     </script>
     
-    <div bind:this={container} class="w-full h-80"></div>
+    <div bind:this={container} class="w-full h-[480px]"></div>
